@@ -26,9 +26,3 @@ dispatch는 static dispatch와 dynamic dispatch가 있는데 static은 구현클
 
 출처: https://multifrontgarden.tistory.com/133 [우리집앞마당]   
 위 링크 참조할것
-
-
-@Overriding 어노테이션을 활용하도록 하자
-
-
-static 메소드의 경우, 상속은 되지만 오버라이딩은 안됨
