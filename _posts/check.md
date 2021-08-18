@@ -1,28 +1,8 @@
-```java
-public class HelloWorld{
 
-    static class Person{
-        public void print(){
-            System.out.println("Peson");
-        }
-    }
+메이븐이나 그레들 중 하나는 공부할 것  
 
-    static class Student extends Person{
-        public void print(){
-            System.out.println("Student");
-        }
-    }
+다음주 인터페이스 내용이긴한데, 상수만 모아놓고 싶으면 인터페이스로 만들면 안됨  
+이건 인터페이스 목적에 어긋날뿐더러 이 인터페이스를 구현하면 인스턴스도 만들어지고, 구현시에 같은 변수명을 사용하면 인터페이스에서 정의한 값을 덮어쓸 여지도 있음  
 
-     public static void main(String []args){
-        Person a = new Student();
-        a.print();
-     }
-}
-```
-이렇게 업 캐스팅하고 오버라이딩된 메소드를 호출하면 자식 클래스의 메소드로 호출됨 => 다형성
-Dynamic method dispatch는 위와 같은 상황에서 런타임 시에 어떤 메소드가 호출될지 결정하는 것
-
-dispatch는 static dispatch와 dynamic dispatch가 있는데 static은 구현클래스를 이용해 컴파일타임에서부터 어떤 메서드가 호출될지 정해져있는것이고, dynamic은 인터페이스를 이용해 참조함으로서 호출되는 메서드가 동적으로 정해지는걸 말한다.
-
-출처: https://multifrontgarden.tistory.com/133 [우리집앞마당]   
-위 링크 참조할것
+따라서 상수만 모아놓고 싶으면 클래스로 만들어서 변수에 public static final 키워드 붙여주고, (접근지시자는 원하는 것으로 바꿔도 됨)  
+해당 클래스의 생성자를 private로 선언해서 외부에서 이 클래스의 인스턴스를 생성하지 못하게 막아야 함s
