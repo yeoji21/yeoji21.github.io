@@ -5,14 +5,6 @@
 
 ----------------------------------
 
-catch 블럭을 여러 개 사용할 수도 있다. 
-이 때 주의해야할 점은 위의 블럭에서 걸리면 아래 블럭은 호출되지 않는다.  
-예를 들어 위에 블럭에 RuntimeException을 잡아놓고, 그 밑에 IllegalArgumentException을 잡아놨다? 
-잘못짠 코드다~ 이건 컴파일 에러라서 IDE에서 알려주긴 함
-
-자바 1.7부터 멀티캣치 가능 단, 두 예외가 상속관계거나 같은 레벨의 자식이면 컴파일 에러가 발생
-
-
 RuntimeException 계열의 unchecked exception은 예외처리를 안해도 된다?
 checked exception에 대해 찾아보자  
 
@@ -26,34 +18,8 @@ checked exception에 대해 찾아보자
 근데 항상 이렇게 하라는건 아님.. 커스텀 메소드가 root cause라면 그냥 메시지만 받을 수도 있겠지
 
 
-
- Java 1.8 이상이면 try-with-resource 사용해야 함! finally 블록 쓰지말고 바꿔라 필수다 필수 
-
- 카톡에 사진1 참고
- finally block 내에 in.close()에서 exception이 발생한다면 out.close()는 실행되지 않음 이건 위 아래 순서를 바꿔도 마찬가지임  
-
- 이걸 처리를 하려면 각각 catch로 잡아줘야겠지?
- 사진2  
- 근데 이 코드도 문제가 있음 in.close()에서 IOException이 아니고 RuntimeException이 발생한다면? 처음 코드처럼 밑에 있는 out.close()가 실행되지 않음
-
-그래서 문제가 없이 짜려면 사진3 처럼 더럽게 짜야함
-
-자바8에서는 사진4처럼 깔끔하게 가능 
-
-try-with-resource문에 finally블럭 쓰면 자원 반납 후 finally 블럭 실행함  
-왜냐믄 이건 catch문 추가해서 자원반납해주기때문임. catch 블럭이면 예외 상황에만 자원이 반납되는거 아니냐? 할 수 있는데
-강의 2시간 즈음부터 보면 catch문 안과 밖에 두 개의 close()가 있어서 예외가 발생하던 안하던 자원을 반납함
-
  
 checked unchecked exception 비교할 때 트랜잭션 얘기는 왜 하는거야? 지금 자바 공부하는데 트랜잭션은 JDBC 얘기이고, Roll-back이건 스프링 기본 설정이라 바뀔 수 있는거야  
 
 
 예외처리 비용? 예외처리는 스택 트레이스를 메모리에 담고있어야 해서 비용이 비싸다고 말한다. 그래서 로직 상 굳이 예외처리 없이 할 수 있다면 마구잡이로 사용하지 않는 것이 좋음  
-
-
-finally 안에서 return문 쓰는건 신중히 해야함. 안티패턴임
-finally에 return이 있으면 try문과 catch문에 있는 return이 호출되지 않고 항상 finally의 return이 호출됨
-따라서 finally문에서는 흐름을 바꾸는 코드는 지양하고, 자원반납이나 로깅 등으로 사용해야 함
-
-throws를 던지고 던지다가 결국 main 메소드에서도 예외를 던지게 되면 JVM에서 해당 예외를 받게된다. 그럼 해당 스레드는 예외를 던지면서 담고있던 스택트레이스를 출력해주면서 종료된다.  
-
