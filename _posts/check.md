@@ -7,52 +7,6 @@
 
 ----------------------------------
 
-```java
-public class ThreadTest {
-    public static void main(String[] args) {
-        ThreadEx1 t1 = new ThreadEx1("Thread By Thread");
-        ThreadEx2 r = new ThreadEx2();
-        Thread t2 = new Thread(r, "Thread By Runnable");
-
-        t1.start();
-        t2.start();
-    }
-}
-
-@NoArgsConstructor
-class ThreadEx1 extends Thread {
-    public ThreadEx1(String name) {
-        super(name);
-    }
-
-    @Override
-    public void run() {
-        for (int i = 0; i < 5; i++) {
-            System.out.println(getName());
-        }
-    }
-}
-
-class ThreadEx2 implements Runnable {
-
-    @Override
-    public void run() {
-        for (int i = 0; i < 5; i++) {
-            System.out.println(Thread.currentThread().getName());
-        }
-    }
-}
-```
-
-종료된 스레드는 다시 실행할 수 없기때문에 하나의 쓰레드에 대해 start()가 한 번만 호출될 수 있다.
-그래서 만일 쓰레드의 작업을 한 번 더 수행해야 한다면 새로운 쓰레드를 생성해야 한다.  
-그렇지않고 한 스레드에 대해 start()를 두 번 이상 실행하면 IllegalThreadStateException이 발생한다.
-
-
-내가 만든 쓰레드에는 분명히 run()을 오버라이딩했는데 main메소드에서는 start()를 호출하는 이유가 무엇일까? 
-main메소드에서 run()을 호출하는 것은 스레드를 생성하는 것이 아니라 단순히 클래스에 선언된 메소드를 호출하는 것일뿐이다.
-반면에 start()는 새로운 쓰레드가 작업을 실행하는데 필요한 호출스택(call stack)을 생성한 다음에 run()을 호출해서 생성된 호출 스택에 run()이 첫번쨰로 올라가게 한다. 
-
 모든 쓰레드는 독립적인 작업을 수행하기 위해 자신만의 호출스택을 필요로 한다. 
 호출스택에서는 가장 위에 있는 메소드가 현재 실행중인 메소드이고 나머지 메소드들은 대기상태이다. 그러나 스레드가 둘 이상일때는 맨 위에 있는 메소드일지라도 대기상태에 있을 수 있다. 
 스케줄러는 실행대기 중인 쓰레드들의 우선순위를 고려하여 실행순서와 실행시간을 결정한다. 자바가 OS 독립적이라고 하지만 실제로 OS 종속적인 부분이 몇 가지 있는데 쓰레드도 그 중 하나이다.
@@ -66,6 +20,7 @@ main메소드에서 run()을 호출하는 것은 스레드를 생성하는 것�
 싱글 스레드와 멀티 스레드
 context switching시간이 있기 때문에 멀티 스레드를 쓴다고해서 항상 싱글 스레드보다 더 빠른건 아니다. 
 하지만 두 쓰레드가 서로 다른 자원을 사용하는 작업의 경우에는 멀티쓰레드 프로세스가 더 효율적이다. 예를 들면 사용자로부터 데이터를 입력받는 작업, 네트워크로 파일을 주고받는 작업, 프린터로 파일을 출력하는 작업 등.. 입력을 기다리는 시간에 다른 쓰레드가 작업을 처리할 수 있기때문에 보다 효율적인 CPU의 사용이 가능하다. 
+
 
 쓰레드의 우선순위 
 쓰레드는 우선순위(priority)라는 멤버변수를 가진다. 이 우선순위 값에 따라 쓰레드가 얻는 실행시간이 달라진다. 따라서 스레드의 중요도에 따라 우선순위를 서로 다르게 지정하여 특정 쓰레드가 더 많은 작업시간을 가지도록 할 수 있다. 
@@ -130,23 +85,10 @@ class Thread10 implements Runnable {
 3초마다 autoSave 변수의 값을 확인하는 데몬 쓰레드이다. 만일 이 쓰레드를 데몬 쓰레드로 설정하지 않았다면, 이 프로그램은 강제종료하지 않는 한 영원히 종료되지 않을 것이다. 
 setDaemon()을 start()를 호출하기 전에 실행해야 한다. 그렇지 않으면 IllegalThreadStateException이 발생한다. 
 
-쓰레드의 실행제어
 resume(), stop(), suspend()는 쓰레드를 교착상태(dead-lock)로 만들기 쉽기 때문에 deprecated 되었다. 
 
-쓰레드의 상태
-NEW - 쓰레드가 생성되고 아직 start()가 호출되지 않은 상태
-RUNNABLE - 실행 중 또는 실행 가능한 상태 
-BLOCKED - 동기화 블럭에 의해서 일시정지된 상태(lock이 풀릴 때까지 기다리는 상태)
-WAITING, TIMED_WAITING - 쓰레드의 작업이 종료되지는 않았지만 실행가능하지 않은(unrunnable) 일시정지 상태, TIMED_WATING은 일시정지 시간이 지정된 경우를 의미한다. 
-TERMINATED - 쓰레드의 작업이 종료된 상태
-> 참고로 Java 5부터 getState() 메소드를 통해 Thread의 상태를 확인할 수 있게 되었다. 
-
-sleep() - 일정시간동안 쓰레드를 멈추게한다.
-sleep()은 항상 현재 실행중인 쓰레드에 대해 동작하기 때문에 th1.sleep(2000)과 같이 호출했어도 실제로 영향을 받는 것은 main 메소드를 실행하는 main 쓰레드이다. 
-그래서 sleep()은 static으로 선언되어 있으며 참조변수를 이용해서 호출하기 보다는 Thread.sleep(2000)과 같이 해야 한다.
-
 interrupt(), interrupted() - 쓰레드의 작업을 취소한다.
-interrupt()는 쓰레드에게 작업을 멈추라고 요청한다. 단지 멈추라고 요청하는 것일 뿐 쓰레드를 강제로 종료시키지는 못한다. interrupt()는 그저 쓰레드의 인스턴스 변수인 interrupted변수를 바꾼다.  
+interrupt()는 쓰레드에게 작업을 멈추라고 요청한다. 단지 멈추라고 요청하는 것일 뿐 쓰레드를 강제로 종료시키지는 못한다. interrupt()는 그저 쓰레드의 인스턴스 변수인 interrupted의 상태를 바꾼다.  
 
 ```java
 void interrupt() - 쓰레드의 interrupted 상태를 false에서 true로 변환 
@@ -283,8 +225,50 @@ private Condition forCust = lock.newCondition();
 그러나 여전히 특정 쓰레드를 선택할 수는 없기 때문에 같은 종류의 쓰레드간의 기아현상이나 경쟁상태가 발생할 가능성은 남아있다. 
 
 
+volatile
+멀티 쓰레드 사용 시 멀티 코어 프로세서에서는 코어마다 별도의 캐시를 가지고 있기 떄문에 문제가 발생할 가능성이 있다. 
+코어는 메모리에서 읽어온 값을 캐시에 저장하고 캐시에서 값을 읽어서 작업한다. 다시 같은 값을 읽어올 때는 먼저 캐시에 있는지 확인하고 없을 때만 메모리에서 읽어온다. 
+그러다보니 도중에 메모리에 저장된 변수의 값이 변경되었는데도 캐시에 저장된 값이 갱신되지 않아서 메모리에 저장된 변수의 값이 변경되었는데도 캐시에 저장된 값이
+갱신되지 않아서 메모리에 저장된 값이 다른 경우가 발생한다. 
+
+이럴때 변수의 앞에 volatile을 붙이면 코어가 변수의 값을 읽어올 때 캐시가 아닌 메모리에서 읽어오기 때문에 캐시와 메모리 간의 불일치가 해결된다. 
+```java
+volatile boolean suspended = false;
+```
+변수에 volatile을 붙이는 대신에 synchronized 블럭을 사용해도 같은 효과를 얻을 수 있다. 쓰레드가 synchronized 블럭으로 들어갈 때와 나올 때, 
+캐시와 메모리간의 동기화가 이루어지기 때문에 값의 불일치가 해소되기 때문이다.
+
+volatile로 long과 double을 원자화
+JVM은 데이터를 4byte 단위로 처리하기 때문에, int와 int보다 작은 타입들은 한 번에 읽거나 쓰는 것이 가능하다. 즉, 하나의 명령어로 읽기나 쓰기가 가능하다는 뜻이다.
+하나의 명령어는 더 이상 나눌 수 없는 최소의 작업단위이므로, 작업의 중간에 다른 쓰레드가 끼어들 틈이 없다.
+하지만 크기가 8byte인 long과 double타입의 변수는 하나의 명령어로 값을 읽거나 쓸 수 없기 때문에 다른 쓰레드가 끼어들 여지가 있다. 
+다른 쓰레드가 끼어들지 못하게 하기위해 변수를 읽고 쓰는 모든 문장을 synchronized 블럭으로 감쌀 수도 있지만,
+더 간단한 방법으로 변수 선언 시에 volatile을 붙여서 해결할 수 있다. 
+```java
+volatile long sharedVal;
+volatile double sharedVal;
+```
+volatile은 해단 변수에 대한 읽기나 쓰기가 원자화된다. 원자화라는 것은 작업을 더 이상 나눌 수 없게 한다는 의미이다. synchronized 블럭도 여러 문장을 원자화함으로써 쓰레드의 동기화를 구현한 것이다.
+
+fork & join 프레임웍
+하드웨어의 변화에 맞춰 프로그래밍도 점차 멀티코어를 잘 활용할 수 있는 멀티쓰레드 프로그래밍이 점점 더 중요해지고 있다. 그래서 Java 7부터 fork & join 프레임웍이 추가되었고,
+이 프레임웍은 하나의 작업을 작은 단위로 나눠서 여러 쓰레드가 동시에 처리하는 것을 쉽게 만들어 준다. 
+먼저 수행할 작업에 따라 RecursiveAction과 RecursiveTask, 두 클래스 중에서 하나를 상속받아 구현해야 한다. 
+```java
+RecursiveAction     //반환값이 없는 작업을 구현할 때 사용
+RecursiveTask       //반환값이 있는 작업을 구현할 때 사용
+```
 
 
+----------------------------------
 
+stop() 같은 경우, deprecated 되었기때문에 그냥 없다고 생각하고 쓰지말아야 함. 
+자바에서 쓰레드를 시스템적으로 종료시키는 방법은 없다고 생각할 것 왜냐하면 관련된 많은 문제가 발생할 수 있음. 쓰레드의 종료는 직접 코드로 해결해야할 문제임
 
+volatile 키워드는 멀티 쓰레드 환경에서 하나의 쓰레드만 read & write하고, 나머지 Thread는 read만 하는 상황에서 가장 최신의 값을 보장한다. 따라서 실제로 이런 환경 자체가 갖춰지기 쉽지 않기때문에 사용할 일은 거의 없다고 봐도..?
 
+동시성과 병렬성?
+
+critical path
+
+경쟁 상태(race condition) 
