@@ -7,12 +7,12 @@ tags: [java, 자바]
 pin: true
 ---
 
-자바 스터디 12주차 애너테이션을 진행하면서 리플렉션에 대한 언급이 있었는데 워낙 중요한 개념이기도 하고 언급될 때마다 항상 애매하게 이해하고 넘어갔어서 이번에 리플렉션만 따로  빼서 포스팅하려고 한다.  
+자바 스터디 12주차 애너테이션 과제를 진행하면서 리플렉션에 대한 언급이 있었는데 워낙 중요한 개념이기도 하고 언급될 때마다 항상 애매하게 이해하고 넘어갔어서 이번에 리플렉션만 따로  빼서 포스팅하려고 한다.  
 
 ## 리플렉션(Reflection)이란?
 리플렉션은 **"구체적인 클래스의 타입을 알지 못해도, 클래스의 메소드, 타입, 변수 등에 접근할 수 있도록 해주는 자바 API"** 라고 정의할 수 있다.  
 
-이렇게 딱딱하고 교과서적인 정의를 보고 리플렉션을 이해하기가 쉽지 않은데, 아래 코드를 한 번 보자. 
+이렇게 딱딱하고 교과서적인 정의를 보고 단번에 이해하기가 쉽지 않은데, 아래 코드를 한 번 보자. 
 
 ```java
 class Digimon{
@@ -32,7 +32,7 @@ class Digimon{
 왜냐면 동적 로딩에 의해 `main()`이 실행되고 객체가 생성되어 메소드가 호출될 때,
 그 때가 되어서야 클래스가 로드되기 때문이다
 
-리플렉션의 정의에서 "구체적인 클래스의 타입을 알지 못해도" 라는 말은 즉, Java는 컴파일 시점에 클래스의 타입이 결정되기 때문에 런타임에서 어떤 클래스의 타입이 사용될지 모른다는 것을 의미한다. 
+리플렉션의 정의에서 "구체적인 클래스의 타입을 알지 못해도" 라는 말은 즉, **Java는 컴파일 시점에 클래스의 타입이 결정되기 때문에 런타임에서 어떤 클래스의 타입이 사용될지 모른다**는 것을 의미한다. 
 
 따라서 다시 정리하면, 리플렉션은 이런 경우에 **컴파일 시점이 아닌 런타임 시점에서 클래스의 정보를 추출해낼 수 있는 기술**이라고 할 수 있다.
 
@@ -99,7 +99,8 @@ Class 클래스의 주요 메소드
 |getDeclaredConstructors()|	Constructor[]|접근 제어자에 상관없이 모든 생성자들을 Constructor배열로 반환.<br> 부모 클래스의 생성자들은 반환하지 않는다.|
 |getDeclaredMethod()|Method[]|접근 제어자에 상관없이 모든 메서드들을 Method배열로 반환. <br> 부모 클래스의 메서드들은 반환하지 않는다.|
 
-`Class` 클래스의 다른 메소드들과 `Method` 클래스와 `Field` 클래스의 메소드들이 궁금하면 [길은 가면, 뒤에 있다.](https://12bme.tistory.com/129) 이 블로그를 참조하길 추천한다.
+`Class` 클래스의 다른 메소드들과 `Method` 클래스와 `Field` 클래스의 메소드들이 궁금하면 [길은 가면, 뒤에 있다.](https://12bme.tistory.com/129)   
+이 블로그를 참조하길 추천한다.
 
 ## 리플렉션 사용 예시
 
@@ -152,9 +153,9 @@ class Digimon extends Monster{
 
 ### Constructor 찾기
 
-getDeclaredConstructors()는 해당 클래스의 private, public 등의 모든 생성자를 리턴한다. (부모 클래스의 생성자는 x)
+`getDeclaredConstructors()`는 해당 클래스의 `private`, `public` 등의 모든 생성자를 리턴한다. (부모 클래스의 생성자는 x)
 
-getConstructors()는 해당 클래스의 public 생성자만 리턴한다.
+`getConstructors()`는 해당 클래스의 `public` 생성자만 리턴한다.
 ```java
 Class digimon = Class.forName("com.example.javastudy.week12.Digimon");
 
@@ -181,9 +182,9 @@ public com.example.javastudy.week12.Digimon(java.lang.String)
 public com.example.javastudy.week12.Digimon()
 ```
 
-다음 예제에서는 getConstructor()의 인자로 특정 생성자의 인자를 지정해 하나의 생성자를 가져온다. 여기서는 Digimon 클래스의 partner를 인자로 하는 생성자를 받아와서 newInstance()를 사용해 객체 생성 후 attack() 메소드까지 실행하였다.
+다음 예제에서는 `getConstructor()`의 인자로 특정 생성자의 인자를 지정해 하나의 생성자를 가져온다. 여기서는 Digimon 클래스의 partner를 인자로 하는 생성자를 받아와서 `newInstance()`를 사용해 객체 생성 후 `attack()` 메소드까지 실행하였다.
 
-다만 여기서 newInstance()를 사용하면 Object 클래스의 객체로 받아오기 때문에 명시적으로 타입 캐스팅을 해주어야 한다. 
+다만 여기서 newInstance()를 사용하면 Object 클래스의 객체로 받아오기 때문에 명시적으로 **타입 캐스팅**을 해주어야 한다. 
 
 ```java
 Class digimon = Class.forName("com.example.javastudy.week12.Digimon");
@@ -198,9 +199,9 @@ attack!!
 메소드 호출까지 잘 된것을 알 수 있다. 
 
 ### Method 찾기
-모든 해당 클래스에 정의된 메소드를 찾으려면 getDeclaredMethods()를 사용한다. Class 클래스의 메소드들 중 Declared가 들어간 메소드들은 공통적으로 부모 클래스의 정보는 가져오지 않는다. 
+모든 해당 클래스에 정의된 메소드를 찾으려면 `getDeclaredMethods()`를 사용한다. Class 클래스의 메소드들 중 `Declared`가 들어간 메소드들은 공통적으로 부모 클래스의 정보는 가져오지 않는다. 
 
-getMethods()는 해당 클래스에서 public으로 선언된 메소드들만 가져오지만, 부모 클래스로부터 상속받은 메소드들도 모두 찾아준다. 
+`getMethods()`는 해당 클래스에서 `public`으로 선언된 메소드들만 가져오지만, 부모 클래스로부터 상속받은 메소드들도 모두 찾아준다. 
 
 ```java
 Class digimon = Class.forName("com.example.javastudy.week12.Digimon");
@@ -262,9 +263,9 @@ Method secret = digimon.getDeclaredMethod("secret", String.class);
 secret.setAccessible(true);
 secret.invoke(instance, "hi this is private method");
 ```
-attack()메소드는 인자가 없기때문에 invoke()의 인자로 객체의 인스턴스만 넘겨주었다. 
+`attack()`메소드는 인자가 없기때문에 `invoke()`의 인자로 객체의 인스턴스만 넘겨주었다. 
 
-secret()메소드는 private 메소드이므로 getDeclaredMethod()를 통해 받아왔고, private 메소드에 접근하기 위해 setAccesible()의 인자로 true를 전달한 뒤 invoke() 하였다.
+`secret()`메소드는 `private` 메소드이므로 `getDeclaredMethod()`를 통해 받아왔고, private 메소드에 접근하기 위해 `setAccesible()`의 인자로 true를 전달한 뒤 invoke() 하였다.
 
 ```console
 attack!!
@@ -290,7 +291,7 @@ System.out.println(partner.get(instance));
 agumon
 taeil
 ```
-반복된 예제들로 감을 잡았겠지만, 만약 private 멤버 변수의 값을 변경하고자 한다면 getDeclaredField()로 멤버 변수의 정보를 받아온 뒤, Method.setAccesible(true)를 실행한 뒤 set()을 호출하면 된다.
+반복된 예제들로 감을 잡았겠지만, 만약 `private` 멤버 변수의 값을 변경하고자 한다면 `getDeclaredField()`로 멤버 변수의 정보를 받아온 뒤, `Method.setAccesible(true)`를 실행한 뒤 `set()`을 호출하면 된다.
 
 
 ## 참조
