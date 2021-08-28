@@ -65,7 +65,7 @@ Class.forName("oracle.jdbc.driver.OracleDriver");
 이 외에도 리플렉션을 사용하는 대표적인 예시로 Intellij의 자동완성 기능, Spring의 Annotations 등이 있다.  
 
 ## Class 클래스
-Java의 모든 클래스와 인터페이스는 컴파일 후 `.class` 파일로 생성된다. .class파일에는 클래스의 정보(멤버변수, 메소드, 생성자 등)가 담겨있는데 `Class 클래스`는 이러한 class 파일에서 클래스의 정보를 가져올 수 있다. 
+Java의 모든 클래스와 인터페이스는 컴파일 후 `.class` 파일로 생성된다. `.class`파일에는 클래스의 정보(멤버변수, 메소드, 생성자 등)가 담겨있는데 `Class 클래스`는 이러한 class 파일에서 클래스의 정보를 가져올 수 있다. 
 
 Class 클래스의 객체를 받아오는 방법은 세 가지가 있다.  
 1. Object 클래스의 메서드인 getClass()
