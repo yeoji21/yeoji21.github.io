@@ -4,7 +4,7 @@ author: "yeoji21"
 date: '2021-08-31 20:10:00 +0900'
 categories: [Backend, Java]
 # tags: [java, java study, 자바, 자바 스터디]
-pin: true
+# pin: true
 ---
 
 <img src="https://media.vlpt.us/images/inhalin/post/b48b4cd3-619b-4bf4-939c-d3546dd2ec01/whiteship.png" width=600>
@@ -43,7 +43,7 @@ pin: true
 
 확실히 글로써 공부한 내용을 정리하다보니, 내가 이해하지 못한 부분은 글을 쓸 때 꽉 막히기때문에 그 부분을 포스팅하기 위해서는 더 공부해야 했어서 꼼꼼하게 공부할 수 밖에 없었다. 왜 다들 블로깅하라는지 알겠더라. 
 
-스터디 중간정검에서도 말했었는데, 이 스터디를 진행하면서 자바에 대한 내용뿐만이 아니라 정말 배운 것이 많다. 스터디를 진행하시는 기선님의 마인드나 함께 하는 분들의 공부에 대한 태도 등.. 매주 너무나 많은 것을 배웠다.  
+스터디 중간정검에서도 말했었는데, 이 스터디를 진행하면서 자바에 대한 내용뿐만이 아니라 정말 배운 것이 많다. 스터디를 진행하시는 기선님의 마인드나 함께 하는 분들의 공부에 대한 태도 등.. 매번 너무나 많은 것을 배웠다.  
 
 <center><img src="https://i.imgflip.com/5ldwhv.jpg" title="made at imgflip.com" width=500 /></center>
 

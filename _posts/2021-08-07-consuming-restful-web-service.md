@@ -4,7 +4,7 @@ author: "yeoji21"
 date: 2021-08-07
 categories: [Backend, Spring]
 tags: [java, spring, guides]
-pin: true
+# pin: true
 ---
 
 ## 스프링 문서 링크
