@@ -1,5 +1,5 @@
 ---
-title: "리플렉션 (Reflection)"
+title: "[JAVA] 리플렉션 (Reflection)"
 author: "yeoji21"
 date: 2021-08-27
 categories: [Backend, Java]
