@@ -5,6 +5,7 @@ date: '2021-08-20 13:00:00 +0900'
 categories: [Backend, Java]
 # tags: [java, java study, 자바, 자바 스터디]
 # pin: true
+published: false
 ---
 
 백기선님과 함께 하는 자바 스터디의 8주차까지 포스팅까지 완료하면서 총 15주로 구성된 스터디에서 절반을 넘어왔다.  
