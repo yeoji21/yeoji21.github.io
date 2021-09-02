@@ -4,7 +4,6 @@ author: "yeoji21"
 date: '2021-09-02 03:35:00 +0900'
 categories: [Book, Review]
 # tags: [java, java study, 자바, 자바 스터디]
-# pin: true
 ---
 
 <img src="http://image.yes24.com/momo/TopCate511/MidCate005/51040273.jpg">
