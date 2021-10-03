@@ -9,6 +9,7 @@
 - 스프링 시큐리티 - 정수원 : https://inf.run/KtZy
 - 스프링 마이크로 서비스 - https://inf.run/LN5e
 
+https://docs.spring.io/spring-data/jpa/docs/2.5.5/reference/html/#jpa.query-methods
 
 --------------------------------------------------------------
 
@@ -87,3 +88,78 @@ v1에서는 엔티티와 API 스펙이 1:1로 매핑되어 있어서 엔티티 �
 update는 변경감지를 사용하는 것이 좋다.
 
 List로 반환하면 유연성 또한 너무 낮기때문에 객체로 한번 감싸주고 리턴하는 것이 좋음
+
+
+
+ordersV1은 Order가 Member를 불러오고, Member가 Order를 불러오면서 무한루프에 빠짐
+이렇게 되면 양방향으로 묶이는 한 쪽에 `@JsonIgnore`를 걸어줘야 함
+그런데 이렇게 해도 실행해보면 오류가 발생한다. 
+```
+Type definition error: .... 
+    org.phibernate.proxt.pojo.bytebuddy.ByteBuddyInterceptor...
+```
+이것은 Jackson 라이브러리가 데이터를 Json으로 변환하는데 프록시 객체를 만나서 이것을 처리할 수 없다고 알리는 오류이다. 
+
+이 때 Jackson 라이브러리가 프록시 객체를 무시하도록 할 수 있는데 추가적인 라이브러리를 사용해야 한다.
+
+```
+implementation 'com.fasterxml.jackson.datatype:jackson-datatype-hibernate5'
+```
+
+v3버전과 v4버전은 장단이 있어서 뭐 하나가 더 좋다고 할 순 없음
+v3는 엔티티 속성 모두 가져와서 다른 API에서도 사용할 수 있는 여지가 커서 재사용성이 높지만 v4는 필요한 속성만 가져오기때문에 재사용성이 낮은 대신 좀 더 성능이 최적화된다
+> 그리고 v4는 코드가 지저분함. 그리고 대부분의 경우에서는 성능에 큰 차이가 있진 않음
+
+그리고 리포지토리에 API의 스펙대로 쿼리를 짜는것은 리포지토리에서 화면에 의존하도록 한다. => API 스펙이 바뀌면 리포지토리를 수정해야함 => 글쎄?
+
+그래서 리포지토리 밑에 패키지를 하나 더 빼서 쿼리 서비스나 쿼리 리포지토리로 따로 뽑는 것을 권장함
+
+v2처럼 DTO의 멤버변수로 Entity가 있다하더라도 허용하면 안된다. 
+
+v3에서 Order의 데이터는 2개이고, OrderItem의 데이터가 4개였지만, Order와 OrderItem을 fetch join해버려서 Order의 데이터가 4개로 뻥튀기 되어 결과가 중복으로 나온다.
+
+
+v3와 v3.1 중에서 조회할 데이터의 양이 많이 않은 경우, 중복 데이터가 발생하더라도 한방 쿼리로 패치조인을 사용한 v3처럼 조회하는게 좋을 수 있고, 100개 1000개씩 많은 데이터를 퍼올려야할 경우에는 v3.1처럼 여러 쿼리가 나가더라도 중복없이 가져오는 것이 좋을 수도 있다. 상황이나 데이터양에 따라 달라진다. 다만 페이징을 해야하는 경우는 v3.1의 방식을 써야 한다. 
+
+@Query에 사용하는 JPQL은 오타가 발생하면 마치 named query처럼 애플리케이션 실행 시점에 예외를 발생시킴. 동적쿼리는 그냥 querydsl 사용을 추천
+
+--------------
+
+1. 양방향 연관관계를 피해라
+2. 다중성이 적은 방향을 선택하라  
+    ```java
+    class A{
+        private List<B> bList;
+    }
+    class B{
+
+    }
+    ```
+    보다는 
+    ```java
+    class A{
+
+    }
+    class B{
+        private A a;
+    }
+    ```
+3. 의존성이 필요없다면 재거하라
+4. 패키지 사이의 의존성 사이클을 제거하라
+
+
+id로 찢고 repository에서 id를 통해서 객체 찾기
+
+Page 사용 시 카운트 쿼리의 최적화를 위해 분리할 수 있다.
+```java
+@Query(value = "select m from Member m left join m.team t", countQuery="select count(m.username) from Member m")
+Page<Member> findByAge(int age, Pageable pageable)
+```
+
+@Modifying을 붙여줘야 내부적으로 executeUpdate()로 실행됨 
+이 때 @Modifying(clearAutomatically = true)로 주면, 벌크 연산 실행 후 영속성 컨텍스트를 비워줌
+
+```java
+@EntityGraph(attributePath= {"team"})
+List<Member> findByUsername(@Param("username") String username);
+```

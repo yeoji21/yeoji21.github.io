@@ -140,11 +140,11 @@ if (item.getPrice() != null & item.getQuantity() != null) {
     }
 }
 ```
-실행해보면 `errors`에 있는 `MessageSource`를 찾아서 메시지를 조회하는 것을 확인할 수 있다. 하지만 이렇게 되면 `FieldError`와 `ObjectError`는 다루기 너무 번거롭다. 오류 코드도 좀 더 자동화할 수 있지 않을까? 
+실행해보면 `errors`에 있는 `MessageSource`를 찾아서 메시지를 조회하는 것을 확인할 수 있다. 하지만 이렇게 사용하기에는 `FieldError`와 `ObjectError`는 다루기 너무 번거롭다. 오류 코드도 좀 더 자동화할 수 있지 않을까? 
 
 `BindingResult`가 제공하는 `rejectValue()`와 `reject()`를 사용하면 `FieldError`와 `ObjectError`를 직접 생성하지 않고, 깔끔하게 검증 오류를 다룰 수 있다.
 
-거두절미하고, `rejectValue()`와 `reject()`를 사용해서 단순화한 코드를 살펴보자.
+`rejectValue()`와 `reject()`를 사용해서 단순화한 코드를 살펴보자.
 
 ```java
 if (!StringUtils.hasText(item.getItemName())) {
@@ -191,7 +191,7 @@ bindingResult.rejectValue("price", "range", new Object[]{1000,1000000}, null);
 
 그런데, `FieldError`를 직접 다룰 때는 오류 코드를 `range.item.price`와 같이 모두 입력했는데, `rejectValue()`에서는 오류 코드를 `range`로 간단하게 입력했다. 그런데도 결과를 보면 오류 메시지를 잘 찾아서 출력한다.
 
-무언가 규칙이 있는 것으로 보이는데, 이것을 이해하기 위해서는 `MessageCodesResolver`를 이해해야 한다. 
+무언가 규칙이 있는 것으로 보이는데, 이것을 이해하기 위해서는 먼저 `MessageCodesResolver`를 이해해야 한다. 
 
 #### 오류 메시지
 오류 코드를 만들 때 다음과 같이 자세히 만들 수도 있고, 
@@ -399,12 +399,12 @@ implementation 'org.springframework.boot:spring-boot-starter-validation'
 
 이 때 검증 오류가 발생하면, `FieldError`나 `ObjectError`를 생성해서 `BindingResult`에 담아준다.
 
-> 검증 시 @Valid와 @Validated 둘 다 서용 가능하다.  
+> 검증 시 @Valid와 @Validated 둘 다 사용 가능하다.  
 > @Validated는 스프링 전용 검증 어노테이션이고, @Valid는 자바 표준 검증 어노테이션이다. 둘 중 아무거나 사용해도 동일하게 동작하지만, @Validated는 groups 기능을 포함하고 있다.
 
 참고로 `Bean Validation`이 제공하는 오류 메시지를 좀 더 자세히 변경하고 싶다면, 해당 어노테이션의 오류 코드를 기반으로 `MessageCodesResolver`를 통해 생성되는 메시지를 등록하면 된다.
 
-`@NotNull`
+`@NotBlank`
 ```properties
 NotBlank.item.itemName = 아이템 이름을 입력해주세요.
 NotBlank.itemName = 아이템 이름을 입력해주세요.
