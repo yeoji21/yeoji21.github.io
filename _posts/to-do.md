@@ -146,20 +146,3 @@ v3와 v3.1 중에서 조회할 데이터의 양이 많이 않은 경우, 중복 
     ```
 3. 의존성이 필요없다면 재거하라
 4. 패키지 사이의 의존성 사이클을 제거하라
-
-
-id로 찢고 repository에서 id를 통해서 객체 찾기
-
-Page 사용 시 카운트 쿼리의 최적화를 위해 분리할 수 있다.
-```java
-@Query(value = "select m from Member m left join m.team t", countQuery="select count(m.username) from Member m")
-Page<Member> findByAge(int age, Pageable pageable)
-```
-
-@Modifying을 붙여줘야 내부적으로 executeUpdate()로 실행됨 
-이 때 @Modifying(clearAutomatically = true)로 주면, 벌크 연산 실행 후 영속성 컨텍스트를 비워줌
-
-```java
-@EntityGraph(attributePath= {"team"})
-List<Member> findByUsername(@Param("username") String username);
-```
