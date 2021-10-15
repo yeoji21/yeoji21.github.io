@@ -1,0 +1,201 @@
+---
+title: "[R]데이터 취득과 정제"
+author: "yeoji21"
+date: 2021-10-15
+categories: [bigdata, R]
+tags: [data, bigdata, r]
+---
+
+### 파일 읽고 쓰기
+
+```r
+> datas = read.csv("/Users/yeojiwon/Downloads/4.국민권익위원회.csv")
+> head(datas)
+  주별   target      키워드 정도
+1    1 일반민원    남자친구   24
+2    1 일반민원      계약법   16
+3    1 일반민원      성추행   14
+4    1 일반민원      가해자   12
+5    1 일반민원      간부들   12
+6    1 일반민원 병장 임원호   12
+```
+
+
+### 데이터 정제를 위한 조건문과 반복문
+
+**조건문**  
+
+- []에 행/열 조건 명시 - 변수명[행 조건식, 열 조건식]
+- if문 (if/else if/else) - if(조건식) 표현식
+- ifelse문 - ifelse(조건식,참인경우 반환값, 거짓인경우 반환값)
+  
+```r
+> charaters = data.frame(name=c("길동","춘향","철수"), age=c(30,16,21), 
+                        gender=factor(c("M","F","M")))
+> charaters
+  name age gender
+1 길동  30      M
+2 춘향  16      F
+3 철수  21      M
+> charaters[charaters$gender=="F",]
+  name age gender
+2 춘향  16      F
+> charaters[charaters$age<30&charaters$gender=="M",]
+  name age gender
+3 철수  21      M
+```
+
+```r
+> students[,2] = ifelse(students[,2] >=0 & students[,2]<=100, students[,2],NA)
+> students[,3] = ifelse(students[,2] >=0 & students[,3]<=100, students[,3],NA)
+> students[,4] = ifelse(students[,2] >=0 & students[,4]<=100, students[,4],NA)
+```
+
+**반복문**  
+
+- `repeat`
+- `while`
+- `for`
+
+```r
+> for (i in 2:4){
+    students[,i] = ifelse(students[,i]>=0 & students[,i]<=100,
+                            students[,i], NA)
+}
+```
+
+#### 연습문제
+
+1번
+```r
+> total = 0
+> for (i in c(1:10)) {
++     if(i%%2 == 0){ total = total+i}
++ }
+> total
+[1] 30
+```
+
+2번
+```r
+> for (i in seq(1,10,by=2)) {
++     print(i)
++ }
+[1] 1
+[1] 3
+[1] 5
+[1] 7
+[1] 9
+```
+
+3번
+```r
+> a <- p <- c(1:10)
+> 
+> for (i in 2:10){
++     p <- setdiff(p, a[a %% i == 0 & a %/% i != 1])
++ }
+> p <- p[-1]
+> p
+[1] 2 3 5 7
+```
+
+### 사용자 정의 함수 : 원하는 기능 묶기
+```r
+> fact = function(x){
++     fa = 1
++     while(x>1){
++         fa = fa*x
++         x = x-1
++     }
++     return(fa)
++ }
+> fact(5)
+[1] 120
+```
+
+### 데이터 정제 예제 1 : 결측값 처리
+
+- `is.na` 함수 이용 - NA인 데이터가 있으면 T, 없으면 F
+- `na.omit` 함수 이용 - NA인 데이터를 제거한다. 즉, NA가 포함된 행을 지운다.
+- 함수의 속성 이용 - `na.rm=T`로 하여 함수 수행 시, NA를 제외한다.
+
+```r
+> table(is.na(airquality))
+
+FALSE  TRUE 
+  874    44 
+
+> table(is.na(airquality$Temp))
+
+FALSE 
+  153 
+
+> table(is.na(airquality$Ozone))
+
+FALSE  TRUE 
+  116    37 
+
+> mean(airquality$Temp)
+[1] 77.88235
+
+> #결측값이 있는 Ozone은 평균이 NA로 나옴
+> mean(airquality$Ozone)
+[1] NA
+```
+
+```r
+> air_narm = airquality[!is.na(airquality$Ozone),]
+> head(air_narm)
+  Ozone Solar.R Wind Temp Month Day
+1    41     190  7.4   67     5   1
+2    36     118  8.0   72     5   2
+3    12     149 12.6   74     5   3
+4    18     313 11.5   62     5   4
+6    28      NA 14.9   66     5   6
+7    23     299  8.6   65     5   7
+> #결측값이 제거된 데이터에서는 mean 함수가 정상적으로 동작함
+> mean(air_narm$Ozone)
+[1] 42.12931
+```
+
+```r
+> air_narm2 = na.omit(airquality)
+> mean(air_narm2$Ozone)
+[1] 42.0991
+```
+
+```r
+> mean(airquality$Ozone, na.rm = T)
+[1] 42.12931
+```
+
+#### 연습문제 
+1번 
+```r
+> colSums(is.na(Cars93))
+      Manufacturer              Model               Type 
+                 0                  0                  0 
+         Min.Price              Price          Max.Price 
+                 0                  0                  0 
+          MPG.city        MPG.highway            AirBags 
+                 0                  0                  0 
+        DriveTrain          Cylinders         EngineSize 
+                 0                  0                  0 
+        Horsepower                RPM       Rev.per.mile 
+                 0                  0                  0 
+   Man.trans.avail Fuel.tank.capacity         Passengers 
+                 0                  0                  0 
+            Length          Wheelbase              Width 
+                 0                  0                  0 
+       Turn.circle     Rear.seat.room       Luggage.room 
+                 0                  2                 11 
+            Weight             Origin               Make 
+                 0                  0                  0 
+```
+
+2번
+```r
+> mean(Cars93$Luggage.room, na.rm = T)
+[1] 13.89024
+```
