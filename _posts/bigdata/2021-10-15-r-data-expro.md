@@ -1,7 +1,7 @@
 ---
 title: "[R]데이터 취득과 정제"
 author: "yeoji21"
-date: 2021-10-15
+date: 2021-10-16
 categories: [bigdata, R]
 tags: [data, bigdata, r]
 ---
