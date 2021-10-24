@@ -335,7 +335,7 @@ public class JpaBaseEntity {
 
 
 **스프링 데이터 JPA 사용**  
-먼저, 설정을 위해서 `@EnableJpaAuditing` 어노테이션을 스프링 부트 설정 클래스에 적용해야 한 뒤, `@EntityListeners(AuditingEntityListener.class)`를 엔티티에 적용해야 한다.
+먼저, 설정을 위해서 `@EnableJpaAuditing` 어노테이션을 스프링 부트 설정 클래스에 적용한 뒤, `@EntityListeners(AuditingEntityListener.class)`를 엔티티에 적용해야 한다.
 
 그 후 `@CreatedDate`, `@LastModifiedDate`, `@CreateBy`, `@LastModifiedBy` 어노테이션을 사용한다.
 
