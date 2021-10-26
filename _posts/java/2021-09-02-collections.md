@@ -128,9 +128,9 @@ tags: [java, 자바]
 ### **ArrayList**
 `ArrayList`는 컬렉션 프레임워크 중에서 가장 많이 사용되는 컬렉션 클래스다. 이름에서 알 수 있듯이 `List` 인터페이스를 구현하기 때문에 데이터의 저장순서가 유지되고 중복을 허용한다는 특징을 갖는다.  
 
-ArrayList는 기존의 `Vector`를 개선한 것으로, 구현원리와 기능적인 측면에서 동일하다고 할 수 있다. 앞서 얘기했듯이 Vector는 legacy code와의 호환성을 위해 계속 남겨두고 있을 뿐, 가능한 ArrayList를 사용해야 한다.
+`ArrayList`는 기존의 `Vector`를 개선한 것으로, 구현원리와 기능적인 측면에서 동일하다고 할 수 있다. 앞서 얘기했듯이 `Vector`는 `legacy code`와의 호환성을 위해 계속 남겨두고 있을 뿐, 가능한 `ArrayList`를 사용해야 한다.
 
-ArrayList는 내부적으로 `Object 배열`을 이용해서 데이터를 순차적으로 저장한다. 
+`ArrayList`는 내부적으로 `Object 배열`을 이용해서 데이터를 순차적으로 저장한다. 
 ```java
 public class ArrayList<E> extends AbstractList<E> implements List<E>, 
     RandomAccess, Cloneable, java.io.Serializable{
@@ -140,7 +140,7 @@ transient Object[] elementData;
 }
 ```
 
-따라서 `ArrayList`나 `Vector` 같이 배열을 이용한 자료구조는 데이터를 읽어오고 저장하는 데는 효율이 좋지만, 용량을 변경해야 할 때는 새로운 배열을 생성한 후 기존으 배열로부터 새로 생성된 배열로 데이터를 복사해야하기 때문에 상당히 효율이 떨어진다는 단점을 가진다. 
+따라서 `ArrayList`나 `Vector` 같이 배열을 이용한 자료구조는 데이터를 읽어오고 저장하는 데는 효율이 좋지만, **용량을 변경해야 할 때는 새로운 배열을 생성한 후 기존으 배열로부터 새로 생성된 배열로 데이터를 복사**해야하기 때문에 상당히 효율이 떨어진다는 단점을 가진다. 
 
 그래서 처음에 인스턴스를 생성할 때, 저장할 데이터의 개수를 잘 고려하여 충분한 용량의 인스턴스를 생성하는 것이 좋다.
 
@@ -164,7 +164,7 @@ transient Object[] elementData;
 2. 비순차적인 데이터의 추가 또는 삭제에 시간이 많이 걸린다.  
     차례대로 데이터를 추가하고 마지막 데이터를 삭제하는 것은 빠르지만, 배열의 중간에 데이터를 추가하거나 삭제하면 다른 데이터들이 이동해야 한다.
 
-이러한 배열의 단점을 보완하기 위해서 `LinkedList`라는 자료구조가 고안되었다. LinkedList는 불연속적으로 존재하는 데이터를 서로 연결(link)한 형태로 구성되어 있다. 
+이러한 배열의 단점을 보완하기 위해서 `LinkedList`라는 자료구조가 고안되었다. `LinkedList`는 불연속적으로 존재하는 데이터를 서로 연결(link)한 형태로 구성되어 있다. 
 >실제 LinkedList 클래스는 접근성을 높이기 위해 이름과 달리 linked list가 아닌 double linked list로 구현되어 있다. 
 
 하지만 `LinkedList`는 원하는 값을 얻으려면 처음부터 n번째 데이터까지 차례대로 따라가야 한다는 단점이 있다. 그래서 저장해야하는 데이터의 개수가 많아질수록 데이터를 읽어오는 시간이 길어진다.
@@ -189,7 +189,7 @@ transient Object[] elementData;
 
 |메소드|설명|
 |--:|--:|
-|boolean **add(Object o)**|지정된 객체를 Queue에 추가<br>성공하면 true, 저장돈간이 부족하면 IllegalStateException 발생|
+|boolean **add(Object o)**|지정된 객체를 Queue에 추가<br>성공하면 true, 저장공간이 부족하면 IllegalStateException 발생|
 |Object **remove()**|Queue에서 객체를 꺼내 반환 <br> 비어있으면 NoSuchElementException 발생|
 |Object **element()**|삭제없이 요소를 읽어옴 <br> 비어있으면 NoSuchElementException 발생|
 |boolean **offer(Object o)**|Queue에 객체를 저장 <br> 성공하면 true, 실패하면 false 리턴|
@@ -224,7 +224,7 @@ public static void main(String[] args) {
 
 `Stack`과 `Queue`에 데이터를 저장하고 출력하는 기본적인 예제다. 여기서 특이점을 발견했는가? 
 
-Java에서 스택은 `Stack클래스`로 구현해 제공하고 있지만, 큐는 `Queue인터페이스`로만 정의해 놓았을 뿐 별도의 클래스를 제공하지 않고 있다. 대신 Queue인터페이스를 구현한 클래스들이 있어서 이 중에 하나를 선택해서 사용하면 된다.  
+Java에서 스택은 `Stack 클래스`로 구현해 제공하고 있지만, 큐는 `Queue 인터페이스`로만 정의해 놓았을 뿐 별도의 클래스를 제공하지 않고 있다. 대신 `Queue` 인터페이스를 구현한 클래스들이 있어서 이 중에 하나를 선택해서 사용하면 된다.  
 
 큐는 데이터를 꺼낼 때 항상 첫 번째에 저장된 데이터를 삭제하므로, `ArrayList`와 같이 배열기반의 컬렉션 클래스를 사용하면 데이터를 꺼낼 때마다 빈 공간을 채우기 위해 데이터의 복사가 발생하므로 비효율적이다. 그래서 큐는 데이터의 추가/삭제가 쉬운 `LinkedList`로 구현하는 것이 적합하다.
 
@@ -260,7 +260,7 @@ class HashSetEx{
 [1, 1, 2, 3, 4]
 ```
 
-`HashSet`을 사용한 기본적인 예제이다. 그런데 예상과 달리, 결과를 보면 1이 두 번 출력되는 것을 알 수 있다. 두개의 1 중에서 하나는 `String인스턴스`이고 다른 하나는 `Integer인스턴스`로 서로 다른 객체이므로 중복으로 간주되지 않는 것이다.
+`HashSet`을 사용한 기본적인 예제이다. 그런데 예상과 달리, 결과를 보면 1이 두 번 출력되는 것을 알 수 있다. 두개의 1 중에서 하나는 `String` 인스턴스이고 다른 하나는 `Integer` 인스턴스로 서로 다른 객체이므로 중복으로 간주되지 않는 것이다.
 
 또 다른 예제를 살펴보자
 ```java
@@ -291,7 +291,7 @@ class Digimon{
 [agumon:10, agumon:10]
 ```
 
-`Digimon` 클래스는 `name`과 `age`를 멤버변수로 갖는다. 이름과 나이가 같으면 같은 객체로 인식하도록 하려는 의도로 작성하였지만, 결과를 보면 name과 age가 같음에도 불구하고 서로 다른 것으로 인식하여 `agumon:10`가 두 번 출력되었다. 
+`Digimon` 클래스는 `name`과 `age`를 멤버변수로 갖는다. 이름과 나이가 같으면 같은 객체로 인식하도록 하려는 의도로 작성하였지만, 결과를 보면 `name`과 `age`가 같음에도 불구하고 서로 다른 것으로 인식하여 `agumon:10`가 두 번 출력되었다. 
 
 원래 클래스 작성 의도대로 이 두 인스턴스를 같은 것으로 인식하게 하려면 어떻게 해야 할까? 
 
@@ -350,7 +350,7 @@ class TreeSetLotto{
 `TreeSet`은 이진 검색 트리로 저장되기 때문에, 저장 시에 이미 정렬되어 읽어올 때 따로 정렬할 필요가 없다. 
 
 ### **HashMap과 Hashtable**
-`HashMap`과 `Hashtable`은 앞서 살펴 본 Vector와 ArrayList의 관계와 같아서 가능한 `HashMap`을 사용할 것을 권장한다. 
+`HashMap`과 `Hashtable`은 앞서 살펴 본 `Vector`와 `ArrayList`의 관계와 같아서 가능한 `HashMap`을 사용할 것을 권장한다. 
 
 `HashMap`은 `Map`을 구현했으므로 이전에 언급한 `Map`의 특징을 가지면서 `해싱(hashing)`을 사용하기 때문에 많은 양의 데이터를 검색하는데 있어서 뛰어난 성능을 보인다.
 
@@ -521,7 +521,7 @@ Z:* 1
 `Arrays`클래스에는 배열을 다루는데 유용한 메소드들이 정의되어 있다. 
 
 - **배열의 복사 - copyOf(), copyOfRange()**  
-`copyOf()`는 배열 전체를, `copyOfRange()`는 배열의 일부를 복사해서 새로운 배열을 만들어 반환한다. `copyOfRange()`의 지정된 범위의 끝은 포함되지 않는다. 
+`copyOf()`는 배열 전체를, `copyOfRange()`는 배열의 일부를 복사해서 새로운 배열을 만들어 반환한다. `copyOfRange()`의 지정된 범위의 끝은 포함되지 않는다. (깊은 복사)
 
 - **배열 채우기 - fill(), setAll()**  
 `fill()`은 배열의 모든 요소를 지정된 값으로 채운다. `setAll()`은 배열을 채우는데 사용할 함수형 인터페이스를 매개변수로 받는다. 따라서 이 메소드를 호출할 때는 함수형 인터페이스를 구현한 객체를 매개변수로 전달하던가 람다식을 지정해야 한다.  
