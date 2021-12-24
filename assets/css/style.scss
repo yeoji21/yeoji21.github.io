@@ -11,13 +11,40 @@ $tab-count: {{ site.tabs | size | plus: 1 }}; // plus 1 for home tab
 
 /* append your custom style below */
 
-@font-face {
-	font-family: 'Noto Sans KR';
-	src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
-	font-weight: normal;
-	font-style: normal;
+// @font-face {
+// 	font-family: 'Noto Sans KR';
+// 	src: url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100&display=swap');
+// 	font-weight: normal;
+// 	font-style: normal;
+// }
+
+.post-full-content {
+    position: relative;
+    margin: 0 auto;
+    padding: 70px 100px 0;
+    min-height: 230px;
+    font-family: 'IBM Plex Sans KR';
+    font-size: 3.2rem;
+    line-height: 1.6em;
+    background: #fff;
+}
+
+h1{
+  font-family: 'IBM Plex Sans KR';
+}
+
+h2{
+  font-family: 'IBM Plex Sans KR';
+}
+
+h3{
+  font-family: 'IBM Plex Sans KR';
+}
+
+h4{
+  font-family: 'IBM Plex Sans KR';
 }
 
 body {
-	font-family: 'Noto Sans KR';
+	font-family: 'IBM Plex Sans KR';
 }
