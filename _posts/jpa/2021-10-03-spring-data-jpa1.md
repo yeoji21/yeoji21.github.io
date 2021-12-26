@@ -2,7 +2,7 @@
 title: "[JPA] Spring Data JPA"
 author: "yeoji21"
 date: 2021-10-03
-categories: [Backend, JPA]
+categories: [Backend, ORM, JPA]
 tags: [java, jpa, spring]
 ---
 
