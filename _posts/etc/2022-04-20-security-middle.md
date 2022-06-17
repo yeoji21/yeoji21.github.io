@@ -3,7 +3,7 @@ title: "정보보안 중간고사 대비"
 author: "yeoji21"
 date: 2022-04-20
 categories: [ETC]
-# published: false
+published: false
 ---
 
 
