@@ -46,7 +46,7 @@ tags: [java, 자바]
 ## Class 객체를 얻는 방법
 1번. 객체의 인스턴스에 `getClass()` 메소드 사용 
 
-```
+```java
 Map<String, String> map = new HashMap();
 Class<?> mapClass = map.getClass(); //return HashMap class
 ```
@@ -55,7 +55,7 @@ Class<?> mapClass = map.getClass(); //return HashMap class
    - 또한 원시타입은 객체가 아니기에 위 방법을 사용하지 못함
 
 2번. 타입 이름에 `.class ` 사용
-```
+```java
 Class<String> stringClass = String.class;
 Class booleanType = boolean.class;
 ``` 
@@ -64,7 +64,7 @@ Class booleanType = boolean.class;
  
 
 3번. 정적 메소드 `Class.forName()` 사용
-```
+```java
 Class<?> stringType = Class.forName("java.lang.String");
 Class<?> engineType = Class.forName("vehicles.Car$Engine");
 ```
@@ -84,7 +84,7 @@ Class<?> engineType = Class.forName("vehicles.Car$Engine");
 - 예를들어 forName()으로 Class를 찾는 경우
 - 그리고 클래스의 제네릭 매개변수가 제네릭 타입이라면 와일드카드를 사용해야 함
 
-```
+```java
 Class<?> carClass = Class.forName("vehicles.Car");
 Map<String, String> genericMap = new HashMap();
 Class<?> hashMapClass = genericMap.getClass();
