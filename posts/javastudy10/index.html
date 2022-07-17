@@ -1,0 +1,471 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="자바 스터디 10 - 멀티쓰레드 프로그래밍" /><meta name="author" content="yeoji21" /><meta property="og:locale" content="en" /><meta name="description" content="어서와" /><meta property="og:description" content="어서와" /><link rel="canonical" href="https://yeoji21.github.io/posts/javastudy10/" /><meta property="og:url" content="https://yeoji21.github.io/posts/javastudy10/" /><meta property="og:site_name" content="yeoji21" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-08-24T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="자바 스터디 10 - 멀티쓰레드 프로그래밍" /><meta name="twitter:site" content="@twitter_username" /><meta name="twitter:creator" content="@yeoji21" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yeoji21"},"dateModified":"2021-11-18T12:45:38+09:00","datePublished":"2021-08-24T00:00:00+09:00","description":"어서와","headline":"자바 스터디 10 - 멀티쓰레드 프로그래밍","mainEntityOfPage":{"@type":"WebPage","@id":"https://yeoji21.github.io/posts/javastudy10/"},"url":"https://yeoji21.github.io/posts/javastudy10/"}</script><title>자바 스터디 10 - 멀티쓰레드 프로그래밍 | yeoji21</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="yeoji21"><meta name="application-name" content="yeoji21"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap" rel="stylesheet"><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/profile/img1.JPG" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">yeoji21</a></div><div class="site-subtitle font-italic">Don't look back in anger</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/yeoji21" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['yeozone0508','gmail.com'].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>자바 스터디 10 - 멀티쓰레드 프로그래밍</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>자바 스터디 10 - 멀티쓰레드 프로그래밍</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> yeoji21 </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Tue, Aug 24, 2021, 12:00 AM +0900" >Aug 24, 2021<i class="unloaded">2021-08-24T00:00:00+09:00</i> </span></div><div> <span> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Thu, Nov 18, 2021, 12:45 PM +0900" >Nov 18, 2021<i class="unloaded">2021-11-18T12:45:38+09:00</i> </span> </span> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="9073 words">50 min read</span></div></div><div class="post-content"><p><img data-proofer-ignore data-src="https://media.vlpt.us/images/inhalin/post/b48b4cd3-619b-4bf4-939c-d3546dd2ec01/whiteship.png" /></p><h2 id="들어가면서">들어가면서</h2><p>백기선님이 진행하신 자바 스터디 강의와 스터디에 참여하신 분들의 자료를 참고하여 작성한 글입니다.<br /> 강의 영상 링크 : <a href="https://www.youtube.com/watch?v=kZ85x1VbZBs&amp;list=PLfI752FpVCS96fSsQe2E3HzYTgdmbz6LU&amp;index=19">[자바 라이브 스터디] 2020/1/16, 10주차 멀티스레드 프로그래밍 </a><br /> 강의 깃허브 링크 : <a href="https://github.com/whiteship/live-study/issues/10">10주차 과제: 멀티쓰레드 프로그래밍</a></p><h2 id="목차">목차</h2><ul><li>Thread 클래스와 Runnable 인터페이스<li>쓰레드의 상태<li>쓰레드의 우선순위<li>Main 쓰레드<li>동기화<li>데드락</ul><h3 id="process와-thread"><strong>Process와 Thread</strong></h3><p><strong>프로세스</strong>란, 간단히 말해서 실행 중인 프로그램을 말한다. 우리가 프로그램을 실행하면 OS로부터 실행에 필요한 자원(메모리)를 할당받아 프로세스가 된다.</p><p>프로세스는 프로그램을 수행하는 데 필요한 데이터와 메모리 등의 자원과 쓰레드로 구성되어 있으며, 프로세스의 자원을 이용해서 실제로 작업을 수행하는 것이 바로 <strong>쓰레드</strong>이다.</p><p>우리가 사용하고 있는 대부분의 OS는 <code class="language-plaintext highlighter-rouge">멀티태스킹(multi-tasking)</code>을 지원하기 때문에 여러 개의 프로세스가 동시에 실행될 수 있다.</p><p>이와 마찬가지로, <code class="language-plaintext highlighter-rouge">멀티쓰레딩</code>은 하나의 프로세스 내의 여러 개의 쓰레드가 동시에 작업을 수행하는 것을 말한다. CPU의 코어는 한 번에 단 하나의 작업만 수행할 수 있으므로, 실제로 처리할 수 있는 작업의 개수는 코어의 개수와 일치한다.</p><p>그러나 대부분의 상황에서 쓰레드의 수가 코어의 개수보다 훨씬 많기 때문에 각 코어가 아주 짧은 시간 동안 여러 작업을 번갈아가며 수행함으로써 여러 작업들이 모두 동시에 수행되는 것처럼 보이게 한다.</p><h4 id="동시성concurrency과-병렬성parallelism">동시성(concurrency)과 병렬성(parallelism)</h4><p>멀티 쓰레드가 실행될 때 CPU의 코어의 개수와 연관된 동작 방식이다.</p><p>하나의 코어에서 여러 쓰레드가 매우 빠르게 번갈아가며 실행되는 것을 <strong>동시성</strong>, 멀티 코어에서 코어별로 개별 쓰레드가 동시에 실행되는 것을 <strong>병렬성</strong>이라고 한다.</p><h3 id="thread-클래스와-runnable-인터페이스"><strong>Thread 클래스와 Runnable 인터페이스</strong></h3><p>자바에서 쓰레드를 구현하는 방법은 <code class="language-plaintext highlighter-rouge">Thread 클래스</code>를 상속받는 방법과 <code class="language-plaintext highlighter-rouge">Runnable 인터페이스</code>를 구현하는 방법, 두 가지가 있다.</p><p>만약 <code class="language-plaintext highlighter-rouge">Thread</code> 클래스의 메소드를 오버라이딩할 필요가 있다면 <code class="language-plaintext highlighter-rouge">Thread</code> 클래스를 상속하는 방법을 사용해야 하지만, <code class="language-plaintext highlighter-rouge">Thread</code> 클래스를 상속받으면 다른 클래스를 상속할 수 없기때문에 <code class="language-plaintext highlighter-rouge">Runnable</code> 인터페이스를 구현하는 것이 일반적이다.</p><p>쓰레드를 구현하기 위해서는 두 방법 중 하나를 선택한 뒤 <code class="language-plaintext highlighter-rouge">run()</code> 메소드를 오버라이딩하여 쓰레드가 실행할 코드를 구현해야 한다.</p><p>아래 코드는 두 가지 방법을 이용해 쓰레드를 구현하고 실행시키는 예제이다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">ThreadEx1</span> <span class="kd">extends</span> <span class="nc">Thread</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">ThreadEx1</span><span class="o">(</span><span class="nc">String</span> <span class="n">name</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">name</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nf">ThreadEx1</span><span class="o">(){</span>
+        <span class="kd">super</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">getName</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">ThreadEx2</span> <span class="kd">implements</span> <span class="nc">Runnable</span> <span class="o">{</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreadTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">ThreadEx1</span> <span class="n">t1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ThreadEx1</span><span class="o">(</span><span class="s">"Thread By Thread class"</span><span class="o">);</span>
+        <span class="nc">ThreadEx2</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ThreadEx2</span><span class="o">();</span>
+        <span class="nc">Thread</span> <span class="n">t2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(</span><span class="n">r</span><span class="o">,</span> <span class="s">"Thread By Runnable interface"</span><span class="o">);</span>
+
+        <span class="n">t1</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+        <span class="n">t2</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><div lang="console" class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="go">Thread By Runnable interface
+Thread By Runnable interface
+Thread By Runnable interface
+Thread By Runnable interface
+Thread By Runnable interface
+Thread By Thread class
+Thread By Thread class
+Thread By Thread class
+Thread By Thread class
+Thread By Thread class
+</span></pre></table></code></div></div><p>먼저 <code class="language-plaintext highlighter-rouge">main</code> 메소드를 보면 <code class="language-plaintext highlighter-rouge">Thread</code> 클래스를 상속한 방법과 <code class="language-plaintext highlighter-rouge">Runnable</code> 인터페이스를 구현한 방법의 인스턴스 생성 방식이 다른 것을 알 수 있다.</p><p><code class="language-plaintext highlighter-rouge">Runnable</code> 인터페이스를 구현한 경우, <code class="language-plaintext highlighter-rouge">Runnable</code> 인터페이스를 구현한 클래스의 인스턴스를 생성한 다음, 이 인스턴스를 <code class="language-plaintext highlighter-rouge">Thread</code> 클래스의 생성자의 매개변수로 제공해야 한다.</p><p>따라서 <code class="language-plaintext highlighter-rouge">Thread</code> 클래스를 상속받으면, 자식 클래스 내부에서 <code class="language-plaintext highlighter-rouge">Thead</code> 클래스의 메소드를 직접 호출할 수 있지만, <code class="language-plaintext highlighter-rouge">Runnable</code> 인터페이스를 구현한 클래스의 내부에서는 <code class="language-plaintext highlighter-rouge">Thread</code> 클래스의 <code class="language-plaintext highlighter-rouge">static</code> 메소드인 <code class="language-plaintext highlighter-rouge">currentThread()</code>를 호출하여 쓰레드에 대한 참조를 얻어 와야만 호출이 가능하다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="nc">Thread</span><span class="o">.</span><span class="na">currentThread</span><span class="o">().</span><span class="na">getName</span><span class="o">());</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">Thread</code> 클래스를 열어보면 <code class="language-plaintext highlighter-rouge">Runnable</code> 인터페이스의 인스턴스를 매개변수로 받는 생성자가 있는 것을 확인할 수 있다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="nf">Thread</span><span class="o">(</span><span class="nc">Runnable</span> <span class="n">target</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">this</span><span class="o">(</span><span class="kc">null</span><span class="o">,</span> <span class="n">target</span><span class="o">,</span> <span class="s">"Thread-"</span> <span class="o">+</span> <span class="n">nextThreadNum</span><span class="o">(),</span> <span class="mi">0</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>그런데 main 메소드에서 각각의 쓰레드를 실행시키는 것을 자세히 보면, 우리가 오버라이딩한 <code class="language-plaintext highlighter-rouge">run()</code>이 아닌 <code class="language-plaintext highlighter-rouge">start()</code>를 호출하고 있다. 그 이유가 무엇일끼?</p><p>우리가 알다시피 <code class="language-plaintext highlighter-rouge">main</code> 메소드에서 <code class="language-plaintext highlighter-rouge">run()</code>을 호출하는 것은 스레드를 생성하는 것이 아니라 단순히 클래스에 선언된 메소드를 호출하는 것일뿐이다.</p><p>반면에 <code class="language-plaintext highlighter-rouge">start()</code>는 새로운 쓰레드가 작업을 실행하는데 필요한 <strong>호출스택(call stack)</strong>을 생성한 다음에 <code class="language-plaintext highlighter-rouge">run()</code>을 호출해서 생성된 호출 스택에 <code class="language-plaintext highlighter-rouge">run()</code>이 첫번째로 올라가게 한다.</p><p>이렇게 생성된 쓰레드는 <code class="language-plaintext highlighter-rouge">run()</code> 메소드를 수행하고, 메소드 실행이 종료되어 호출스택이 비워지면 호출스택이 소멸하면서 쓰레드도 종료된다.</p><p>종료된 스레드는 다시 실행할 수 없기때문에 하나의 쓰레드에 대해 <code class="language-plaintext highlighter-rouge">start()</code>가 한 번만 호출될 수 있다.</p><p>그래서 만일 쓰레드의 작업을 한 번 더 수행해야 한다면 새로운 쓰레드를 생성해야 한다. 그렇지않고 한 스레드에 대해 <code class="language-plaintext highlighter-rouge">start()</code>를 두 번 이상 실행하면 <code class="language-plaintext highlighter-rouge">IllegalThreadStateException</code>이 발생한다.</p><h3 id="쓰레드의-상태"><strong>쓰레드의 상태</strong></h3><p>멀티쓰레드 프로그래밍을 잘하기 위해서는 정교한 스케줄링을 통해 여러 쓰레드가 자원과 시간을 낭비 없이 사용하도록 해야 하는데 이를 위해서는 쓰레드의 상태와 관련 메소드를 잘 알아야 한다.</p><p><code class="language-plaintext highlighter-rouge">NEW</code> - 쓰레드가 생성되고 아직 start()가 호출되지 않은 상태<br /> <code class="language-plaintext highlighter-rouge">RUNNABLE</code> - 실행 중 또는 실행 가능한 상태 <br /> <code class="language-plaintext highlighter-rouge">BLOCKED</code> - 동기화 블럭에 의해서 일시정지된 상태(lock이 풀릴 때까지 기다리는 상태)<br /> <code class="language-plaintext highlighter-rouge">WAITING</code>, <code class="language-plaintext highlighter-rouge">TIMED_WAITING</code> - 쓰레드의 작업이 종료되지는 않았지만 실행가능하지 않은(unrunnable) 일시정지 상태, TIMED_WATING은 일시정지 시간이 지정된 경우를 의미한다. <br /> <code class="language-plaintext highlighter-rouge">TERMINATED</code> - 쓰레드의 작업이 종료된 상태</p><blockquote><p>참고로 Java 5부터 getState() 메소드를 통해 Thread의 상태를 확인할 수 있게 되었다. 쓰레드의 상태는 JVM에서 관리한다.</p></blockquote><p><img data-proofer-ignore data-src="/assets/img/week10/1.jpeg" /></p><h4 id="쓰레드-상태제어-메소드">쓰레드 상태제어 메소드</h4><div class="table-wrapper"><table><thead><tr><th style="text-align: right">Method<th style="text-align: right">Description<tbody><tr><td style="text-align: right">static void sleep(long millis)<td style="text-align: right">지정된 시간동안 쓰레드를 일시정지시킨다.<br />지정된 시간이 지나고 나면 자동으로 다시 실행대기 상태가 된다.<tr><td style="text-align: right">void join() <br /> void join(long millis)<td style="text-align: right">지정된 시간동안 잠시 작업을 멈추고 다른 쓰레드가 실행되도록 한다. <br /> 지정된 시간이 지나거나 작업이 종료되면 join()을 호출한 메소드로 돌아와 실행을 계속한다.<tr><td style="text-align: right">void interrupt()<td style="text-align: right">sleep()이나 join()에 의해 일시정지상태인 쓰레드를 깨워 실행대기상태로 만든다. <br />해당 쓰레드는 InterruptedException이 발생함으로써 일시정지상태를 벗어나게 된다.<tr><td style="text-align: right">@Deprecated void stop()<td style="text-align: right">쓰레드를 즉시 종료시킨다.<tr><td style="text-align: right">@Deprecated void suspend()<td style="text-align: right">쓰레드를 일시정지시킨다.<tr><td style="text-align: right">@Deprecated void resume()<td style="text-align: right">suspend()에 의해 일시정지된 쓰레드를 실행대기상태로 만든다.<tr><td style="text-align: right">static void yield()<td style="text-align: right">실행 중에 자신에게 주어진 시간을 다른 쓰레드에게 양보하고 자신은 실행대기상태가 된다.</table></div><h4 id="sleep---일정시간동안-쓰레드를-멈추게한다">sleep() - 일정시간동안 쓰레드를 멈추게한다.</h4><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="kd">static</span> <span class="kt">void</span> <span class="nf">sleep</span><span class="o">(</span><span class="kt">long</span> <span class="n">millis</span><span class="o">)</span>
+<span class="kd">static</span> <span class="kt">void</span> <span class="nf">sleep</span><span class="o">(</span><span class="kt">long</span> <span class="n">millis</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nanos</span><span class="o">)</span>
+</pre></table></code></div></div><blockquote><p>Thread.sleep()의 인자는 Long 타입이기때문에 Long 타입 리터럴은 되도록이면 끝에 L을 붙여주는 것이 좋다.</p></blockquote><p><code class="language-plaintext highlighter-rouge">sleep()</code>에 의해 일시정지상태가 된 쓰레드는 지정된 시간이 다 되거나, <code class="language-plaintext highlighter-rouge">interrupt()</code>가 호출되면 <code class="language-plaintext highlighter-rouge">InterruptedException</code>이 발생하여 실행대기상태가 된다.</p><p><code class="language-plaintext highlighter-rouge">sleep()</code>은 항상 현재 실행중인 쓰레드에 대해 동작하기 때문에 <code class="language-plaintext highlighter-rouge">th1.sleep(2000)</code>과 같이 호출했어도 실제로 영향을 받는 것은 <code class="language-plaintext highlighter-rouge">main</code> 메소드를 실행하는 <code class="language-plaintext highlighter-rouge">main</code> 쓰레드이다.</p><p>그래서 <code class="language-plaintext highlighter-rouge">sleep()</code>은 <code class="language-plaintext highlighter-rouge">static</code>으로 선언되어 있으며 참조변수를 이용해서 호출하기 보다는 <code class="language-plaintext highlighter-rouge">Thread.sleep(2000)</code>과 같이 사용해야 한다.</p><p>또한 <code class="language-plaintext highlighter-rouge">sleep()</code> 사용 시 checked exception이 발생하는데, catch문에서 기껏해야 <code class="language-plaintext highlighter-rouge">RuntimeException</code>으로 던지기정도밖에 할 수 있는 것이 없다. 이럴때 <code class="language-plaintext highlighter-rouge">lombok</code>의 <code class="language-plaintext highlighter-rouge">@SneakyThrows</code> 어노테이션을 사용하면 편리하다.</p><h4 id="interrupt-interrupted---쓰레드의-작업을-취소한다">interrupt(), interrupted() - 쓰레드의 작업을 취소한다.</h4><p><code class="language-plaintext highlighter-rouge">interrupt()</code>는 쓰레드에게 작업을 멈추라고 요청한다. 단지 멈추라고 요청하는 것일 뿐 쓰레드를 강제로 종료시키지는 못한다. <code class="language-plaintext highlighter-rouge">interrupt()</code>는 그저 쓰레드의 인스턴스 변수인 <code class="language-plaintext highlighter-rouge">interrupted</code>의 상태를 바꿀 뿐이다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">interrupt</span><span class="o">()</span> <span class="o">-</span> <span class="n">쓰레드의</span> <span class="n">interrupted</span> <span class="n">상태를</span> <span class="n">false에서</span> <span class="n">true로</span> <span class="n">변환</span> 
+<span class="kt">boolean</span> <span class="nf">isInterrupted</span><span class="o">()</span> <span class="o">-</span> <span class="n">쓰레드의</span> <span class="n">interrupted상태를</span> <span class="n">반환</span> 
+<span class="kd">static</span> <span class="kt">boolean</span> <span class="nf">interrupted</span><span class="o">()</span> <span class="o">-</span> <span class="n">현재</span> <span class="n">쓰레드의</span> <span class="n">interrupted</span> <span class="n">상태를</span> <span class="n">반환</span> <span class="n">후</span> <span class="n">false로</span> <span class="n">변경</span> 
+</pre></table></code></div></div><p>쓰레드가 <code class="language-plaintext highlighter-rouge">sleep()</code>, <code class="language-plaintext highlighter-rouge">wait()</code>, <code class="language-plaintext highlighter-rouge">join()</code>에 의해 ‘일시정지 상태(WAITING)’에 있을 때, 해당 쓰레드에 대해 <code class="language-plaintext highlighter-rouge">interrupt()</code>를 호출하면 <code class="language-plaintext highlighter-rouge">InterruptedException</code>이 발생하고 쓰레드는 ‘실행대기 상테(RUNNABLE)’로 바뀐다. 즉, 멈춰있던 쓰레드를 깨워서 실행가능한 상태로 만드는 것이다.</p><h4 id="suspend-resume-stop">suspend(), resume(), stop()</h4><p><code class="language-plaintext highlighter-rouge">resume()</code>, <code class="language-plaintext highlighter-rouge">stop()</code>, <code class="language-plaintext highlighter-rouge">suspend()</code>는 쓰레드를 교착상태(dead-lock)로 만들기 쉽기 때문에 <code class="language-plaintext highlighter-rouge">deprecated</code> 되었다.</p><p>따라서 사용하는 것이 권장되지 않는다. 특히 <code class="language-plaintext highlighter-rouge">stop()</code>처럼 자바에서 쓰레드를 시스템적으로 종료시키는 것은 많은 문제를 발생시킬 수 있기때문에 그냥 없다고 생각하고 쓰지말아야 한다. 쓰레드의 종료는 개발자가 직접 코드로 해결해야할 문제다.</p><h4 id="yield---다른-쓰레드에게-양보한다">yield() - 다른 쓰레드에게 양보한다.</h4><p><code class="language-plaintext highlighter-rouge">yield()</code> 쓰레드는 자신에게 주어진 실행시간을 다음 차례의 쓰레드에게 양보(yield)한다.</p><p>스케쥴러에 의해 1초의 실행시간을 할당받은 쓰레드가 0.5초의 시간동안 작업한 상태에서 <code class="language-plaintext highlighter-rouge">yield()</code>가 호출되면, 나머지 0.5초는 포기하고 다시 실행대기 상태가 된다.</p><p><code class="language-plaintext highlighter-rouge">yield()</code>와 <code class="language-plaintext highlighter-rouge">interrupt()</code>를 적절히 사용하면 프로그램의 응답성을 높이고 효율적인 실행이 가능하게 할 수 있다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="k">while</span> <span class="o">(!</span><span class="n">stopped</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(!</span><span class="n">suspend</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">" - interrupted"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>만약 위 코드에서 suspend 변수의 값이 true라면, 쓰레드는 주어진 시간을 그저 while문을 의미없이 돌면서 낭비하게 될 것이다. 이런 상황을 <code class="language-plaintext highlighter-rouge">바쁜 대기상태(busy-waiting)</code>라고 한다.</p><p>이러한 경우, <code class="language-plaintext highlighter-rouge">yield()</code>를 사용해 코드를 개선할 수 있다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="k">while</span> <span class="o">(!</span><span class="n">stopped</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(!</span><span class="n">suspend</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+        <span class="k">try</span><span class="o">{</span>
+            <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">name</span> <span class="o">+</span> <span class="s">" - interrupted"</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="k">else</span><span class="o">{</span>
+        <span class="nc">Thread</span><span class="o">.</span><span class="na">yield</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>같은 상황에서 <code class="language-plaintext highlighter-rouge">yield()</code>를 호출해서 남은 실행시간을 낭비하지 않고 다른 쓰레드에게 양보하게 되므로 더 효율적이다.</p><h4 id="join---다른-쓰레드의-작업을-기다린다">join() - 다른 쓰레드의 작업을 기다린다.</h4><p>쓰레드 자신이 하던 작업을 잠시 멈추고 다른 쓰레드가 지정된 시간동안 작업을 수행하도록 할 때 <code class="language-plaintext highlighter-rouge">join()</code>을 사용한다.</p><p>시간을 지정하지 않으면 해당 쓰레드가 작업을 모두 마칠 때까지 기다린다. 작업 중에 다른 쓰레드의 작업이 먼저 수행되어야 할 필요가 있을 때 사용한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="k">try</span><span class="o">{</span>
+    <span class="n">th1</span><span class="o">.</span><span class="na">join</span><span class="o">();</span>     <span class="c1">//현재 실행중인 쓰레드가 쓰레드 th1의 작업이 끝날 때까지 기다린다.</span>
+<span class="o">}</span><span class="k">catch</span><span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">){}</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">join()</code>도 <code class="language-plaintext highlighter-rouge">sleep()</code>처럼 <code class="language-plaintext highlighter-rouge">interrupt()</code>에 의해 대기상태에서 벗어날 수 있기때문에 <code class="language-plaintext highlighter-rouge">join()</code>이 호출되는 부분을 <code class="language-plaintext highlighter-rouge">try-catch문</code>으로 감싸야 한다.</p><p><code class="language-plaintext highlighter-rouge">sleep()</code>과 다른 점은 <code class="language-plaintext highlighter-rouge">join()</code>은 현재 쓰레드가 아닌 특정 쓰레드에 대해 동작하므로 <code class="language-plaintext highlighter-rouge">static</code> 메소드가 아니라는 점이다.</p><h3 id="쓰레드의-우선순위"><strong>쓰레드의 우선순위</strong></h3><p>쓰레드는 우선순위(priority)라는 멤버변수를 가지고 있는데, 이 우선순위 값에 따라 쓰레드가 얻는 <strong>실행시간</strong>이 달라진다. 따라서 스레드의 중요도에 따라 우선순위를 서로 다르게 지정하여 특정 쓰레드가 더 많은 작업시간을 가지도록 할 수 있다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">setPriority</span><span class="o">(</span><span class="kt">int</span> <span class="n">newPriority</span><span class="o">)</span>
+<span class="kt">int</span> <span class="nf">getPriority</span><span class="o">()</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MAX_PRIORITY</span>  <span class="o">=</span> <span class="mi">10</span>   <span class="c1">// 최대 우선순위</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">NORM_PRIORITY</span> <span class="o">=</span> <span class="mi">5</span>    <span class="c1">// 보통 우선순위</span>
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">MIN_PRIORITY</span>  <span class="o">=</span> <span class="mi">1</span>    <span class="c1">// 최소 우선순위</span>
+</pre></table></code></div></div><p>쓰레드가 가질 수 있는 우선순위의 범위는 1~10까지이며 숫자가 높을 수록 우선순위가 높다. 한가지 알아두어야 할 점은 쓰레드의 우선순위는 쓰레드를 생성한 쓰레드로부터 상속받는다는 것이다. <code class="language-plaintext highlighter-rouge">main</code> 메소드를 수행하는 쓰레드는 우선순위가 5이므로 <code class="language-plaintext highlighter-rouge">main</code> 메소드 내에서 생성하는 쓰레드의 우선순위는 자동적으로 5가 된다.</p><p>하지만 이 것이 반드시 보장되는 것은 아니다. 쓰레드의 작업 할당은 OS의 스케줄링 정책과 JVM의 구현에 따르기 때문에 코드에서 우선순위를 지정하는 것은 단지 희망사항을 전달하는 것일 뿐이다.</p><blockquote><p>멀티코어 환경에서는 쓰레드의 우선순위에 따른 차이가 전혀 없다. 따라서 차라리 쓰레드에 우선순위를 부여하는 작업 대신 작업에 우선순위를 두어 PriorityQueue에 저장해놓고, 우선순위가 높은 작업이 먼저 처리되도록 하는 것이 나을 수 있다.</p></blockquote><h3 id="main-쓰레드"><strong>Main 쓰레드</strong></h3><p>Java의 실행환경인 JVM은 하나의 프로세스로 실행되고, 이것을 실행하기 위해 우리가 사용하는 <code class="language-plaintext highlighter-rouge">main()</code> 메소드가 메인 쓰레드이다.</p><p>메인 쓰레드는 자바에서 처음으로 실행되는 쓰레드이자 모든 쓰레드는 메인 쓰레드로부터 출발한다. 싱글 쓰레드 애플리케이션에서는 메인 쓰레드가 종료되면 프로세스도 종료되지만, 멀티 쓰레드 애플리케이션에서는 메인 쓰레드가 종료되어도 실행 중인 쓰레드가 하나라도 있다면 종료되지 않는다.</p><h4 id="데몬-쓰레드">데몬 쓰레드</h4><p>데몬 쓰레드는 일반 쓰레드의 작업을 돕는 보조적인 역할을 수행하는 쓰레드이다. 일반 쓰레드가 모두 종료되면 데몬 쓰레드도 강제적으로 종료된다는 점을 제외하고는 일반 쓰레드와 데몬 쓰레드는 다르지않다.</p><blockquote><p>데몬 쓰레드의 예로는 가비지 컬렉터, 워드 프로세서의 자동저장, 화면자동갱신 등이 있다.</p></blockquote><p>데몬 쓰레드는 무한루프와 조건문을 이용해서 실행 후 대기하고 있다가 특정 조건이 만족되면 작업을 수행하고 다시 대기하도록 작성한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="kt">boolean</span> <span class="nf">isDaemon</span><span class="o">()</span>
+<span class="kt">void</span> <span class="nf">setDaemon</span><span class="o">(</span><span class="kt">boolean</span> <span class="n">on</span><span class="o">)</span>
+</pre></table></code></div></div><p>데몬 쓰레드는 일반 쓰레드의 작성방법과 실행방법이 같으며 다만 쓰레드를 생성한 다음 실행하기 전에 <code class="language-plaintext highlighter-rouge">setDaemon(true)</code>를 호출하기만 하면 된다. 그리고 데몬 쓰레드가 생성한 쓰레드는 자동으로 데몬 쓰레드가 된다는 점도 알아두자</p><blockquote><p>setDaemon()은 start()를 호출하기 전에 실행해야 한다. 그렇지 않으면 <code class="language-plaintext highlighter-rouge">IllegalThreadStateException</code>이 발생한다.</p></blockquote><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Thread10</span> <span class="kd">implements</span> <span class="nc">Runnable</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kt">boolean</span> <span class="n">autoSave</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Thread</span> <span class="n">t</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Thread</span><span class="o">(</span><span class="k">new</span> <span class="nc">Thread10</span><span class="o">());</span>
+        <span class="n">t</span><span class="o">.</span><span class="na">setDaemon</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+        <span class="n">t</span><span class="o">.</span><span class="na">start</span><span class="o">();</span>
+
+        <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">try</span><span class="o">{</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">i</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">i</span> <span class="o">==</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">autoSave</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"프로그램을 종료합니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">while</span> <span class="o">(</span><span class="kc">true</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span><span class="o">{</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">1000</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span> <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">autoSave</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">autoSave</span><span class="o">();</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">autoSave</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"작업파일이 자동저장되었습니다."</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>3초마다 <code class="language-plaintext highlighter-rouge">autoSave</code> 변수의 값을 확인하는 데몬 쓰레드 예제이다. 만일 이 쓰레드를 데몬 쓰레드로 설정하지 않았다면, 이 프로그램은 강제종료하지 않는 한 영원히 종료되지 않을 것이다.</p><h3 id="동기화"><strong>동기화</strong></h3><p>멀티쓰레드 프로세스의 경우, 여러 쓰레드가 같은 프로세스 내의 자원을 공유해서 작업하기 때문에 서로의 작업에 영향을 주게된다.</p><p>이러한 일이 발생하는 것을 방지하기 위해서 한 쓰레드가 특정 작업을 끝마치기 전까지 다른 쓰레드에 의해 방해받지 않도록 하는 것이 필요하다.</p><p>그래서 도입된 개념이 바로 <code class="language-plaintext highlighter-rouge">임계 구역(critical section)</code>과 <code class="language-plaintext highlighter-rouge">잠금(lock)</code>이다.</p><p>공유 데이터를 사용하는 코드 영역을 임계 영역으로 지정해놓고, 공유 데이터(객체)가 가지고 있는 lock을 획득한 단 하나의 쓰레드만 이 영역 내의 코드를 수행할 수 있게 한다. 그리고 해당 쓰레드는 임계 영역 내의 코드를 수행한 뒤 lock을 반납해야 한다.</p><p>이처럼 한 쓰레드가 진행중인 작업을 다른 쓰레드가 간섭하지 못하도록 막는 것을 <strong>‘쓰레드의 동기화(synchronization)’</strong>라고 하고 <code class="language-plaintext highlighter-rouge">Thread-safe</code>하다고 한다.</p><p>자바에서는 <code class="language-plaintext highlighter-rouge">synchronized</code> 블럭을 이용해서 쓰레드의 동기화를 지원했지만, Java 5부터는 <code class="language-plaintext highlighter-rouge">java.util.concurrent.locks</code>와 <code class="language-plaintext highlighter-rouge">java.util.concurrent.atomic</code> 패키지를 통해서 다양한 방식으로 동기화를 구현할 수 있도록 지원하고 있다.</p><h4 id="synchronized를-이용한-동기화">synchronized를 이용한 동기화</h4><p><code class="language-plaintext highlighter-rouge">synchronized</code> 키워드는 임계 영역을 설정하는데 사용된다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="c1">// 1. 메소드 전체를 임계 영역으로 지정</span>
+<span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">calcSum</span><span class="o">(){</span>
+    <span class="o">...</span>
+<span class="o">}</span> 
+<span class="c1">// 2.특정한 영역을 임계 영역으로 지정</span>
+<span class="kd">synchronized</span><span class="o">(</span><span class="n">객체의</span> <span class="n">참조변수</span><span class="o">){</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>첫 번째 방법은 메소드의 선언부에 <code class="language-plaintext highlighter-rouge">synchronized</code> 키워드를 붙여줌으로써 메소드 전체를 임계 영역으로 지정한다.</p><p>두 번째 방법은 메소드 내의 코드 일부를 블럭으로 감싸고 앞에 <code class="language-plaintext highlighter-rouge">synchronized(객체의 참조변수)</code>를 붙이는 것인데, 이때 참조변수는 lock을 걸고자 하는 객체를 참조하는 것이어야 한다.이 블럭의 영역 안으로 들어가면서부터 쓰레드는 지정된 객체의 lock을 얻게 되고, 이 블럭을 벗어나면 lock을 반납한다.</p><p>위의 두 방법 모두 lock의 획득과 반납이 모두 자동으로 이루어지므로 우리가 해야할 일은 그저 임계 영역을 설정하는 것 뿐이다.</p><p>모든 객체는 lock을 하나씩 가지고 있으며, 해당 객체의 lock을 가지고 있는 쓰레드만 임계 영역의 코드를 수행할 수 있다. 그리고 다른 쓰레드들은 lock을 얻을 때까지 기다리게 된다.</p><blockquote><p>임계 영역은 멀티쓰레드 프로그램의 성능을 좌우하기 때문에 가능하면 메소드 전체에 lock을 거는 것보다 synchronized 블럭으로 <strong>임계 영역을 최소화해서 효율적인 프로그램이 되도록 노력해야 한다.</strong></p></blockquote><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">Account</span><span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">balance</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getBalance</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">balance</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">withdraw</span><span class="o">(</span><span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">balance</span> <span class="o">&gt;=</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">try</span> <span class="o">{</span>
+                <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+            <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+                <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+            <span class="o">}</span>
+            <span class="n">balance</span> <span class="o">-=</span> <span class="n">money</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">MyThread</span> <span class="kd">implements</span> <span class="nc">Runnable</span> <span class="o">{</span>
+
+    <span class="nc">Account</span> <span class="n">account</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Account</span><span class="o">();</span>
+
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">run</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">account</span><span class="o">.</span><span class="na">getBalance</span><span class="o">()</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="o">)</span> <span class="o">{</span>
+            <span class="kt">int</span> <span class="n">money</span> <span class="o">=</span> <span class="o">(</span><span class="kt">int</span><span class="o">)</span> <span class="o">(</span><span class="nc">Math</span><span class="o">.</span><span class="na">random</span><span class="o">()</span> <span class="o">*</span> <span class="mi">3</span> <span class="o">+</span> <span class="mi">1</span><span class="o">)</span> <span class="o">*</span> <span class="mi">100</span><span class="o">;</span>
+            <span class="n">account</span><span class="o">.</span><span class="na">withdraw</span><span class="o">(</span><span class="n">money</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"balance : "</span><span class="o">+</span><span class="n">account</span><span class="o">.</span><span class="na">getBalance</span><span class="o">());</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ThreadTest</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Runnable</span> <span class="n">r</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">MyThread</span><span class="o">();</span>
+        <span class="k">new</span> <span class="nf">Thread</span><span class="o">(</span><span class="n">r</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
+        <span class="k">new</span> <span class="nf">Thread</span><span class="o">(</span><span class="n">r</span><span class="o">).</span><span class="na">start</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><div lang="console" class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="go">balance : 600
+balance : 600
+balance : 400
+balance : 200
+balance : 200
+balance : 200
+balance : 100
+balance : 100
+balance : 0
+balance : -100
+</span></pre></table></code></div></div><p>은행계좌(account)에서 잔고(balance)를 확인하고 임의의 금액을 출금(withdraw)하는 예제이다. <code class="language-plaintext highlighter-rouge">withdraw()</code>를 보면 출금하려는 금액보다 잔고의 금액이 더 클 때만 출금하도록 되어 있지만,</p><p>실행 결과를 보면 잔고가 음수까지 출금되는 것을 확인할 수 있다. 그 이유는 한 쓰레드가 if문의 조건식을 통과하고 출금하기 직전에 다른 쓰레드가 끼어들어서 먼저 출금을 했기 때문이다.</p><p>이렇게 한 쓰레드의 작업이 다른 쓰레드에게 영향을 받을 수 있기때문에 동기화가 반드시 필요한 것이다. <code class="language-plaintext highlighter-rouge">withdraw()</code>에 <code class="language-plaintext highlighter-rouge">synchronized</code>를 붙이기만 하면 동기화가 된다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">synchronized</span> <span class="kt">void</span> <span class="nf">withdraw</span><span class="o">(</span><span class="kt">int</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">balance</span> <span class="o">&gt;=</span> <span class="n">money</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">try</span> <span class="o">{</span>
+            <span class="nc">Thread</span><span class="o">.</span><span class="na">sleep</span><span class="o">(</span><span class="mi">1000</span><span class="o">);</span>
+        <span class="o">}</span> <span class="k">catch</span> <span class="o">(</span><span class="nc">InterruptedException</span> <span class="n">e</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">e</span><span class="o">.</span><span class="na">printStackTrace</span><span class="o">();</span>
+        <span class="o">}</span>
+        <span class="n">balance</span> <span class="o">-=</span> <span class="n">money</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><div lang="console" class="language-console highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="go">balance : 900
+balance : 600
+balance : 300
+balance : 0
+balance : 0
+</span></pre></table></code></div></div><h4 id="wait와-notify">wait()와 notify()</h4><p><code class="language-plaintext highlighter-rouge">synchronized</code>로 동기화해서 공유 데이터를 보호하는 것까지는 좋은데, 특정 쓰레드가 객체의 lock을 가진 상태로 오랜 시간을 보내지 않도록 하는 것도 중요하다.</p><p>만일 계좌에 입금할 돈이 부족해서 한 쓰레드가 lock을 보유한 채로 돈이 입금될 때까지 오랜 시간을 보낸다면, 다른 쓰레드들은 모두 해당 객체의 lock을 기다리느라 다른 작업을 진행하지 못할 것이다.</p><p>이 것을 위해 고안된 것이 바로 <code class="language-plaintext highlighter-rouge">wait()</code>와 <code class="language-plaintext highlighter-rouge">notify()</code>이다.</p><p>동기화된 임계영역의 코드를 수행하다가 작업을 더 이상 진행할 상황이 아니면, 일단 <code class="language-plaintext highlighter-rouge">wait()</code>를 호출하여 쓰레드가 lock을 반납하고 기다리게 한다. 이렇게 하면 다른 쓰레드가 lock을 얻어 해당 객체에대한 작업을 수행할 수 있게 된다.</p><p>나중에 작업을 진행할 수 있는 상황이 되면 <code class="language-plaintext highlighter-rouge">notify()</code>를 호출해서 작업을 중단했던 쓰레드가 다시 lock을 얻어 작업을 진행할 수 있게 한다.</p><blockquote><p>wait()에 의해 lock을 반납했다가 다시 lock을 얻어서 임계 영역에 들어오는 것을 재진입(reentrance)이라고 한다.</p></blockquote><p><code class="language-plaintext highlighter-rouge">wait()</code>와 <code class="language-plaintext highlighter-rouge">notify()</code>는 특정 객체에 대한 것이므로 <code class="language-plaintext highlighter-rouge">Object 클래스</code>에 정의되어있다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">wait</span><span class="o">()</span>
+<span class="kt">void</span> <span class="nf">wait</span><span class="o">(</span><span class="kt">long</span> <span class="n">timeout</span><span class="o">)</span>
+<span class="kt">void</span> <span class="nf">wait</span><span class="o">(</span><span class="kt">long</span> <span class="n">timeout</span><span class="o">,</span> <span class="kt">int</span> <span class="n">nanos</span><span class="o">)</span>
+<span class="kt">void</span> <span class="nf">notify</span><span class="o">()</span>
+<span class="kt">void</span> <span class="nf">notifyAll</span><span class="o">()</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">wait()</code>, <code class="language-plaintext highlighter-rouge">notify()</code>, <code class="language-plaintext highlighter-rouge">notifyAll()</code>은 동기화 블록 내에서만 사용할 수 있는 메소드들이다.</p><p><code class="language-plaintext highlighter-rouge">wait()</code>이 호출되면 실행 중이던 쓰레드는 lock을 반납하고 해당 객체의 대기실(waiting pool)에서 통지를 기다린다.</p><p><code class="language-plaintext highlighter-rouge">notify()</code>가 호출되면 해당 객체의 대기실에 있던 모든 쓰레드 중에서 임의의 쓰레드가 lock을 얻을 수 있도록 통지한다. 이 때 오랫동안 통지를 받지 못하고 기다리는 쓰레드가 발생할 수 있는데 이 것을 <strong>기아 현상(starvation)</strong>이라고 한다.</p><p>기아 현상을 해결하기 위해서는 <code class="language-plaintext highlighter-rouge">notifyAll()</code>을 사용해야 한다. <code class="language-plaintext highlighter-rouge">notifyAll()</code>은 기다리고 있는 모든 쓰레드에게 통지하여 경쟁시킨다. 하지만 lock을 얻을 수 있는 쓰레드는 단 하나뿐이다.</p><blockquote><p>waiting pool은 객체마다 존재하는 것이므로 notifyAll()이 호출된다고 해서 모든 객체의 waiting pool에 있는 쓰레드가 깨워지는 것은 아니다.</p></blockquote><p><code class="language-plaintext highlighter-rouge">notifyAll()</code>로 기아 현상을 막을 수 있지만, 불필요하게 다른 쓰레드까지 통지를 받아서 lock을 위한 경쟁이 힘들어진다. 이처럼 여러 쓰레드가 lock을 얻기 위해 경쟁하는 것을 <strong>경쟁 상태(race condition)</strong>라고 한다. 이 것을 개선하기 위해서는 필요한 쓰레드를 구별해서 통지하는 것이 필요하다.</p><h4 id="lock과-condition을-이용한-동기화">Lock과 Condition을 이용한 동기화</h4><p><code class="language-plaintext highlighter-rouge">synchronized</code> 블럭으로 동기화를 하면 자동적으로 lock이 잠기고 풀리기때문에 편리하지만, 때로는 같은 메소드 내에서만 lock을 걸 수 있다는 제약이 불편하기도한데, 이럴 때 <code class="language-plaintext highlighter-rouge">java.util.concurrent.locks</code> 패키지가 제공하는 <code class="language-plaintext highlighter-rouge">Lock</code> 클래스를 이용한다. <code class="language-plaintext highlighter-rouge">Lock</code> 클래스의 종류는 다음과 같이 세 가지가 있다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nc">ReentrantLock</span> <span class="c1">//재진입 가능한 lock, 가장 일반적인 배타 lock</span>
+<span class="nc">ReentrantReadWriteLock</span> <span class="c1">//읽기에는 공유적이고 쓰기에는 배타적인 lock</span>
+<span class="nc">StampedLock</span> <span class="c1">//ReentrantReadWriteLock에 낙관적인 lock의 기능을 추가</span>
+</pre></table></code></div></div><blockquote><p>ReentrantLock 클래스를 이해하면 나머지 두 클래스도 쉽게 이해할 수 있기때문에 여기서는 ReentrantLock 클래스만 설명하도록 하겠다.</p></blockquote><p><code class="language-plaintext highlighter-rouge">ReentrantLock 클래스</code>는 <code class="language-plaintext highlighter-rouge">synchronized</code> 키워드와 달리 자동적으로 lock을 관리해주지 않기 때문에 직접 메소드를 호출하면서 lock을 얻고, 반납해야 한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="kt">void</span> <span class="nf">lock</span><span class="o">()</span>
+<span class="kt">void</span> <span class="nf">unlock</span><span class="o">()</span>
+<span class="kt">boolean</span> <span class="nf">isLocked</span><span class="o">()</span>
+</pre></table></code></div></div><p>앞서 <code class="language-plaintext highlighter-rouge">wait()</code> &amp; <code class="language-plaintext highlighter-rouge">notify()</code>를 사용하면 쓰레드를 구분해서 통지하지 못한다는 단점이 있었는데 <code class="language-plaintext highlighter-rouge">Condition</code>은 이러한 문제점을 해결하기 위한 것이다. 각 쓰레드를 위한 <code class="language-plaintext highlighter-rouge">Condition</code>을 만들어서 각각의 waiting pool에서 따로 기다리도록 한다.</p><p><code class="language-plaintext highlighter-rouge">Condition</code>은 이미 생성된 lock으로부터 <code class="language-plaintext highlighter-rouge">newCondition()</code> 메소드를 호출해서 생성한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="kd">private</span> <span class="nc">ReentrantLock</span> <span class="n">lock</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ReentrantLock</span><span class="o">();</span>
+<span class="kd">private</span> <span class="nc">Condition</span> <span class="n">forCook</span> <span class="o">=</span> <span class="n">lock</span><span class="o">.</span><span class="na">newCondition</span><span class="o">();</span>
+<span class="kd">private</span> <span class="nc">Condition</span> <span class="n">forCust</span> <span class="o">=</span> <span class="n">lock</span><span class="o">.</span><span class="na">newCondition</span><span class="o">();</span>
+</pre></table></code></div></div><p>그 다음엔 <code class="language-plaintext highlighter-rouge">wait()</code>와 <code class="language-plaintext highlighter-rouge">notify()</code> 대신 <code class="language-plaintext highlighter-rouge">Condition</code>의 <code class="language-plaintext highlighter-rouge">await()</code>와 <code class="language-plaintext highlighter-rouge">signal()</code> 메소드를 사용하면 된다.</p><p>이렇게하면 기아 현상이나 경쟁 상태가 어느정도 개선된다. 하지만 여전히 특정 쓰레드를 선택할 수는 없기 때문에 같은 종류의 쓰레드간의 기아현상이나 경쟁상태가 발생할 가능성은 남아있다.</p><h4 id="volatile">volatile</h4><p>멀티 쓰레드 사용 시 <strong>멀티 코어 프로세서에서는 코어마다 별도의 캐시</strong>를 가지고 있기 때문에 문제가 발생할 가능성이 있다. 코어는 메모리에서 읽어온 값을 캐시에 저장하고 캐시에서 값을 읽어서 작업하고 다시 같은 값을 읽어올 때는 먼저 캐시에 있는지 확인하고 없을 때만 메모리에서 읽어온다.</p><p>그러다보니 도중에 메모리에 저장된 변수의 값이 변경되었는데도 캐시에 저장된 값이 갱신되지 않아서 메모리에 저장된 변수의 값이 변경되었는데도 캐시에 저장된 값이 갱신되지 않아서 메모리에 저장된 값이 다른 경우가 발생한다.</p><p>이럴때 변수의 앞에 <code class="language-plaintext highlighter-rouge">volatile</code> 키워드를 붙이면 코어가 변수의 값을 캐시가 아닌 메모리에 읽고 쓰기 때문에 캐시와 메모리 간의 불일치가 해결된다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="kd">volatile</span> <span class="kt">boolean</span> <span class="n">suspended</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+</pre></table></code></div></div><p>변수에 <code class="language-plaintext highlighter-rouge">volatile</code>을 붙이는 대신에 <code class="language-plaintext highlighter-rouge">synchronized</code> 블럭을 사용해도 같은 효과를 얻을 수 있다. 쓰레드가 <code class="language-plaintext highlighter-rouge">synchronized</code> 블럭으로 들어갈 때와 나올 때, 캐시와 메모리간의 동기화가 이루어지기 때문에 값의 불일치가 해소되기 때문이다.</p><h4 id="volatile로-long과-double을-원자화">volatile로 long과 double을 원자화</h4><p>JVM은 데이터를 4byte 단위로 처리하기 때문에, int와 int보다 작은 타입들은 한 번에 읽거나 쓰는 것이 가능하다. 즉, 하나의 명령어로 읽기나 쓰기가 가능하다는 뜻이다.</p><p>하나의 명령어는 더 이상 나눌 수 없는 최소의 작업단위이므로, 작업의 중간에 다른 쓰레드가 끼어들 틈이 없다. 하지만 크기가 8byte인 <code class="language-plaintext highlighter-rouge">long</code>과 <code class="language-plaintext highlighter-rouge">double</code>타입의 변수는 하나의 명령어로 값을 읽거나 쓸 수 없기 때문에 다른 쓰레드가 끼어들 여지가 있다.</p><p>다른 쓰레드가 끼어들지 못하게 하기위해 변수를 읽고 쓰는 모든 문장을 <code class="language-plaintext highlighter-rouge">synchronized</code> 블럭으로 감쌀 수도 있지만, 더 간단한 방법으로 변수 선언 시에 <code class="language-plaintext highlighter-rouge">volatile</code>을 붙여서 해결할 수 있다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre><span class="kd">volatile</span> <span class="kt">long</span> <span class="n">sharedVal</span><span class="o">;</span>
+<span class="kd">volatile</span> <span class="kt">double</span> <span class="n">sharedVal</span><span class="o">;</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">volatile</code>은 해당 변수에 대한 읽기나 쓰기가 <strong>원자화</strong>된다. 원자화라는 것은 작업을 더 이상 나눌 수 없게 한다는 의미이다. <code class="language-plaintext highlighter-rouge">synchronized</code> 블럭도 여러 문장을 원자화함으로써 쓰레드의 동기화를 구현한 것이다.</p><p>하지만 <code class="language-plaintext highlighter-rouge">volatile</code> 키워드는 멀티 쓰레드 환경에서 <strong>하나의 쓰레드만 read &amp; write</strong>하고, 나머지 쓰레드는 read만 하는 상황에서 가장 최신의 값을 보장한다. 따라서 실제로 이런 환경 자체가 갖춰지기 쉽지 않기때문에 사용할 일은 많지 않다.</p><p>이러한 <code class="language-plaintext highlighter-rouge">volatile</code>의 제한점을 해소한 것이 <strong>Atomic Type</strong>이다.</p><h4 id="atomic">Atomic</h4><p>atomicity(원자성)의 개념은 쪼갤 수 없는 가장 작은 단위를 뜻한다. 자바의 <code class="language-plaintext highlighter-rouge">Atomic Type</code>은 <code class="language-plaintext highlighter-rouge">Wrapping</code> 클래스의 일종으로, 사용 시 내부적으로 <code class="language-plaintext highlighter-rouge">CAS(Compare-And-Swap) 알고리즘</code>을 사용해 lock 없이 동기화할 수 있게 한다.</p><p>앞서 <code class="language-plaintext highlighter-rouge">volatile</code>에서 언급했던 것처럼, 멀티쓰레드환경, 멀티코어 환경에서 각 코어는 캐시에서 값을 읽어오기 때문에 메인메모리에 저장된 값과 CPU 캐시에 저장된 값이 다른 경우가 있는데</p><blockquote><p>이 것을 가시성 문제라고 부르기도 한다.</p></blockquote><p>이럴때 사용되는것이 <code class="language-plaintext highlighter-rouge">CAS 알고리즘</code>이다. 현재 쓰레드에 저장된 값과 메인메모리에 저장된 값을 비교하여 값이 서로 일치하는경우 새로운 값으로 교체되고 , 일치하지않는다면 실패하고 재시도한다. 이런방법으로 처리하면 CPU캐시에 잘못된 값을 참조하는 가시성문제를 해결할 수 있다.</p><p>Atomic의 주요 클래스</p><ul><li><strong>AtomicBoolean</strong><li><strong>AtomicInteger</strong><li><strong>AtomicLong</strong><li><strong>AtomicIntegerArray</strong><li><strong>AtomicDoubleArray</strong></ul><p>Atomic의 주요 메소드</p><ul><li><code class="language-plaintext highlighter-rouge">get()</code> : 현재 값을 반환<li><code class="language-plaintext highlighter-rouge">set(newValue)</code> : newValue로 값을 업데이트<li><code class="language-plaintext highlighter-rouge">getAndSet(newValue)</code> : 원자적으로 값을 업데이트하고 원래값을 반환<li><code class="language-plaintext highlighter-rouge">compareAndSet(expect, update)</code> : 현재 값이 expect와 동일하다면 값을 update하고 true를 반환한다. 값이 일치하지 않으면 update하지 않고 false를 반환한다.</ul><p>이 외에도 Number Type의 경우, 값의 연산을 할 수 있도록 <code class="language-plaintext highlighter-rouge">addAndGet(delta)</code>, <code class="language-plaintext highlighter-rouge">getAndAdd(delta)</code>,<code class="language-plaintext highlighter-rouge"> getAndDecrement()</code>, <code class="language-plaintext highlighter-rouge">getAndIncrement()</code>, <code class="language-plaintext highlighter-rouge">incrementAndGet()</code> 등의 메소드가 있다.</p><p>아래 코드는 <code class="language-plaintext highlighter-rouge">AtomicInteger</code> 클래스의 일부분이다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">AtomicInteger</span> <span class="kd">extends</span> <span class="nc">Number</span> <span class="kd">implements</span> <span class="n">java</span><span class="o">.</span><span class="na">io</span><span class="o">.</span><span class="na">Serializable</span> <span class="o">{</span>
+
+	<span class="kd">private</span> <span class="kd">volatile</span> <span class="kt">int</span> <span class="n">value</span><span class="o">;</span> 
+
+        <span class="kd">public</span> <span class="kd">final</span> <span class="kt">int</span> <span class="nf">incrementAndGet</span><span class="o">()</span> <span class="o">{</span> 
+	    <span class="kt">int</span> <span class="n">current</span><span class="o">;</span> 
+            <span class="kt">int</span> <span class="n">next</span><span class="o">;</span>
+            <span class="k">do</span> <span class="o">{</span> 
+	        <span class="n">current</span> <span class="o">=</span> <span class="n">get</span><span class="o">();</span> 
+                <span class="n">next</span> <span class="o">=</span> <span class="n">current</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span> 
+            <span class="o">}</span> <span class="k">while</span> <span class="o">(!</span><span class="n">compareAndSet</span><span class="o">(</span><span class="n">current</span><span class="o">,</span> <span class="n">next</span><span class="o">));</span>
+            <span class="k">return</span> <span class="n">next</span><span class="o">;</span> 
+        <span class="o">}</span> 
+        
+        <span class="kd">public</span> <span class="kd">final</span> <span class="kt">boolean</span> <span class="nf">compareAndSet</span><span class="o">(</span><span class="kt">int</span> <span class="n">expect</span><span class="o">,</span> <span class="kt">int</span> <span class="n">update</span><span class="o">)</span> <span class="o">{</span>
+        	<span class="k">return</span> <span class="n">unsafe</span><span class="o">.</span><span class="na">compareAndSwapInt</span><span class="o">(</span><span class="k">this</span><span class="o">,</span> <span class="n">valueOffset</span><span class="o">,</span> <span class="n">expect</span><span class="o">,</span> <span class="n">update</span><span class="o">);</span> 
+        <span class="o">}</span>	
+            
+<span class="o">}</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">incrementAndGet()</code> 메소드 내부에서 CAS 알고리즘 로직을 구현하고 있는 것을 볼 수 있는데, <code class="language-plaintext highlighter-rouge">comparedAndSet()</code>를 호출하고, 그결과값이 성공일때까지 while을 통하여 무한루프를 돌게된다.</p><p><code class="language-plaintext highlighter-rouge">comparedAndSet()</code>내부에서는 <code class="language-plaintext highlighter-rouge">comparedAndWapInt()</code>를 호출하여 메모리에 저장되어진 값과 현재 CPU에 캐시된 expect 값을 비교하여 동일한 경우만 변경하는 update 쓰기를 수행한다.</p><p>여기서 주목할 점은 <code class="language-plaintext highlighter-rouge">volatile int value;</code>을 사용한다는 점이다. <code class="language-plaintext highlighter-rouge">volatile</code>을 사용하여 메모리에서 직접 값을 참조하는데 굳이 CAS 알고리즘 적용이 필요한가? 라고 물을 수 있지만 <code class="language-plaintext highlighter-rouge">Atomic</code> 클래스를 사용하는 이유가 있다.</p><p><code class="language-plaintext highlighter-rouge">volatile</code> 키워드는 오직 한개의 쓰레드에서만 쓰기 작업을 하고 다른 쓰레드는 읽기 작업만을 할 때 안정성을 보장하지만 <code class="language-plaintext highlighter-rouge">Atomic</code> 클래스는 여러 쓰레드에서 읽기/쓰기작업을 병행한다. 그래서 CAS 알고리즘을 사용하여 2중 안전을 기하는 방법을 사용하는 것이다.</p><h3 id="데드락"><strong>데드락</strong></h3><p><strong>교착상태(데드락, deadlock)</strong>는 두 개 이상의 작업이 서로 상대방의 작업이 끝나기를 기다리고 있어서 아무것도 완료되지 못하는 상태를 말한다.</p><p>교착상태의 조건</p><ul><li>상호배제(Mutual exclusion) : 프로세스들이 필요로 하는 자원에 대해 배타적인 통제권을 요구한다.<li>점유대기(Hold and wait) : 프로세스가 할당된 자원을 가진 상태에서 다른 자원을 기다린다.<li>비선점(No preemption) : 프로세스가 어떤 자원의 사용을 끝낼 때까지 그 자원을 뺏을 수 없다.<li>순환대기(Circular wait) : 각 프로세스는 순환적으로 다음 프로세스가 요구하는 자원을 가지고 있다.</ul><blockquote><p>위 조건 중에서 한 가지라도 만족하지 않으면 교착 상태는 발생하지 않는다. 이중 순환대기 조건은 점유대기 조건과 비선점 조건을 만족해야 성립하는 조건이므로, 위 4가지 조건은 서로 완전히 독립적인 것은 아니다.</p></blockquote><h2 id="참조">참조</h2><p><a href="https://sujl95.tistory.com/63">https://sujl95.tistory.com/63</a><br /> <a href="https://beomseok95.tistory.com/225">https://beomseok95.tistory.com/225</a><br /> <a href="https://wisdom-and-record.tistory.com/48">https://wisdom-and-record.tistory.com/48</a><br /> <a href="https://parkadd.tistory.com/48">https://parkadd.tistory.com/48</a><br /> <a href="https://www.notion.so/Thread-5fdb5d603a6a473186bf2738f482cedc">https://www.notion.so/Thread-5fdb5d603a6a473186bf2738f482cedc</a><br /> <a href="https://www.notion.so/ac23f351403741959ec248b00ea6870e">https://www.notion.so/ac23f351403741959ec248b00ea6870e</a><br /> <a href="https://yadon079.github.io/2021/java%20study%20halle/week-10">https://yadon079.github.io/2021/java%20study%20halle/week-10</a></p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/backend/'>Backend</a>, <a href='/categories/java/'>Java</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/java/" class="post-tag no-text-decoration" >java</a> <a href="/tags/java-study/" class="post-tag no-text-decoration" >java study</a> <a href="/tags/%EC%9E%90%EB%B0%94/" class="post-tag no-text-decoration" >자바</a> <a href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/" class="post-tag no-text-decoration" >자바 스터디</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=자바 스터디 10 - 멀티쓰레드 프로그래밍 - yeoji21&url=https://yeoji21.github.io/posts/javastudy10/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=자바 스터디 10 - 멀티쓰레드 프로그래밍 - yeoji21&u=https://yeoji21.github.io/posts/javastudy10/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=자바 스터디 10 - 멀티쓰레드 프로그래밍 - yeoji21&url=https://yeoji21.github.io/posts/javastudy10/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/polymorphism-inheritance/">객체지향에서의 상속과 다형성</a><li><a href="/posts/graduation-project-review/">졸업 작품 프로젝트 회고</a><li><a href="/posts/reflection-1/">[JAVA] Java Refelction 마스터 강의 1장</a><li><a href="/posts/mst/">[알고리즘] MST - 크루스칼 vs 프림</a><li><a href="/posts/injection/">[Spring] 의존성 주입 시 생성자 주입을 사용해야 하는 이유 </a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/java/">java</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a> <a class="post-tag" href="/tags/java-study/">java study</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/">자바 스터디</a> <a class="post-tag" href="/tags/oop/">oop</a> <a class="post-tag" href="/tags/programming/">programming</a> <a class="post-tag" href="/tags/spring/">spring</a> <a class="post-tag" href="/tags/jpa/">jpa</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/guides/">guides</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/javastudy01/"><div class="card-body"> <span class="timeago small" >Aug 8, 2021<i class="unloaded">2021-08-08T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>자바 스터디 01 - JVM이란</h3><div class="text-muted small"><p> 들어가면서 백기선님이 진행하신 자바 스터디 강의와 스터디에 참여하신 분들의 자료를 참고하여 작성한 글입니다. 강의 링크 : [자바 뉴스 라이브] 2020/11/14, 자바 스터디 1주차 깃허브 링크 : 1주차 과제: JVM은 무엇이며 자바 코드는 어떻게 실행하는 것인가. 목차 JVM이란 무엇인가 컴파일 하는 방법 실행하는 방법 바...</p></div></div></a></div><div class="card"> <a href="/posts/javastudy02/"><div class="card-body"> <span class="timeago small" >Aug 10, 2021<i class="unloaded">2021-08-10T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>자바 스터디 02 - 자바 데이터 타입, 변수 그리고 배열</h3><div class="text-muted small"><p> 들어가면서 백기선님이 진행하신 자바 스터디 강의와 스터디에 참여하신 분들의 자료를 참고하여 작성한 글입니다. 강의 링크 : [자바 뉴스 라이브] 2020/11/21, 자바 스터디 2주차 깃허브 링크 : 2주차 과제: 자바 데이터 타입, 변수 그리고 배열 목차 프리미티브 타입 종류와 값의 범위 그리고 기본 값 프리미티브 타입과 레퍼런스 타...</p></div></div></a></div><div class="card"> <a href="/posts/javastudy03/"><div class="card-body"> <span class="timeago small" >Aug 11, 2021<i class="unloaded">2021-08-11T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>자바 스터디 03 - 연산자</h3><div class="text-muted small"><p> 들어가면서 백기선님이 진행하신 자바 스터디 강의와 스터디에 참여하신 분들의 자료를 참고하여 작성한 글입니다. 강의 영상 링크 : [자바 라이브 스터디] 2020/11/28, 자바 스터디 3주차 연산자를 알아보자. 강의 깃허브 링크 : 3주차 과제: 연산자 목차 산술 연산자 비트 연산자 관계 연산자 논리 연산자 instance...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/javastudy09/" class="btn btn-outline-primary" prompt="Older"><p>자바 스터디 09 - 예외 처리</p></a> <a href="/posts/javastudy11/" class="btn btn-outline-primary" prompt="Newer"><p>자바 스터디 11 - Enum</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://twitter.com/username">yeoji21</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/java/">java</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a> <a class="post-tag" href="/tags/java-study/">java study</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/">자바 스터디</a> <a class="post-tag" href="/tags/oop/">oop</a> <a class="post-tag" href="/tags/programming/">programming</a> <a class="post-tag" href="/tags/spring/">spring</a> <a class="post-tag" href="/tags/jpa/">jpa</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/guides/">guides</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://yeoji21.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>

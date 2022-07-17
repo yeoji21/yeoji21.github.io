@@ -1,0 +1,1047 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="클린 코더스 강의 정리 - 3장, 4장 Function" /><meta name="author" content="yeoji21" /><meta property="og:locale" content="en" /><meta name="description" content="들어가면서" /><meta property="og:description" content="들어가면서" /><link rel="canonical" href="https://yeoji21.github.io/posts/ch03/" /><meta property="og:url" content="https://yeoji21.github.io/posts/ch03/" /><meta property="og:site_name" content="yeoji21" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-11-10T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="클린 코더스 강의 정리 - 3장, 4장 Function" /><meta name="twitter:site" content="@twitter_username" /><meta name="twitter:creator" content="@yeoji21" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yeoji21"},"dateModified":"2021-11-10T00:00:00+09:00","datePublished":"2021-11-10T00:00:00+09:00","description":"들어가면서","headline":"클린 코더스 강의 정리 - 3장, 4장 Function","mainEntityOfPage":{"@type":"WebPage","@id":"https://yeoji21.github.io/posts/ch03/"},"url":"https://yeoji21.github.io/posts/ch03/"}</script><title>클린 코더스 강의 정리 - 3장, 4장 Function | yeoji21</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="yeoji21"><meta name="application-name" content="yeoji21"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap" rel="stylesheet"><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/profile/img1.JPG" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">yeoji21</a></div><div class="site-subtitle font-italic">Don't look back in anger</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/yeoji21" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['yeozone0508','gmail.com'].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>클린 코더스 강의 정리 - 3장, 4장 Function</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>클린 코더스 강의 정리 - 3장, 4장 Function</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> yeoji21 </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Wed, Nov 10, 2021, 12:00 AM +0900" >Nov 10, 2021<i class="unloaded">2021-11-10T00:00:00+09:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="5445 words">30 min read</span></div></div><div class="post-content"><h2 id="들어가면서">들어가면서</h2><ul><li>해당 포스트는 <a href="https://www.youtube.com/watch?v=60lLSe1phks">백명석님의 클린 코더스 강의</a>를 정리한 내용입니다.<li>강의 자료는 <a href="https://github.com/msbaek/clean-coders-2013">깃 허브</a>에서 보실 수 있습니다.</ul><h2 id="클린-코더스-강의-3-function">클린 코더스 강의 3. Function</h2><h3 id="1-원칙"><strong>1. 원칙</strong></h3><ul><li>한 가지 일만 해야 한다.<li>메소드의 크기는 과장 보태서 4줄짜리여야 한다.<ul><li>따라서 indentation, while, nested if 등은 없어야</ul><li>잘 지어진 서술적인 이름을 갖는 많은/작은 메소드들로 유지해야 한다.</ul><h3 id="2-the-first-rule-of-functions"><strong>2. The First Rule of Functions</strong></h3><ul><li>더 이상 작아질 수 없을만큼 작아야 한다.<li>큰 메소드를 보면 클래스로 추출할 생각을 해야 한다. Extract Method Object<li>클래스는 일련의 변수들이 동작하는 기능의 집합이다.<li>extract method 할 때는 서로 다른 점을 변수로 추출하고 그 변수들은 새로운 method의 파라미터로 전달한다.</ul><h3 id="3-extreact-method-예제---fitnessexample"><strong>3. extreact method 예제 - FitnessExample</strong></h3><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FitnessExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">testableHtml</span><span class="o">(</span><span class="nc">PageData</span> <span class="n">pageData</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="nc">WikiPage</span> <span class="n">wikiPage</span> <span class="o">=</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getWikiPage</span><span class="o">();</span>
+        <span class="nc">StringBuffer</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+
+        <span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">WikiPage</span> <span class="n">suiteSetup</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_SETUP_NAME</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">suiteSetup</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">WikiPagePath</span> <span class="n">pagePath</span> <span class="o">=</span> <span class="n">wikiPage</span><span class="o">.</span><span class="na">getPageCrawler</span><span class="o">().</span><span class="na">getFullPath</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">);</span>
+                    <span class="nc">String</span> <span class="n">pagePathName</span> <span class="o">=</span> <span class="nc">PathParser</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">pagePath</span><span class="o">);</span>
+                    <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"!include -setup ."</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">pagePathName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+            <span class="nc">WikiPage</span> <span class="n">setup</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="s">"SetUp"</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">setup</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">WikiPagePath</span> <span class="n">setupPath</span> <span class="o">=</span> <span class="n">wikiPage</span><span class="o">.</span><span class="na">getPageCrawler</span><span class="o">().</span><span class="na">getFullPath</span><span class="o">(</span><span class="n">setup</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">setupPathName</span> <span class="o">=</span> <span class="nc">PathParser</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">setupPath</span><span class="o">);</span>
+                <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"!include -setup ."</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">setupPathName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="nc">WikiPage</span> <span class="n">teardown</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="s">"TearDown"</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">teardown</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">WikiPagePath</span> <span class="n">tearDownPath</span> <span class="o">=</span> <span class="n">wikiPage</span><span class="o">.</span><span class="na">getPageCrawler</span><span class="o">().</span><span class="na">getFullPath</span><span class="o">(</span><span class="n">teardown</span><span class="o">);</span>
+                <span class="nc">String</span> <span class="n">tearDownPathName</span> <span class="o">=</span> <span class="nc">PathParser</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">tearDownPath</span><span class="o">);</span>
+                <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"!include -teardown ."</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">tearDownPathName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">WikiPage</span> <span class="n">suiteTeardown</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_TEARDOWN_NAME</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">suiteTeardown</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="nc">WikiPagePath</span> <span class="n">pagePath</span> <span class="o">=</span> <span class="n">wikiPage</span><span class="o">.</span><span class="na">getPageCrawler</span><span class="o">().</span><span class="na">getFullPath</span><span class="o">(</span><span class="n">suiteTeardown</span><span class="o">);</span>
+                    <span class="nc">String</span> <span class="n">pagePathName</span> <span class="o">=</span> <span class="nc">PathParser</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">pagePath</span><span class="o">);</span>
+                    <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"!include -teardown ."</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">pagePathName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+                <span class="o">}</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+
+        <span class="n">pageData</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">buffer</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+        <span class="k">return</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getHtml</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>extact method to object</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FitnessExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">testableHtml</span><span class="o">(</span><span class="nc">PageData</span> <span class="n">pageData</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span><span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">TestableHtmlBuilder</span><span class="o">(</span><span class="n">pageData</span><span class="o">,</span> <span class="n">includeSuiteSetup</span><span class="o">).</span><span class="na">invoke</span><span class="o">();</span>
+    <span class="o">}</span>
+    
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">TestableHtmlBuilder</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="nc">PageData</span> <span class="n">pageData</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">TestableHtmlBuilder</span><span class="o">(</span><span class="nc">PageData</span> <span class="n">pageData</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">pageData</span> <span class="o">=</span> <span class="n">pageData</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">includeSuiteSetup</span> <span class="o">=</span> <span class="n">includeSuiteSetup</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nc">String</span> <span class="nf">invoke</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="nc">WikiPage</span> <span class="n">wikiPage</span> <span class="o">=</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getWikiPage</span><span class="o">();</span>
+            <span class="nc">StringBuffer</span> <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+                        <span class="o">...</span>
+</pre></table></code></div></div><p>메소드의 여러 곳에서 사용되는 <code class="language-plaintext highlighter-rouge">wikiPage</code>와 <code class="language-plaintext highlighter-rouge">buffer</code>를 멤버 변수로 올리고 생성자를 통해서 초기화시킨다.</p><p>이를 통해 나중에 내부에서 다른 메소드를 추출할 때마다 매번 파라미터로 받지 않을 수 있게된다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="kd">private</span> <span class="kd">class</span> <span class="nc">TestableHtmlBuilder</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">PageData</span> <span class="n">pageData</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">WikiPage</span> <span class="n">wikiPage</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">StringBuffer</span> <span class="n">buffer</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">TestableHtmlBuilder</span><span class="o">(</span><span class="nc">PageData</span> <span class="n">pageData</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pageData</span> <span class="o">=</span> <span class="n">pageData</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">includeSuiteSetup</span> <span class="o">=</span> <span class="n">includeSuiteSetup</span><span class="o">;</span>
+        <span class="n">wikiPage</span> <span class="o">=</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getWikiPage</span><span class="o">();</span>
+        <span class="n">buffer</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">invoke</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+            <span class="o">...</span>
+</pre></table></code></div></div><p>자주 반복되는 아래 코드 세 줄을 메소드로 뽑기 위해서 먼저 메소드마다 다른 <code class="language-plaintext highlighter-rouge">buffer.append()</code> 내부 string을 변수로 추출한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nc">WikiPagePath</span> <span class="n">pagePath</span> <span class="o">=</span> <span class="n">wikiPage</span><span class="o">.</span><span class="na">getPageCrawler</span><span class="o">().</span><span class="na">getFullPath</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">pagePathName</span> <span class="o">=</span> <span class="nc">PathParser</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">pagePath</span><span class="o">);</span>
+<span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"!include -setup ."</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">pagePathName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></table></code></div></div><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="nc">String</span> <span class="n">setup</span> <span class="o">=</span> <span class="s">"setup"</span><span class="o">;</span>
+<span class="nc">WikiPagePath</span> <span class="n">pagePath</span> <span class="o">=</span> <span class="n">wikiPage</span><span class="o">.</span><span class="na">getPageCrawler</span><span class="o">().</span><span class="na">getFullPath</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">);</span>
+<span class="nc">String</span> <span class="n">pagePathName</span> <span class="o">=</span> <span class="nc">PathParser</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">pagePath</span><span class="o">);</span>
+<span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"!include -"</span> <span class="o">+</span> <span class="n">setup</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">pagePathName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">includePage()</code> 메소드로 추출</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="nc">String</span> <span class="nf">invoke</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">WikiPage</span> <span class="n">suiteSetup</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_SETUP_NAME</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">suiteSetup</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">setup1</span> <span class="o">=</span> <span class="s">"setup"</span><span class="o">;</span>
+                <span class="n">includePage</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">,</span> <span class="n">setup1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+        <span class="nc">WikiPage</span> <span class="n">setup</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="s">"SetUp"</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">setup</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">setup1</span> <span class="o">=</span> <span class="s">"setup"</span><span class="o">;</span>
+            <span class="n">includePage</span><span class="o">(</span><span class="n">setup</span><span class="o">,</span> <span class="n">setup1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+
+    <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="nc">WikiPage</span> <span class="n">teardown</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="s">"TearDown"</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">teardown</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">teardown1</span> <span class="o">=</span> <span class="s">"teardown"</span><span class="o">;</span>
+            <span class="n">includePage</span><span class="o">(</span><span class="n">teardown</span><span class="o">,</span> <span class="n">teardown1</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">WikiPage</span> <span class="n">suiteTeardown</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_TEARDOWN_NAME</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">suiteTeardown</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">String</span> <span class="n">teardown1</span> <span class="o">=</span> <span class="s">"teardown"</span><span class="o">;</span>
+                <span class="n">includePage</span><span class="o">(</span><span class="n">suiteTeardown</span><span class="o">,</span> <span class="n">teardown1</span><span class="o">);</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="o">...</span>
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">includePage</span><span class="o">(</span><span class="nc">WikiPage</span> <span class="n">suiteSetup</span><span class="o">,</span> <span class="nc">String</span> <span class="n">setup1</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">WikiPagePath</span> <span class="n">pagePath</span> <span class="o">=</span> <span class="n">wikiPage</span><span class="o">.</span><span class="na">getPageCrawler</span><span class="o">().</span><span class="na">getFullPath</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">);</span>
+    <span class="nc">String</span> <span class="n">pagePathName</span> <span class="o">=</span> <span class="nc">PathParser</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">pagePath</span><span class="o">);</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"!include -"</span> <span class="o">+</span> <span class="n">setup1</span> <span class="o">+</span> <span class="s">" ."</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="n">pagePathName</span><span class="o">).</span><span class="na">append</span><span class="o">(</span><span class="s">"\n"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이제 아래 부분들을 공통화시켜서 메소드로 뽑아야 한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="nc">WikiPage</span> <span class="n">suiteSetup</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_SETUP_NAME</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">suiteSetup</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">setup1</span> <span class="o">=</span> <span class="s">"setup"</span><span class="o">;</span>
+    <span class="n">includePage</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">,</span> <span class="n">setup1</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>위에서와 마찬가지로 각 코드마다 다른 <code class="language-plaintext highlighter-rouge">getInheritedPage()</code>의 파라미터값을 변수로 뽑는다.</p><p>그 후 메소드로 뽑기 위해 앞에서 변수로 뽑았던 <code class="language-plaintext highlighter-rouge">setup1</code>, <code class="language-plaintext highlighter-rouge">teardown1</code>등을 위로 올려준다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+</pre><td class="rouge-code"><pre><span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Object</span> <span class="n">suiteSetupName</span> <span class="o">=</span> <span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_SETUP_NAME</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">setup1</span> <span class="o">=</span> <span class="s">"setup"</span><span class="o">;</span>
+        <span class="nc">WikiPage</span> <span class="n">suiteSetup</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="n">suiteSetupName</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+        <span class="k">if</span> <span class="o">(</span><span class="n">suiteSetup</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">includePage</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">,</span> <span class="n">setup1</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+    <span class="nc">String</span> <span class="n">setUp</span> <span class="o">=</span> <span class="s">"SetUp"</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">setup1</span> <span class="o">=</span> <span class="s">"setup"</span><span class="o">;</span>
+    <span class="nc">WikiPage</span> <span class="n">setup</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="n">setUp</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">setup</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">includePage</span><span class="o">(</span><span class="n">setup</span><span class="o">,</span> <span class="n">setup1</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>그 후 includeInherited() 메소드로 추출한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre><td class="rouge-code"><pre><span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Object</span> <span class="n">suiteSetupName</span> <span class="o">=</span> <span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_SETUP_NAME</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">setup1</span> <span class="o">=</span> <span class="s">"setup"</span><span class="o">;</span>
+        <span class="n">includeInherited</span><span class="o">(</span><span class="n">suiteSetupName</span><span class="o">,</span> <span class="n">setup1</span><span class="o">);</span>
+    <span class="o">}</span>
+    <span class="nc">String</span> <span class="n">setUp</span> <span class="o">=</span> <span class="s">"SetUp"</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">setup1</span> <span class="o">=</span> <span class="s">"setup"</span><span class="o">;</span>
+    <span class="n">includeInherited</span><span class="o">(</span><span class="n">setUp</span><span class="o">,</span> <span class="n">setup1</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="nc">String</span> <span class="n">tearDown</span> <span class="o">=</span> <span class="s">"TearDown"</span><span class="o">;</span>
+    <span class="nc">String</span> <span class="n">teardown1</span> <span class="o">=</span> <span class="s">"teardown"</span><span class="o">;</span>
+    <span class="n">includeInherited</span><span class="o">(</span><span class="n">tearDown</span><span class="o">,</span> <span class="n">teardown1</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">Object</span> <span class="n">suiteTeardownName</span> <span class="o">=</span> <span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_TEARDOWN_NAME</span><span class="o">;</span>
+        <span class="nc">String</span> <span class="n">teardown2</span> <span class="o">=</span> <span class="s">"teardown"</span><span class="o">;</span>
+        <span class="n">includeInherited</span><span class="o">(</span><span class="n">suiteTeardownName</span><span class="o">,</span> <span class="n">teardown2</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>앞서 서로 다른 부분을 메소드로 뽑기 위해서 변수로 선언했지만 이제 필요없기때문에 변수를 파라미터로 인라인시킨다.</p><p>이 과정속에서 if문 내에 실행할 문장이 하나가 된다면 괄호를 지워주도록 하자.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span>
+        <span class="n">includeInherited</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_SETUP_NAME</span><span class="o">,</span> <span class="s">"setup"</span><span class="o">);</span>
+    <span class="n">includeInherited</span><span class="o">(</span><span class="s">"SetUp"</span><span class="o">,</span> <span class="s">"setup"</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+<span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+    <span class="n">includeInherited</span><span class="o">(</span><span class="s">"TearDown"</span><span class="o">,</span> <span class="s">"teardown"</span><span class="o">);</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span> 
+        <span class="n">includeInherited</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_TEARDOWN_NAME</span><span class="o">,</span> <span class="s">"teardown"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>여기서 가독성을 더 높이기 위해 setup을 위한 메소드와 teardown을 위한 메소드를 추출한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="nc">String</span> <span class="nf">invoke</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span>
+        <span class="n">includeSetups</span><span class="o">();</span>
+    <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span>
+        <span class="n">includeTeardowns</span><span class="o">();</span>
+    <span class="n">pageData</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">buffer</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="k">return</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getHtml</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>중복된 if문을 제거하고 하나의 if문 내부로 밀어넣자.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="nc">String</span> <span class="nf">invoke</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">))</span> <span class="o">{</span>
+        <span class="n">includeSetups</span><span class="o">();</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+        <span class="n">includeTeardowns</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="n">pageData</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">buffer</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="k">return</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getHtml</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>if문 내부의 조건도 가독성을 높이기 위해 메소드로 추출한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="nc">String</span> <span class="nf">invoke</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+    <span class="k">if</span> <span class="o">(</span><span class="n">isTestPage</span><span class="o">())</span> <span class="o">{</span>
+        <span class="n">includeSetups</span><span class="o">();</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">pageData</span><span class="o">.</span><span class="na">getContent</span><span class="o">());</span>
+        <span class="n">includeTeardowns</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="n">pageData</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">buffer</span><span class="o">.</span><span class="na">toString</span><span class="o">());</span>
+    <span class="k">return</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getHtml</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>메소드를 읽어보면</p><p>만약 테스트 페이지이면 setup을 include하고 버퍼에 페이지의 content를 넣고 teardown을 include한 뒤,</p><p>버퍼에 있는 데이터를 페이지 데이터에 입력한 뒤, 페이지 데이터를 html로 변경한다는 것을 알 수 있다.</p><p>이렇게 리팩토링 후 <code class="language-plaintext highlighter-rouge">invoke()</code>를 읽기 훨씬 수월해졌다.</p><p><br /></p><p>이제 추출한 클래스명과 <code class="language-plaintext highlighter-rouge">invoke()</code>의 이름을 의미있게 변경하는 등 나머지 리펙토링 작업을 수행한 최종 코드는 아래와 같다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">FitnessExample</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">testableHtml</span><span class="o">(</span><span class="nc">PageData</span> <span class="n">pageData</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">SetUpTearDownSurrounder</span><span class="o">(</span><span class="n">pageData</span><span class="o">,</span> <span class="n">includeSuiteSetup</span><span class="o">).</span><span class="na">surround</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">class</span> <span class="nc">SetUpTearDownSurrounder</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="nc">PageData</span> <span class="n">pageData</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="nc">WikiPage</span> <span class="n">wikiPage</span><span class="o">;</span>
+        <span class="kd">private</span> <span class="nc">String</span> <span class="n">content</span><span class="o">;</span>
+
+        <span class="kd">public</span> <span class="nf">SetUpTearDownSurrounder</span><span class="o">(</span><span class="nc">PageData</span> <span class="n">pageData</span><span class="o">,</span> <span class="kt">boolean</span> <span class="n">includeSuiteSetup</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">pageData</span> <span class="o">=</span> <span class="n">pageData</span><span class="o">;</span>
+            <span class="k">this</span><span class="o">.</span><span class="na">includeSuiteSetup</span> <span class="o">=</span> <span class="n">includeSuiteSetup</span><span class="o">;</span>
+            <span class="n">wikiPage</span> <span class="o">=</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getWikiPage</span><span class="o">();</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">String</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="kd">public</span> <span class="nc">String</span> <span class="nf">surround</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">ifTestPage</span><span class="o">())</span>
+                <span class="n">surroundPageWithSetUpsAndTearDowns</span><span class="o">();</span>
+            <span class="k">return</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getHtml</span><span class="o">();</span>
+        <span class="o">}</span>
+
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">surroundPageWithSetUpsAndTearDowns</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="n">content</span> <span class="o">=</span> <span class="n">includeSetups</span><span class="o">();</span>
+            <span class="n">content</span> <span class="o">+=</span> <span class="n">pageData</span><span class="o">.</span><span class="na">getContent</span><span class="o">();</span>
+            <span class="n">content</span> <span class="o">+=</span> <span class="n">includeTearDowns</span><span class="o">();</span>
+            <span class="n">pageData</span><span class="o">.</span><span class="na">setContent</span><span class="o">(</span><span class="n">content</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="kd">private</span> <span class="kt">boolean</span> <span class="nf">ifTestPage</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="k">return</span> <span class="n">pageData</span><span class="o">.</span><span class="na">hasAttribute</span><span class="o">(</span><span class="s">"Test"</span><span class="o">);</span>
+        <span class="o">}</span>
+
+        <span class="kd">private</span> <span class="nc">String</span> <span class="nf">includeTearDowns</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">tearDowns</span> <span class="o">=</span> <span class="n">includeInherited</span><span class="o">(</span><span class="s">"TearDown"</span><span class="o">,</span> <span class="s">"teardown"</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span>
+                <span class="n">tearDowns</span> <span class="o">+=</span> <span class="n">includeInherited</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_TEARDOWN_NAME</span><span class="o">,</span> <span class="s">"teardown"</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">tearDowns</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">private</span> <span class="nc">String</span> <span class="nf">includeSetups</span><span class="o">()</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="nc">String</span> <span class="n">setUps</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">includeSuiteSetup</span><span class="o">)</span>
+                <span class="n">setUps</span> <span class="o">+=</span> <span class="n">includeInherited</span><span class="o">(</span><span class="nc">SuiteResponder</span><span class="o">.</span><span class="na">SUITE_SETUP_NAME</span><span class="o">,</span> <span class="s">"setup"</span><span class="o">);</span>
+            <span class="n">setUps</span> <span class="o">+=</span> <span class="n">includeInherited</span><span class="o">(</span><span class="s">"SetUp"</span><span class="o">,</span> <span class="s">"setup"</span><span class="o">);</span>
+            <span class="k">return</span> <span class="n">setUps</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">private</span> <span class="nc">String</span> <span class="nf">includeInherited</span><span class="o">(</span><span class="nc">String</span> <span class="n">pageName</span><span class="o">,</span> <span class="nc">String</span> <span class="n">mode</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="nc">WikiPage</span> <span class="n">suiteSetup</span> <span class="o">=</span> <span class="nc">PageCrawlerImpl</span><span class="o">.</span><span class="na">getInheritedPage</span><span class="o">(</span><span class="n">pageName</span><span class="o">,</span> <span class="n">wikiPage</span><span class="o">);</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">suiteSetup</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span>
+                <span class="k">return</span> <span class="nf">includePage</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">,</span> <span class="n">mode</span><span class="o">);</span>
+            <span class="k">return</span> <span class="s">""</span><span class="o">;</span>
+        <span class="o">}</span>
+
+        <span class="kd">private</span> <span class="nc">String</span> <span class="nf">includePage</span><span class="o">(</span><span class="nc">WikiPage</span> <span class="n">suiteSetup</span><span class="o">,</span> <span class="nc">String</span> <span class="n">mode</span><span class="o">)</span> <span class="kd">throws</span> <span class="nc">Exception</span> <span class="o">{</span>
+            <span class="nc">WikiPagePath</span> <span class="n">pagePath</span> <span class="o">=</span> <span class="n">wikiPage</span><span class="o">.</span><span class="na">getPageCrawler</span><span class="o">().</span><span class="na">getFullPath</span><span class="o">(</span><span class="n">suiteSetup</span><span class="o">);</span>
+            <span class="nc">String</span> <span class="n">pagePathName</span> <span class="o">=</span> <span class="nc">PathParser</span><span class="o">.</span><span class="na">render</span><span class="o">(</span><span class="n">pagePath</span><span class="o">);</span>
+            <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"!include -%s .%s\n"</span><span class="o">,</span> <span class="n">mode</span><span class="o">,</span> <span class="n">pagePathName</span><span class="o">);</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이 예제로 리펙토링을 반복해서 연습할 것.</p><h3 id="4-개선"><strong>4. 개선</strong></h3><ul><li>읽기 쉬워지고<li>이해하기 쉬워지고<li>메소드가 자신의 의도를 잘 전달</ul><h3 id="5-개선의-원인"><strong>5. 개선의 원인</strong></h3><ul><li>Small<ul><li>메소드의 첫 번째 규칙. 메소드는 작아질 수 있는 한 최대한 작아야 함</ul><li>블록이 적어야 함<ul><li>if, else, while 문장 등의 내부 블록은 한 줄이어야 함<li>따라서 괄호가 없고 메소드 호출일 것</ul><li>Indenting이 적어야 함<ul><li>메소드는 중첩 구조를 갖을 만큼 크면 안됨<li>들여쓰기는 한 두단계 정도만</ul></ul><h3 id="6-functions-should-do-one-thing"><strong>6. functions should do one thing</strong></h3><p>리펙토링 전의 메소드는 하나 이상의 일을 하고 있던 것에 비해 리펙토링 후의 메소드는 하나의 단순한 일만 실행한다.</p><p>그런데 메소드를 살펴보면 여러 메소드를 실행하는 등 한 가지 일만 수행하는 것 같지는 않아보인다. 메소드가 한 가지 일만 실행한다는 것은 무엇을 의미할까?</p><p>메소드가 수행하는 모든 일의 추상화 수준이 같고, 메소드의 각 스텝들이 메소드 이름이 갖는 추상화 수준보다 한 단계 낮은 것으로만 이루어졌다면 메소드는 한 가지 일만 한다고 할 수 있다. 따라서 원래 코드는 추상화 수준이 다른 많은 단계들을 포함하므로 한 가지 이상의 일을 한다는 것이 명확하다.</p><p>하지만 메소드가 한 가지 일만 하도록 최종적으로 줄이는 것은 매우 어렵다. 이를 어떤 기능을 to 부정사 구문으로 표현하여 해당 기능을 수행하기 위해서는 어떤 과정이 필요한지 생각해본다면 같은 추상화 수준의 계층을 그려볼 수 있을 것이다.</p><p>메소드가 하나 이상의 추상화 레벨을 다루면 이 메소드는 한 가지 이상의 일을 하는 것이다.</p><ul><li>StringBuffer, parser, pageCrawler는 low level detail of implementation<li>반면 testablePage, inheritedPage 등은 비즈니스 개념으로 high level of abstraction<li>하나의 메소드가 2가지 개념들을 모두 다루는 것을 원치 않는다.<li>서로 다른 추상화 레벨을 서로 다른 메소드로 분리한다.<li>메소드가 한 가지 일만 하기 위해서는 추상화 레벨의 경계를 넘지 말아야 한다.</ul><h3 id="7-where-do-classes-do-to-hide"><strong>7. Where do classes do to hide?</strong></h3><p>큰 메소드는 실제로 클래스가 숨어있는 곳이다.</p><p>큰 메소드는 들여쓰기가 존재하고 변수들을 사용해서 통신하는 기능들의 집합이다. 그렇다면 이 메소드는 항상 하나 이상의 클래스로 분리할 수 있을 것이다.</p><h3 id="8-primenumber-예제"><strong>8. PrimeNumber 예제</strong></h3><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">linesPerPage</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">columns</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+        <span class="kd">final</span> <span class="kt">int</span> <span class="n">ordmax</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">primes</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">numberOfPrimes</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="kt">int</span> <span class="n">pagenumber</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">pageoffset</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">rowoffset</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">column</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">candidate</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">primeIndex</span><span class="o">;</span>
+        <span class="kt">boolean</span> <span class="n">possiblyPrime</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">ord</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">square</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">multiples</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">ordmax</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="n">candidate</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">primeIndex</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">primes</span><span class="o">[</span><span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="n">ord</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="n">square</span> <span class="o">=</span> <span class="mi">9</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">primeIndex</span> <span class="o">&lt;</span> <span class="n">numberOfPrimes</span><span class="o">)</span> <span class="o">{</span>
+            <span class="k">do</span> <span class="o">{</span>
+                <span class="n">candidate</span> <span class="o">=</span> <span class="n">candidate</span> <span class="o">+</span> <span class="mi">2</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">candidate</span> <span class="o">==</span> <span class="n">square</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="n">ord</span> <span class="o">=</span> <span class="n">ord</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+                    <span class="n">square</span> <span class="o">=</span> <span class="n">primes</span><span class="o">[</span><span class="n">ord</span><span class="o">]</span> <span class="o">*</span> <span class="n">primes</span><span class="o">[</span><span class="n">ord</span><span class="o">];</span>
+                    <span class="n">multiples</span><span class="o">[</span><span class="n">ord</span> <span class="o">-</span> <span class="mi">1</span><span class="o">]</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">;</span>
+                <span class="o">}</span>
+                <span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+                <span class="n">possiblyPrime</span> <span class="o">=</span> <span class="kc">true</span><span class="o">;</span>
+                <span class="k">while</span> <span class="o">(</span><span class="n">n</span> <span class="o">&lt;</span> <span class="n">ord</span> <span class="o">&amp;&amp;</span> <span class="n">possiblyPrime</span><span class="o">)</span> <span class="o">{</span>
+                    <span class="k">while</span> <span class="o">(</span><span class="n">multiples</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">&lt;</span> <span class="n">candidate</span><span class="o">)</span>
+                        <span class="n">multiples</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">=</span> <span class="n">multiples</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">+</span> <span class="n">primes</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">+</span> <span class="n">primes</span><span class="o">[</span><span class="n">n</span><span class="o">];</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">multiples</span><span class="o">[</span><span class="n">n</span><span class="o">]</span> <span class="o">==</span> <span class="n">candidate</span><span class="o">)</span>
+                        <span class="n">possiblyPrime</span> <span class="o">=</span> <span class="kc">false</span><span class="o">;</span>
+                    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="o">}</span>
+            <span class="o">}</span> <span class="k">while</span> <span class="o">(!</span><span class="n">possiblyPrime</span><span class="o">);</span>
+            <span class="n">primeIndex</span> <span class="o">=</span> <span class="n">primeIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="n">primes</span><span class="o">[</span><span class="n">primeIndex</span><span class="o">]</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="o">{</span>
+            <span class="n">pagenumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="n">pageoffset</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="k">while</span> <span class="o">(</span><span class="n">pageoffset</span> <span class="o">&lt;=</span> <span class="n">numberOfPrimes</span><span class="o">)</span> <span class="o">{</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The First "</span> <span class="o">+</span> <span class="n">numberOfPrimes</span> <span class="o">+</span>
+                        <span class="s">" Prime Numbers --- Page "</span> <span class="o">+</span> <span class="n">pagenumber</span><span class="o">);</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+                <span class="k">for</span> <span class="o">(</span><span class="n">rowoffset</span> <span class="o">=</span> <span class="n">pageoffset</span><span class="o">;</span> <span class="n">rowoffset</span> <span class="o">&lt;</span> <span class="n">pageoffset</span> <span class="o">+</span> <span class="n">linesPerPage</span><span class="o">;</span> <span class="n">rowoffset</span><span class="o">++)</span> <span class="o">{</span>
+                    <span class="k">for</span> <span class="o">(</span><span class="n">column</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span><span class="o">;</span> <span class="n">column</span><span class="o">++)</span>
+                        <span class="k">if</span> <span class="o">(</span><span class="n">rowoffset</span> <span class="o">+</span> <span class="n">column</span> <span class="o">*</span> <span class="n">linesPerPage</span> <span class="o">&lt;=</span> <span class="n">numberOfPrimes</span><span class="o">)</span>
+                            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%10d"</span><span class="o">,</span> <span class="n">primes</span><span class="o">[</span><span class="n">rowoffset</span> <span class="o">+</span> <span class="n">column</span> <span class="o">*</span> <span class="n">linesPerPage</span><span class="o">]);</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+                <span class="o">}</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\f"</span><span class="o">);</span>
+                <span class="n">pagenumber</span> <span class="o">=</span> <span class="n">pagenumber</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+                <span class="n">pageoffset</span> <span class="o">=</span> <span class="n">pageoffset</span> <span class="o">+</span> <span class="n">linesPerPage</span> <span class="o">*</span> <span class="n">columns</span><span class="o">;</span>
+            <span class="o">}</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>먼저 main()을 Replace Method With Method Object를 통해 <code class="language-plaintext highlighter-rouge">PrimePrinterHelper</code>라는 이름의 클래스로 뽑아낸다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">PrimePrinterHelper</span><span class="o">.</span><span class="na">invoke</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">PrimePrinterHelper</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">invoke</span><span class="o">()</span> <span class="o">{</span>
+            <span class="o">...</span>
+</pre></table></code></div></div><p>이때 <code class="language-plaintext highlighter-rouge">invoke()</code>가 static method로 생성되기때문에 <code class="language-plaintext highlighter-rouge">static</code>을 제거해주자</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="nf">PrimePrinterHelper</span><span class="o">().</span><span class="na">invoke</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">PrimePrinterHelper</span> <span class="o">{</span>
+        <span class="kd">private</span> <span class="kt">void</span> <span class="nf">invoke</span><span class="o">()</span> <span class="o">{</span>
+            <span class="o">...</span>
+</pre></table></code></div></div><p>그 후 변수들을 모두 멤버 변수로 끌어올린다.</p><p>이 변수들 중에서는 멤버 변수로 올리지 않아도 되는 것들도 있으나, 그러한 것들은 리펙토링 과정에서 쉽게 찾을 수 있으니 일단 다 올리는 것이 편하다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+</pre><td class="rouge-code"><pre><span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">PrimePrinterHelper</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">linesPerPage</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">columns</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ordmax</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">primes</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">numberOfPrimes</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pagenumber</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pageoffset</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">rowoffset</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">column</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">candidate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">primeIndex</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">possiblyPrime</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">ord</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">square</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">multiples</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">ordmax</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+    
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">invoke</span><span class="o">()</span> <span class="o">{</span>
+        <span class="o">...</span>
+</pre></table></code></div></div><p>그 후 결과 출력과 관련된 부분을 <code class="language-plaintext highlighter-rouge">printNumbers()</code>로 추출</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="o">}</span> <span class="k">while</span> <span class="o">(!</span><span class="n">possiblyPrime</span><span class="o">);</span>
+        <span class="n">primeIndex</span> <span class="o">=</span> <span class="n">primeIndex</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="n">primes</span><span class="o">[</span><span class="n">primeIndex</span><span class="o">]</span> <span class="o">=</span> <span class="n">candidate</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="n">printNumbers</span><span class="o">();</span>
+<span class="o">}</span>
+
+<span class="kd">private</span> <span class="kt">void</span> <span class="nf">printNumbers</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">pagenumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="n">pageoffset</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">pageoffset</span> <span class="o">&lt;=</span> <span class="n">numberOfPrimes</span><span class="o">)</span> <span class="o">{</span>
+</pre></table></code></div></div><p>이후에 클래스가 나뉘었을 때도 <code class="language-plaintext highlighter-rouge">primes</code>와 <code class="language-plaintext highlighter-rouge">numberOfPrimes</code>를 사용하기 위해서 이 두 변수를 파라미터로 전달받도록 한다.</p><p>이후 <code class="language-plaintext highlighter-rouge">printNumbers()</code>의 파라미터 <code class="language-plaintext highlighter-rouge">primes</code>의 변수명을 <code class="language-plaintext highlighter-rouge">numbers</code>로 변경한다. <code class="language-plaintext highlighter-rouge">printNumbers()</code> 입장에서 출력할 변수가 prime number인지 아닌지는 관심사가 아니기 때문에 <code class="language-plaintext highlighter-rouge">numbers</code>로 변경하는 것이 더 이해하기 쉽다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kd">private</span> <span class="kt">void</span> <span class="nf">printNumbers</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">pagenumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="n">pageoffset</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="k">while</span> <span class="o">(</span><span class="n">pageoffset</span> <span class="o">&lt;=</span> <span class="n">numberOfPrimes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The First "</span> <span class="o">+</span> <span class="k">this</span><span class="o">.</span><span class="na">numberOfPrimes</span> <span class="o">+</span>
+                <span class="s">" Prime Numbers --- Page "</span> <span class="o">+</span> <span class="n">pagenumber</span><span class="o">);</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+        <span class="k">for</span> <span class="o">(</span><span class="n">rowoffset</span> <span class="o">=</span> <span class="n">pageoffset</span><span class="o">;</span> <span class="n">rowoffset</span> <span class="o">&lt;</span> <span class="n">pageoffset</span> <span class="o">+</span> <span class="n">linesPerPage</span><span class="o">;</span> <span class="n">rowoffset</span><span class="o">++)</span> <span class="o">{</span>
+            <span class="k">for</span> <span class="o">(</span><span class="n">column</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span><span class="o">;</span> <span class="n">column</span><span class="o">++)</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">rowoffset</span> <span class="o">+</span> <span class="n">column</span> <span class="o">*</span> <span class="n">linesPerPage</span> <span class="o">&lt;=</span> <span class="k">this</span><span class="o">.</span><span class="na">numberOfPrimes</span><span class="o">)</span>
+                    <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%10d"</span><span class="o">,</span> <span class="n">numbers</span><span class="o">[</span><span class="n">rowoffset</span> <span class="o">+</span> <span class="n">column</span> <span class="o">*</span> <span class="n">linesPerPage</span><span class="o">]);</span>
+</pre></table></code></div></div><p>이후 static class로 선언되어 있던 <code class="language-plaintext highlighter-rouge">PrimePrinterHelper</code> 클래스를 <code class="language-plaintext highlighter-rouge">PrintPrimes</code>와 분리한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">new</span> <span class="nf">PrimePrinterHelper</span><span class="o">().</span><span class="na">invoke</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+<span class="kd">class</span> <span class="nc">PrimePrinterHelper</span> <span class="o">{</span>
+    <span class="o">...</span>
+</pre></table></code></div></div><p>이제 <code class="language-plaintext highlighter-rouge">PrintPrimes</code>에서 <code class="language-plaintext highlighter-rouge">PrimePrinterHelper</code>의 메소드들을 호출하도록 변경한다. 이 때 <code class="language-plaintext highlighter-rouge">invoke()</code>와 <code class="language-plaintext highlighter-rouge">printNumbers()</code>의 접근지정자를 <code class="language-plaintext highlighter-rouge">public</code>으로 변경해야 한다.</p><p>또한 <code class="language-plaintext highlighter-rouge">invoke()</code>의 리턴값을 <code class="language-plaintext highlighter-rouge">void</code>에서 <code class="language-plaintext highlighter-rouge">int[]</code>로 변경하여 계산된 prime number 배열을 리턴하도록 변경한다.</p><p>기존에는 <code class="language-plaintext highlighter-rouge">invoke()</code>에서 계산하고 <code class="language-plaintext highlighter-rouge">printNumbers()</code>까지 실행하였는데 이러한 방식에서는 prime number를 계산하려면 무조건 출력해야 하고, 출력하려면 무조건 다시 계산해야 하기 때문에 앞 장에서 배운 <code class="language-plaintext highlighter-rouge">Command Vs Query</code>를 어긴다고 볼 수 있다.</p><p>따라서 <code class="language-plaintext highlighter-rouge">PrintPrimes</code> 클래스에서 호출한 <code class="language-plaintext highlighter-rouge">invoke()</code>는 계산결과를 리턴하고 그 결과를 받아 <code class="language-plaintext highlighter-rouge">printNumbers()</code>를 호출하도록 변경한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">PrimePrinterHelper</span> <span class="n">primePrinterHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrimePrinterHelper</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">primes</span> <span class="o">=</span> <span class="n">primePrinterHelper</span><span class="o">.</span><span class="na">invoke</span><span class="o">();</span>
+        <span class="n">primePrinterHelper</span><span class="o">.</span><span class="na">printNumbers</span><span class="o">(</span><span class="n">primes</span><span class="o">,</span> <span class="n">numberOfPrimes</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이제 <code class="language-plaintext highlighter-rouge">printNumbers()</code>를 외부 클래스로 뽑아낼 차례인데, <code class="language-plaintext highlighter-rouge">PrimePrinterHelper</code> 클래스의 멤버 변수 중에서는 <code class="language-plaintext highlighter-rouge">printNumbers()</code>에서만 쓰이는 것들이 있다. 이 변수들을 지역변수로 변경하거나 파라미터로 받게끔 변경한다.</p><p>이 과정이 복잡하게 느껴질 수 있는데, IDE에서 멤버변수와 지역변수는 다른 색으로 표시하기 때문에 이 기능을 잘 활용하면 쉽게 바꿀 수 있다.</p><p>Intellij에서 내가 사용하는 테마는 멤버 변수의 경우 빨간색으로 나타낸다. 따라서 변경 전의 <code class="language-plaintext highlighter-rouge">printNumbers()</code>는 다음과 같다.</p><p><img data-proofer-ignore data-src="assets/../../../assets/img/baek/1.png" width="600" /></p><p>빨간색으로 표시되는 변수들을 모두 바꾼다고 생각하면 쉽다.</p><p>만약 해당 변수가 <code class="language-plaintext highlighter-rouge">printNumbers()</code> 내에서만 사용된다면 로컬 변수로 변경하면 되고, 외부에서도 사용되는 변수라면 파라미터로 받게끔 한다.</p><p>변경된 <code class="language-plaintext highlighter-rouge">printNumbers()</code>는 다음과 같다.</p><p><img data-proofer-ignore data-src="assets/../../../assets/img/baek/2.png" width="600" /></p><p>빨간색으로 표시되던 변수가 모두 사라진 것을 볼 수 있다.</p><p>이로 인해 변경된 <code class="language-plaintext highlighter-rouge">PrintPrimes</code> 클래스와 <code class="language-plaintext highlighter-rouge">PrimePrinterHelper</code>의 멤버 변수는 다음과 같다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">linesPerPage</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">columns</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">PrimePrinterHelper</span> <span class="n">primePrinterHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrimePrinterHelper</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">primes</span> <span class="o">=</span> <span class="n">primePrinterHelper</span><span class="o">.</span><span class="na">invoke</span><span class="o">();</span>
+        <span class="n">primePrinterHelper</span><span class="o">.</span><span class="na">printNumbers</span><span class="o">(</span><span class="n">primes</span><span class="o">,</span> <span class="n">numberOfPrimes</span><span class="o">,</span> <span class="n">linesPerPage</span><span class="o">,</span> <span class="n">columns</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+
+<span class="kd">class</span> <span class="nc">PrimePrinterHelper</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ordmax</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">primes</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">numberOfPrimes</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">candidate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">primeIndex</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">possiblyPrime</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">ord</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">square</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">multiples</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">ordmax</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+</pre></table></code></div></div><p>여기까지하면 <code class="language-plaintext highlighter-rouge">printNumbers()</code>를 외부 클래스로 분리할 준비가 끝났기 때문에 <code class="language-plaintext highlighter-rouge">NumberPrinter</code>라는 클래스로 추출해보자.</p><p>기존 <code class="language-plaintext highlighter-rouge">printNumbers()</code>의 파라미터들은 <code class="language-plaintext highlighter-rouge">NumberPrinter</code>의 멤버변수로 변경하고 생성자를 통해 받도록 한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NumberPrinter</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">linesPerPage</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">columns</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">NumberPrinter</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span><span class="o">,</span> <span class="kt">int</span> <span class="n">linesPerPage</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columns</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">numbers</span> <span class="o">=</span> <span class="n">numbers</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">numberOfPrimes</span> <span class="o">=</span> <span class="n">numberOfPrimes</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">linesPerPage</span> <span class="o">=</span> <span class="n">linesPerPage</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">columns</span> <span class="o">=</span> <span class="n">columns</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printNumbers</span><span class="o">()</span> <span class="o">{</span>
+        <span class="kt">int</span> <span class="n">pagenumber</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="kt">int</span> <span class="n">pageoffset</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">while</span> <span class="o">(</span><span class="n">pageoffset</span> <span class="o">&lt;=</span> <span class="n">numberOfPrimes</span><span class="o">)</span> <span class="o">{</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"The First "</span> <span class="o">+</span> <span class="n">numberOfPrimes</span> <span class="o">+</span>
+                    <span class="s">" Prime Numbers — Page "</span> <span class="o">+</span> <span class="n">pagenumber</span><span class="o">);</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+            <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">rowoffset</span> <span class="o">=</span> <span class="n">pageoffset</span><span class="o">;</span> <span class="n">rowoffset</span> <span class="o">&lt;</span> <span class="n">pageoffset</span> <span class="o">+</span> <span class="n">linesPerPage</span><span class="o">;</span> <span class="n">rowoffset</span><span class="o">++)</span> <span class="o">{</span>
+                <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">column</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">column</span> <span class="o">&lt;</span> <span class="n">columns</span><span class="o">;</span> <span class="n">column</span><span class="o">++)</span>
+                    <span class="k">if</span> <span class="o">(</span><span class="n">rowoffset</span> <span class="o">+</span> <span class="n">column</span> <span class="o">*</span> <span class="n">linesPerPage</span> <span class="o">&lt;=</span> <span class="n">numberOfPrimes</span><span class="o">)</span>
+                        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"%10d"</span><span class="o">,</span> <span class="n">numbers</span><span class="o">[</span><span class="n">rowoffset</span> <span class="o">+</span> <span class="n">column</span> <span class="o">*</span> <span class="n">linesPerPage</span><span class="o">]);</span>
+                <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">""</span><span class="o">);</span>
+            <span class="o">}</span>
+            <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">"\f"</span><span class="o">);</span>
+            <span class="n">pagenumber</span> <span class="o">=</span> <span class="n">pagenumber</span> <span class="o">+</span> <span class="mi">1</span><span class="o">;</span>
+            <span class="n">pageoffset</span> <span class="o">=</span> <span class="n">pageoffset</span> <span class="o">+</span> <span class="n">linesPerPage</span> <span class="o">*</span> <span class="n">columns</span><span class="o">;</span>
+        <span class="o">}</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">PrimePrinterHelper</code>에서는 이제 <code class="language-plaintext highlighter-rouge">printNumbers()</code> 호출 방식이 다음과 같이 변경된다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kt">void</span> <span class="nf">printNumbers</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span><span class="o">,</span> <span class="kt">int</span> <span class="n">linesPerPage</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columns</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">new</span> <span class="nf">NumberPrinter</span><span class="o">(</span><span class="n">numbers</span><span class="o">,</span> <span class="n">numberOfPrimes</span><span class="o">,</span> <span class="n">linesPerPage</span><span class="o">,</span> <span class="n">columns</span><span class="o">).</span><span class="na">printNumbers</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이렇게 생성자를 통해서 초기화하는 변수값들은 해당 클래스의 인스턴스가 살아있는 동안 변경되지 않는 값이어야 할 것이다. 그런데 출력할 숫자의 배열인 <code class="language-plaintext highlighter-rouge">numbers</code>와 출력할 소수의 개수인 <code class="language-plaintext highlighter-rouge">numberOfPrimes</code>는 출력마다 변경될 수 있는 값이다.</p><p>따라서 이 두 변수를 생성자가 아닌 <code class="language-plaintext highlighter-rouge">printNumbers()</code>의 파라미터로 전달받도록 변경한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NumberPrinter</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">linesPerPage</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">columns</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">NumberPrinter</span><span class="o">(</span><span class="kt">int</span> <span class="n">linesPerPage</span><span class="o">,</span> <span class="kt">int</span> <span class="n">columns</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">linesPerPage</span> <span class="o">=</span> <span class="n">linesPerPage</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">columns</span> <span class="o">=</span> <span class="n">columns</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printNumbers</span><span class="o">(</span><span class="kt">int</span><span class="o">[]</span> <span class="n">numbers</span><span class="o">,</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="o">...</span>
+</pre></table></code></div></div><p>이제 <code class="language-plaintext highlighter-rouge">PrimePrinterHelper</code>에서 <code class="language-plaintext highlighter-rouge">NumberPrinter</code>의 메소드를 호출할 필요가 없으니 inline을 통해서 <code class="language-plaintext highlighter-rouge">printNumbers()</code>의 호출을 <code class="language-plaintext highlighter-rouge">PrintPrimes</code>으로 옮긴다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">linesPerPage</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">columns</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">PrimePrinterHelper</span> <span class="n">primePrinterHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrimePrinterHelper</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">primes</span> <span class="o">=</span> <span class="n">primePrinterHelper</span><span class="o">.</span><span class="na">invoke</span><span class="o">();</span>
+        <span class="k">new</span> <span class="nf">NumberPrinter</span><span class="o">(</span><span class="n">linesPerPage</span><span class="o">,</span> <span class="n">columns</span><span class="o">).</span><span class="na">printNumbers</span><span class="o">(</span><span class="n">primes</span><span class="o">,</span> <span class="n">numberOfPrimes</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이렇게되면 <code class="language-plaintext highlighter-rouge">PrimePrinterHelper</code>는 prime number를 생성하는 책임만 가지기 때문에 클래스명을 <code class="language-plaintext highlighter-rouge">PrimeGenerator</code>로 변경한다.</p><p>그리고 <code class="language-plaintext highlighter-rouge">PrimeGenerator</code> 클래스는 생성할 prime number의 개수를 상수 멤버변수인 <code class="language-plaintext highlighter-rouge">numberOfPrimes</code>로 가지고 있는데, <code class="language-plaintext highlighter-rouge">invoke()</code>를 호출할 때마다 개수를 지정할 수 있도록 <code class="language-plaintext highlighter-rouge">numberOfPrimes</code>을 파라미터로 전달받도록 변경한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre><span class="kd">class</span> <span class="nc">PrimeGenerator</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">ordmax</span> <span class="o">=</span> <span class="mi">30</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span><span class="o">[]</span> <span class="n">primes</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">candidate</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">primeIndex</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">boolean</span> <span class="n">possiblyPrime</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">ord</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">square</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">n</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">multiples</span><span class="o">[]</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">ordmax</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+
+    <span class="kd">public</span> <span class="kt">int</span><span class="o">[]</span> <span class="nf">invoke</span><span class="o">(</span><span class="kt">int</span> <span class="n">numberOfPrimes</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">primes</span> <span class="o">=</span> <span class="k">new</span> <span class="kt">int</span><span class="o">[</span><span class="n">numberOfPrimes</span> <span class="o">+</span> <span class="mi">1</span><span class="o">];</span>
+        <span class="o">...</span>
+</pre></table></code></div></div><p>그 후 <code class="language-plaintext highlighter-rouge">PrimeGenerator</code> 클래스를 <code class="language-plaintext highlighter-rouge">PrintPrimes</code> 클래스와 분리된 외부 클래스로 옮긴다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">linesPerPage</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">columns</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">PrimeGenerator</span> <span class="n">primePrinterHelper</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrimeGenerator</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">primes</span> <span class="o">=</span> <span class="n">primePrinterHelper</span><span class="o">.</span><span class="na">invoke</span><span class="o">(</span><span class="n">numberOfPrimes</span><span class="o">);</span>
+        <span class="k">new</span> <span class="nf">NumberPrinter</span><span class="o">(</span><span class="n">linesPerPage</span><span class="o">,</span> <span class="n">columns</span><span class="o">).</span><span class="na">printNumbers</span><span class="o">(</span><span class="n">primes</span><span class="o">,</span> <span class="n">numberOfPrimes</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이제 분리된 <code class="language-plaintext highlighter-rouge">PrimeGenerator</code> 클래스와 <code class="language-plaintext highlighter-rouge">NumberPrinter</code> 클래스의 메소드명을 의미있게 변경하면 리펙토링이 끝난다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">PrintPrimes</span> <span class="o">{</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">numberOfPrimes</span> <span class="o">=</span> <span class="mi">1000</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">linesPerPage</span> <span class="o">=</span> <span class="mi">50</span><span class="o">;</span>
+    <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="n">columns</span> <span class="o">=</span> <span class="mi">4</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="nc">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="nc">PrimeGenerator</span> <span class="n">primeGenerator</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">PrimeGenerator</span><span class="o">();</span>
+        <span class="kt">int</span><span class="o">[]</span> <span class="n">primes</span> <span class="o">=</span> <span class="n">primeGenerator</span><span class="o">.</span><span class="na">generatePrimes</span><span class="o">(</span><span class="n">numberOfPrimes</span><span class="o">);</span>
+        <span class="nc">NumberPrinter</span> <span class="n">numberPrinter</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NumberPrinter</span><span class="o">(</span><span class="n">linesPerPage</span><span class="o">,</span> <span class="n">columns</span><span class="o">);</span>
+        <span class="n">numberPrinter</span><span class="o">.</span><span class="na">print</span><span class="o">(</span><span class="n">primes</span><span class="o">,</span> <span class="n">numberOfPrimes</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>최종적으로 길고 알아보기 힘들던 큰 메소드 하나를 두 개의 클래스로 분리하여 읽기 좋은 코드로 리펙토링 되었다. 가독성이 높아졌을 뿐 아니라, 만약 소수를 계산하는 로직이 변경되거나 숫자를 출력하는 방식이 변경되더라도 해당 클래스를 제외한 다른 클래스의 코드는 영향을 받지 않게 된다.</p><h3 id="9-one-thing"><strong>9. One thing?</strong></h3><p>function should do one things, do it well, do it only.</p><p>큰 메소드를 작은 메소드들로 쪼갤 때는</p><ul><li>주요 섹션들을 메소드로 추출하고<li>메소드를 서로 다른 추상화 레벨로 분리한다.</ul><p>하지만 추상화 레벨은 불분명(fuzzy)하다.</p><p><strong>extract till you drop</strong></p><ul><li>메소드가 한 가지 일만 하는 지 어떻게 확신할 수 있는가?<li>더 이상 extract할 수 없을 때까지 extract하라<li>extract할 코드를 가진 메소드는 한 가지 일을 하는 것이다.<li>4줄 이내의 메소드들로만 구성된 클래스<li>if, while문 등에서 {}가 보이면 extract 대상<li>{}는 extract할 기회</ul><h3 id="10-conclusion"><strong>10. conclusion</strong></h3><ul><li>1st rule : function should be small<li>2nd rule : smaller than that</ul><p>이름을 잘 지으면 나뿐만 아니라 모든 사람들의 시간을 절약해준다.<br /> 메소드를 작게 만들면 나뿐만 아니라 모든 사람들의 시간을 절약해준다.</p><p>클래스는 큰 메소드를 감춘다. 메소드를 여러 클래스들에 잘 배분하려면 메소드를 작게 만들어야 한다.</p><p>메소드는 한 가지 일만 해야하고, 한 가지만 하는지 확신할 수 있는 유일한 방법은 <code class="language-plaintext highlighter-rouge">extract till you drop</code>이다.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/backend/'>Backend</a>, <a href='/categories/oop/'>OOP</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/java/" class="post-tag no-text-decoration" >java</a> <a href="/tags/oop/" class="post-tag no-text-decoration" >oop</a> <a href="/tags/programming/" class="post-tag no-text-decoration" >programming</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=클린 코더스 강의 정리 - 3장, 4장 Function - yeoji21&url=https://yeoji21.github.io/posts/ch03/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=클린 코더스 강의 정리 - 3장, 4장 Function - yeoji21&u=https://yeoji21.github.io/posts/ch03/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=클린 코더스 강의 정리 - 3장, 4장 Function - yeoji21&url=https://yeoji21.github.io/posts/ch03/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/polymorphism-inheritance/">객체지향에서의 상속과 다형성</a><li><a href="/posts/graduation-project-review/">졸업 작품 프로젝트 회고</a><li><a href="/posts/reflection-1/">[JAVA] Java Refelction 마스터 강의 1장</a><li><a href="/posts/mst/">[알고리즘] MST - 크루스칼 vs 프림</a><li><a href="/posts/injection/">[Spring] 의존성 주입 시 생성자 주입을 사용해야 하는 이유 </a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/java/">java</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a> <a class="post-tag" href="/tags/java-study/">java study</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/">자바 스터디</a> <a class="post-tag" href="/tags/oop/">oop</a> <a class="post-tag" href="/tags/programming/">programming</a> <a class="post-tag" href="/tags/spring/">spring</a> <a class="post-tag" href="/tags/jpa/">jpa</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/guides/">guides</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/ch01/"><div class="card-body"> <span class="timeago small" >Nov 9, 2021<i class="unloaded">2021-11-09T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 1장, 2장 소개 및 OOP</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 1. 소개 및 OOP 마틴 파울러 “기계가 이해할 수 있는 코드는 누구나 작성할 수 있다. 그런데 사람이 이해할 수 있는 코드는 잘 학습된 소프트웨어 엔지니어만 작성할 수 있다.” 내가 구현하려...</p></div></div></a></div><div class="card"> <a href="/posts/ch05/"><div class="card-body"> <span class="timeago small" >Nov 11, 2021<i class="unloaded">2021-11-11T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 5장 Function Structure</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 5. Function Structure 1. Arguments 인자가 많아지면 복잡도가 증가한다. 3개의 인자가 최대 그 이상 넘어가면 외우기 어렵다. 따라서 Intellij의 Intro...</p></div></div></a></div><div class="card"> <a href="/posts/ch06/"><div class="card-body"> <span class="timeago small" >Nov 13, 2021<i class="unloaded">2021-11-13T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 6장 Form</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 6. Form 1. Coding Standards 조직이 일정 수준의 크기가 되면 관료적인 문서화를 요구한다. 따라서 어떠한 Coding Standard가 필요한 것은 맞으나, 별도의 문서로 유지하...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/ch01/" class="btn btn-outline-primary" prompt="Older"><p>클린 코더스 강의 정리 - 1장, 2장 소개 및 OOP</p></a> <a href="/posts/ch05/" class="btn btn-outline-primary" prompt="Newer"><p>클린 코더스 강의 정리 - 5장 Function Structure</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://twitter.com/username">yeoji21</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/java/">java</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a> <a class="post-tag" href="/tags/java-study/">java study</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/">자바 스터디</a> <a class="post-tag" href="/tags/oop/">oop</a> <a class="post-tag" href="/tags/programming/">programming</a> <a class="post-tag" href="/tags/spring/">spring</a> <a class="post-tag" href="/tags/jpa/">jpa</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/guides/">guides</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://yeoji21.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>

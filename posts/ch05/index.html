@@ -1,0 +1,783 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="클린 코더스 강의 정리 - 5장 Function Structure" /><meta name="author" content="yeoji21" /><meta property="og:locale" content="en" /><meta name="description" content="들어가면서" /><meta property="og:description" content="들어가면서" /><link rel="canonical" href="https://yeoji21.github.io/posts/ch05/" /><meta property="og:url" content="https://yeoji21.github.io/posts/ch05/" /><meta property="og:site_name" content="yeoji21" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-11-11T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="클린 코더스 강의 정리 - 5장 Function Structure" /><meta name="twitter:site" content="@twitter_username" /><meta name="twitter:creator" content="@yeoji21" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yeoji21"},"dateModified":"2021-11-11T00:00:00+09:00","datePublished":"2021-11-11T00:00:00+09:00","description":"들어가면서","headline":"클린 코더스 강의 정리 - 5장 Function Structure","mainEntityOfPage":{"@type":"WebPage","@id":"https://yeoji21.github.io/posts/ch05/"},"url":"https://yeoji21.github.io/posts/ch05/"}</script><title>클린 코더스 강의 정리 - 5장 Function Structure | yeoji21</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="yeoji21"><meta name="application-name" content="yeoji21"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap" rel="stylesheet"><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/profile/img1.JPG" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">yeoji21</a></div><div class="site-subtitle font-italic">Don't look back in anger</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/yeoji21" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['yeozone0508','gmail.com'].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>클린 코더스 강의 정리 - 5장 Function Structure</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>클린 코더스 강의 정리 - 5장 Function Structure</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> yeoji21 </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Thu, Nov 11, 2021, 12:00 AM +0900" >Nov 11, 2021<i class="unloaded">2021-11-11T00:00:00+09:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="5586 words">31 min read</span></div></div><div class="post-content"><h2 id="들어가면서">들어가면서</h2><ul><li>해당 포스트는 <a href="https://www.youtube.com/watch?v=60lLSe1phks">백명석님의 클린 코더스 강의</a>를 정리한 내용입니다.<li>강의 자료는 <a href="https://github.com/msbaek/clean-coders-2013">깃 허브</a>에서 보실 수 있습니다.</ul><h2 id="클린-코더스-강의-5-function-structure">클린 코더스 강의 5. Function Structure</h2><h3 id="1-arguments"><strong>1. Arguments</strong></h3><ul><li><strong>인자가 많아지면 복잡도가 증가한다.</strong><li><strong>3개의 인자가 최대</strong><br /> 그 이상 넘어가면 외우기 어렵다. 따라서 Intellij의 Introduce Parameter Object 기능을 사용해서 파라미터들을 하나의 클래스로 만드는 것을 추천한다.<li><strong>생성자에 많은 수의 인자를 넘겨야 한다면, <code class="language-plaintext highlighter-rouge">setter</code>를 사용하거나 <code class="language-plaintext highlighter-rouge">Builder</code>패턴을 적용하는 것이 좋다.</strong><li><strong>Boolean 인자 사용 금지</strong><br /> 두 가지 이상의 일을 하는 것이 되어버린다. 이런 경우에는 <code class="language-plaintext highlighter-rouge">true</code> 경우를 위한 일, <code class="language-plaintext highlighter-rouge">false</code> 경우를 위한 일로 2개의 함수로 분리할 것<li><strong>Innies not Outies</strong><br /> 파라미터는 Input으로 작용해야지 Output으로 작용해서는 안된다.<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre>  <span class="kd">private</span> <span class="nc">String</span> <span class="nf">toSimpleText</span><span class="o">(</span><span class="nc">Parse</span> <span class="n">table</span><span class="o">,</span> <span class="nc">StringBuffer</span> <span class="n">returnText</span><span class="o">)</span> <span class="o">{</span>
+      <span class="k">if</span> <span class="o">(</span><span class="n">table</span><span class="o">.</span><span class="na">parts</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+          <span class="n">simpleTextOfLeave</span><span class="o">(</span><span class="n">table</span><span class="o">,</span> <span class="n">returnText</span><span class="o">);</span>
+          <span class="n">simpleTextOfMore</span><span class="o">(</span><span class="n">table</span><span class="o">,</span> <span class="n">returnText</span><span class="o">);</span>
+          <span class="k">return</span> <span class="n">returnText</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+      <span class="o">}</span>
+      <span class="n">simpleTextOfParts</span><span class="o">(</span><span class="n">table</span><span class="o">,</span> <span class="n">returnText</span><span class="o">);</span>
+      <span class="n">simpleTextOfMore</span><span class="o">(</span><span class="n">table</span><span class="o">,</span> <span class="n">returnText</span><span class="o">);</span>
+      <span class="k">return</span> <span class="n">returnText</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+  <span class="o">}</span>
+</pre></table></code></div></div><p>메소드의 Output은 메소드 내에서 만들어진 결과값으로 리턴해주거나, 리턴값을 <code class="language-plaintext highlighter-rouge">void</code>로 하고 값을 변경하거나 해야 하는데</p><p>위 코드에서는 <code class="language-plaintext highlighter-rouge">table</code>과 <code class="language-plaintext highlighter-rouge">returnText</code>를 파라미터로 받아서 다시 다른 메소드의 파라미터로 넘겨주는 일을 한 뒤, 변경되었을 것으로 예상되는 <code class="language-plaintext highlighter-rouge">returnText</code>를 다시 리턴한다. 따라서 <code class="language-plaintext highlighter-rouge">returnText</code>는 파라미터(input)으로 들어와서 메소드 내에서 변경된 뒤에 리턴(output)되는 것이다.</p><p>이런 상황이라면 <code class="language-plaintext highlighter-rouge">returnText</code>를 파라미터로 받은 후 메소드의 로컬변수를 변경한 뒤 로컬변수를 리턴해주어야 한다. 따라서 output으로 argument 대신 return value를 만들어서 처리해야 한다.</p><li><p><strong>the null defense (null check)</strong><br /> 파라미터로 null을 전달받길 기대하는 메소드는 없다. 이것은 Boolean을 전달하는 것만큼 잘못된 것이며 null인 경우의 메소드와 null이 아닌 경우의 메소드로 분리하는 것이 맞다.</p><p>null을 마치 boolean인 것처럼 사용하지 말 것.</p><p>defensive programming을 지양하라. 코드를 null과 에러 체크로 더럽히지 말아야 한다. null 여부를 지속적으로 조사하지 않고 단위 테스트에서 검증해야 한다. 만약 null이 발생할 확률이 높다면 차라리 예외를 던지는 편이 낫다.</p><p>단, public api를 사용하는 경우에는 defensive하게 null check를 하는 것이 맞다.</p></ul><h3 id="2-the-stepdown-rule"><strong>2. The Stepdown Rule</strong></h3><ul><li>모든 <code class="language-plaintext highlighter-rouge">public</code>은 위에, 모든 <code class="language-plaintext highlighter-rouge">private</code>는 아래에 위치하도록<li>public part만 사용자들에게 전달하면 된다. backward reference없이 top에서 bottom으로 읽을 수 있게</ul><h3 id="3-switches-and-cases"><strong>3. switches and cases</strong></h3><p>객체지향에 관한 어떤 책에서는 switch문은 객체지향스럽지 못하므로 사용하지 말라고 한다. 그런데 우리에게 이 대답은 그리 만족스럽지 않다.</p><p>이 질문에 대한 답을 직접 알아보자.</p><p>먼저, 객체지향의 가장 큰 이점 중 하나는 의존성 관리 능력이다.</p><p>만약 모듈 A가 모듈 B의 메소드를 사용한다고 가정하면, 절차지향 방식에서는 2가지 의존성이 발생한다.</p><p><img data-proofer-ignore data-src="assets/../../../assets/img/baek/3.jpeg" width="300" /></p><p>이 경우, B의 메소드를 호출하는 A가 상위 로직이다. 따라서 A가 더 중요도가 높은 로직인데 반해 B에서 어떤 변경이 일어나면 A가 영향을 받는다. 이런 형태에서는 독립적인 배포/컴파일/개발이 불가능하다.</p><p>하지만 객체지향에서는 다음과 같은 형태가 가능하다.</p><p><img data-proofer-ignore data-src="assets/../../../assets/img/baek/4.jpeg" width="300" /></p><p>본래 의존성을 제거하고 polymorphic interface를 삽입하면, 모듈 A는 인터페이스에 의존하고, 모듈 B는 인터페이스로부터 derive한다.</p><p>이렇게 되면 runtime 의존성은 그대로 둔 채, source code 의존성을 역전시킨다 =&gt; <code class="language-plaintext highlighter-rouge">Dependency Inversion Principle</code></p><blockquote><p>이런 구조는 유닛 테스팅시에도 매우 유리하다. 테스트 코드를 작성하기 힘든 이유는 구조가 잘못되었기 때문이다.</p></blockquote><p>따라서 Independent Deployability는 객체지향의 강점 중 하나이다.</p><p>그런데 <strong>switch 문장은 독립적 배포에 방해가 된다.</strong></p><p>switch의 각 case 문장은 외부 모듈에 의존성을 갖고, 다수의 다른 모듈에 의존성을 가질 수 있다. 이런 것을 fan-out problem이라고 한다.</p><p>따라서 switch문에서 source code 의존성은 flow of control과 방향이 같아지게 된다. 외부 모듈 중 하나라도 변경이 일어나면 switch 문장이 영향을 받고, switch에 의존하는 다른 모든 것들도 영향을 받게 된다.</p><p>switch문을 제거하기 위해서는 먼저 switch문을 polymorphic interface 호출로 변환한 뒤, case에 있는 문장들을 별도의 클래스로 추출하여 변경 영향이 발생하지 않도록 한다.</p><h3 id="videostore-예제">VideoStore 예제</h3><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Movie</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">CHILDRENS</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">NEW_RELEASE</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">REGULAR</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pricecode</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Movie</span><span class="o">(</span><span class="nc">String</span> <span class="n">title</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pricecode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">title</span> <span class="o">=</span> <span class="n">title</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pricecode</span> <span class="o">=</span> <span class="n">pricecode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setPricecode</span><span class="o">(</span><span class="kt">int</span> <span class="n">pricecode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">pricecode</span> <span class="o">=</span> <span class="n">pricecode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getTitle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">title</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPricecode</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">pricecode</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">double</span> <span class="nf">determineAmount</span><span class="o">(</span><span class="kt">int</span> <span class="n">daysRented</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">rentalAmount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="k">switch</span><span class="o">(</span><span class="n">pricecode</span><span class="o">){</span>
+            <span class="k">case</span> <span class="nl">REGULAR:</span>
+                <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">;</span>
+                <span class="k">if</span> <span class="o">(</span><span class="n">daysRented</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="o">)</span>
+                    <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="o">(</span><span class="n">daysRented</span> <span class="o">-</span> <span class="mi">2</span><span class="o">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="nl">NEW_RELEASE:</span>
+                <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="n">daysRented</span> <span class="o">*</span> <span class="mi">3</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+            <span class="k">case</span> <span class="nl">CHILDRENS:</span>
+                <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="mf">1.5</span><span class="o">;</span>
+                <span class="k">if</span><span class="o">(</span><span class="n">daysRented</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="o">)</span>
+                    <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="o">(</span><span class="n">daysRented</span> <span class="o">-</span> <span class="mi">3</span><span class="o">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="o">;</span>
+                <span class="k">break</span><span class="o">;</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">rentalAmount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="nf">determineFrequentRentalPoint</span><span class="o">(</span><span class="kt">int</span> <span class="n">daysRented</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">boolean</span> <span class="n">bonusIsEarned</span> <span class="o">=</span> <span class="n">pricecode</span> <span class="o">==</span> <span class="no">NEW_RELEASE</span> <span class="o">&amp;&amp;</span> <span class="n">daysRented</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">;</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">bonusIsEarned</span><span class="o">)</span>
+            <span class="k">return</span> <span class="mi">2</span><span class="o">;</span>
+        <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Rental</span> <span class="o">{</span>
+
+    <span class="kd">private</span> <span class="nc">Movie</span> <span class="n">movie</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">daysRented</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Rental</span><span class="o">(</span><span class="nc">Movie</span> <span class="n">movie</span><span class="o">,</span> <span class="kt">int</span> <span class="n">daysRented</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">movie</span> <span class="o">=</span> <span class="n">movie</span><span class="o">;</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">daysRented</span> <span class="o">=</span> <span class="n">daysRented</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">Movie</span> <span class="nf">getMovie</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">movie</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getTitle</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">movie</span><span class="o">.</span><span class="na">getTitle</span><span class="o">();</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">determineAmount</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">movie</span><span class="o">.</span><span class="na">determineAmount</span><span class="o">(</span><span class="n">daysRented</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">determineFrequentRentalPoint</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">movie</span><span class="o">.</span><span class="na">determineFrequentRentalPoint</span><span class="o">(</span><span class="n">daysRented</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Statement</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">customerName</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">List</span><span class="o">&lt;</span><span class="nc">Rental</span><span class="o">&gt;</span> <span class="n">rentals</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ArrayList</span><span class="o">&lt;&gt;();</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">total</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">frequentRenterPoints</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">double</span> <span class="n">totalAmount</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="nf">Statement</span><span class="o">(</span><span class="nc">String</span> <span class="n">customerName</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">customerName</span> <span class="o">=</span> <span class="n">customerName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">addRental</span><span class="o">(</span><span class="nc">Rental</span> <span class="n">arg</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">rentals</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="n">arg</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">getCustomerName</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">customerName</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="nc">String</span> <span class="nf">generate</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">clearTotals</span><span class="o">();</span>
+        <span class="nc">String</span> <span class="n">statementText</span> <span class="o">=</span> <span class="n">header</span><span class="o">();</span>
+        <span class="n">statementText</span> <span class="o">+=</span> <span class="n">rentalLines</span><span class="o">();</span>
+        <span class="n">statementText</span> <span class="o">+=</span> <span class="n">footer</span><span class="o">();</span>
+        <span class="k">return</span> <span class="n">statementText</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="kt">void</span> <span class="nf">clearTotals</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">totalAmount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+        <span class="n">frequentRenterPoints</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">header</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"Rental Record for %s\n"</span><span class="o">,</span> <span class="n">customerName</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">rentalLines</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">String</span> <span class="n">rentalLines</span> <span class="o">=</span> <span class="s">""</span><span class="o">;</span>
+        <span class="k">for</span> <span class="o">(</span><span class="nc">Rental</span> <span class="n">rental</span> <span class="o">:</span> <span class="n">rentals</span><span class="o">)</span> <span class="o">{</span>
+            <span class="n">rentalLines</span> <span class="o">+=</span> <span class="n">rentalLine</span><span class="o">(</span><span class="n">rental</span><span class="o">);</span>
+        <span class="o">}</span>
+        <span class="k">return</span> <span class="n">rentalLines</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">rentalLine</span><span class="o">(</span><span class="nc">Rental</span> <span class="n">rental</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kt">double</span> <span class="n">rentalAmount</span> <span class="o">=</span> <span class="n">rental</span><span class="o">.</span><span class="na">determineAmount</span><span class="o">();</span>
+        <span class="n">frequentRenterPoints</span> <span class="o">+=</span> <span class="n">rental</span><span class="o">.</span><span class="na">determineFrequentRentalPoint</span><span class="o">();</span>
+        <span class="n">totalAmount</span> <span class="o">+=</span> <span class="n">rentalAmount</span><span class="o">;</span>
+
+        <span class="k">return</span> <span class="nf">formatRentalLine</span><span class="o">(</span><span class="n">rental</span><span class="o">,</span> <span class="n">rentalAmount</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">formatRentalLine</span><span class="o">(</span><span class="nc">Rental</span> <span class="n">rental</span><span class="o">,</span> <span class="kt">double</span> <span class="n">rentalAmount</span><span class="o">)</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span><span class="s">"\t%s\t%.1f\n"</span><span class="o">,</span> <span class="n">rental</span><span class="o">.</span><span class="na">getTitle</span><span class="o">(),</span> <span class="n">rentalAmount</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="nf">footer</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="nc">String</span><span class="o">.</span><span class="na">format</span><span class="o">(</span>
+                <span class="s">"Amount owed is %.1f\n"</span> <span class="o">+</span>
+                        <span class="s">"You earned %d frequent renter points"</span><span class="o">,</span>
+                <span class="n">totalAmount</span><span class="o">,</span> <span class="n">frequentRenterPoints</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">double</span> <span class="nf">getTotal</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">totalAmount</span><span class="o">;</span>
+    <span class="o">}</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getFrequentRenterPoints</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">frequentRenterPoints</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+</pre><td class="rouge-code"><pre><span class="nd">@TestInstance</span><span class="o">(</span><span class="nc">TestInstance</span><span class="o">.</span><span class="na">Lifecycle</span><span class="o">.</span><span class="na">PER_METHOD</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">VideoStoreTest</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Statement</span> <span class="n">statement</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kd">final</span> <span class="kt">double</span> <span class="no">DELTA</span> <span class="o">=</span> <span class="o">.</span><span class="mo">001</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Movie</span> <span class="n">newReleaseMovie1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Movie</span> <span class="n">newReleaseMovie2</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Movie</span> <span class="n">childrensMovie</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Movie</span> <span class="n">regular1</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Movie</span> <span class="n">regular2</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="nc">Movie</span> <span class="n">regular3</span><span class="o">;</span>
+
+    <span class="nd">@BeforeEach</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">statement</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Statement</span><span class="o">(</span><span class="s">"Customer"</span><span class="o">);</span>
+        <span class="n">newReleaseMovie1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Movie</span><span class="o">(</span><span class="s">"New Release 1"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">NEW_RELEASE</span><span class="o">);</span>
+        <span class="n">newReleaseMovie2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Movie</span><span class="o">(</span><span class="s">"New Release 2"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">NEW_RELEASE</span><span class="o">);</span>
+        <span class="n">childrensMovie</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Movie</span><span class="o">(</span><span class="s">"Childrens"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">CHILDRENS</span><span class="o">);</span>
+        <span class="n">regular1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Movie</span><span class="o">(</span><span class="s">"Regular 1"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">REGULAR</span><span class="o">);</span>
+        <span class="n">regular2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Movie</span><span class="o">(</span><span class="s">"Regular 2"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">REGULAR</span><span class="o">);</span>
+        <span class="n">regular3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Movie</span><span class="o">(</span><span class="s">"Regular 3"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">REGULAR</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSingleNewReleaseStatementTotals</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">newReleaseMovie1</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">generate</span><span class="o">();</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mf">9.0d</span><span class="o">,</span> <span class="n">statement</span><span class="o">.</span><span class="na">getTotal</span><span class="o">(),</span> <span class="no">DELTA</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mi">2</span><span class="o">,</span> <span class="n">statement</span><span class="o">.</span><span class="na">getFrequentRenterPoints</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testDualNewReleaseStatementTotals</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">newReleaseMovie1</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">newReleaseMovie2</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">generate</span><span class="o">();</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mf">18.0</span><span class="o">,</span> <span class="n">statement</span><span class="o">.</span><span class="na">getTotal</span><span class="o">(),</span> <span class="no">DELTA</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mi">4</span><span class="o">,</span> <span class="n">statement</span><span class="o">.</span><span class="na">getFrequentRenterPoints</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testSingleChildrenStatementTotals</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">childrensMovie</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">generate</span><span class="o">();</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mf">1.5</span><span class="o">,</span> <span class="n">statement</span><span class="o">.</span><span class="na">getTotal</span><span class="o">(),</span> <span class="no">DELTA</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mi">1</span><span class="o">,</span> <span class="n">statement</span><span class="o">.</span><span class="na">getFrequentRenterPoints</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMultipleRegularStatementTotals</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">regular1</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">regular2</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">regular3</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">generate</span><span class="o">();</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mf">7.5</span><span class="o">,</span> <span class="n">statement</span><span class="o">.</span><span class="na">getTotal</span><span class="o">(),</span> <span class="no">DELTA</span><span class="o">);</span>
+        <span class="n">assertEquals</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">statement</span><span class="o">.</span><span class="na">getFrequentRenterPoints</span><span class="o">());</span>
+    <span class="o">}</span>
+
+    <span class="nd">@Test</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">testMultipleRegularStatementFormat</span><span class="o">()</span> <span class="o">{</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">regular1</span><span class="o">,</span> <span class="mi">1</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">regular2</span><span class="o">,</span> <span class="mi">2</span><span class="o">));</span>
+        <span class="n">statement</span><span class="o">.</span><span class="na">addRental</span><span class="o">(</span><span class="k">new</span> <span class="nc">Rental</span><span class="o">(</span><span class="n">regular3</span><span class="o">,</span> <span class="mi">3</span><span class="o">));</span>
+        <span class="n">assertEquals</span><span class="o">(</span>
+                <span class="s">"Rental Record for Customer\n"</span> <span class="o">+</span>
+                        <span class="s">"\tRegular 1\t2.0\n"</span> <span class="o">+</span>
+                        <span class="s">"\tRegular 2\t2.0\n"</span> <span class="o">+</span>
+                        <span class="s">"\tRegular 3\t3.5\n"</span> <span class="o">+</span>
+                        <span class="s">"Amount owed is 7.5\n"</span> <span class="o">+</span>
+                        <span class="s">"You earned 3 frequent renter points"</span><span class="o">,</span>
+                <span class="n">statement</span><span class="o">.</span><span class="na">generate</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p><br /></p><p>먼저 <code class="language-plaintext highlighter-rouge">Movie</code> 클래스의 switch문을 지우기 위해서 test code부터 수정하는 것으로 시작한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="nd">@BeforeEach</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">statement</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Statement</span><span class="o">(</span><span class="s">"Customer"</span><span class="o">);</span>
+    <span class="n">newReleaseMovie1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NewReleaseMovie</span><span class="o">(</span><span class="s">"New Release 1"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">NEW_RELEASE</span><span class="o">);</span>
+    <span class="n">newReleaseMovie2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NewReleaseMovie</span><span class="o">(</span><span class="s">"New Release 2"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">NEW_RELEASE</span><span class="o">);</span>
+    <span class="n">childrensMovie</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildrensMovie</span><span class="o">(</span><span class="s">"Childrens"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">CHILDRENS</span><span class="o">);</span>
+    <span class="n">regular1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegularMovie</span><span class="o">(</span><span class="s">"Regular 1"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">REGULAR</span><span class="o">);</span>
+    <span class="n">regular2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegularMovie</span><span class="o">(</span><span class="s">"Regular 2"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">REGULAR</span><span class="o">);</span>
+    <span class="n">regular3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegularMovie</span><span class="o">(</span><span class="s">"Regular 3"</span><span class="o">,</span> <span class="nc">Movie</span><span class="o">.</span><span class="na">REGULAR</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이런 방식으로 <code class="language-plaintext highlighter-rouge">ChildrensMovie</code> 클래스와 <code class="language-plaintext highlighter-rouge">RegularMovie</code>도 만들어준다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NewReleaseMovie</span> <span class="kd">extends</span> <span class="nc">Movie</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">NewReleaseMovie</span><span class="o">(</span><span class="nc">String</span> <span class="n">title</span><span class="o">,</span> <span class="kt">int</span> <span class="n">pricecode</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">title</span><span class="o">,</span> <span class="n">pricecode</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이렇게 하면 테스트는 성공적으로 통과하지만 생성자에서 중복을 발견할 수 있다. 이 중복을 모두 제거해주자.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre><td class="rouge-code"><pre><span class="nd">@BeforeEach</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setUp</span><span class="o">()</span> <span class="o">{</span>
+    <span class="n">statement</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">Statement</span><span class="o">(</span><span class="s">"Customer"</span><span class="o">);</span>
+    <span class="n">newReleaseMovie1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NewReleaseMovie</span><span class="o">(</span><span class="s">"New Release 1"</span><span class="o">);</span>
+    <span class="n">newReleaseMovie2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">NewReleaseMovie</span><span class="o">(</span><span class="s">"New Release 2"</span><span class="o">);</span>
+    <span class="n">childrensMovie</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">ChildrensMovie</span><span class="o">(</span><span class="s">"Childrens"</span><span class="o">);</span>
+    <span class="n">regular1</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegularMovie</span><span class="o">(</span><span class="s">"Regular 1"</span><span class="o">);</span>
+    <span class="n">regular2</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegularMovie</span><span class="o">(</span><span class="s">"Regular 2"</span><span class="o">);</span>
+    <span class="n">regular3</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">RegularMovie</span><span class="o">(</span><span class="s">"Regular 3"</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>그 후 pricecode는 클래스마다 부모의 생성자로 직접 전달한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">NewReleaseMovie</span> <span class="kd">extends</span> <span class="nc">Movie</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="nf">NewReleaseMovie</span><span class="o">(</span><span class="nc">String</span> <span class="n">title</span><span class="o">)</span> <span class="o">{</span>
+        <span class="kd">super</span><span class="o">(</span><span class="n">title</span><span class="o">,</span> <span class="no">NEW_RELEASE</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이제 다시 <code class="language-plaintext highlighter-rouge">Movie</code> 클래스의 <code class="language-plaintext highlighter-rouge">determineAmount()</code>를 살펴보면, 각각의 case 문은 방금 구현한 각각의 클래스에 구현되어야 하는 로직임을 알 수 있다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre><td class="rouge-code"><pre><span class="kt">double</span> <span class="nf">determineAmount</span><span class="o">(</span><span class="kt">int</span> <span class="n">daysRented</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="n">rentalAmount</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="k">switch</span><span class="o">(</span><span class="n">pricecode</span><span class="o">){</span>
+        <span class="k">case</span> <span class="nl">REGULAR:</span>
+            <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="mi">2</span><span class="o">;</span>
+            <span class="k">if</span> <span class="o">(</span><span class="n">daysRented</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="o">)</span>
+                <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="o">(</span><span class="n">daysRented</span> <span class="o">-</span> <span class="mi">2</span><span class="o">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="o">;</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="nl">NEW_RELEASE:</span>
+            <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="n">daysRented</span> <span class="o">*</span> <span class="mi">3</span><span class="o">;</span>
+            <span class="k">break</span><span class="o">;</span>
+        <span class="k">case</span> <span class="nl">CHILDRENS:</span>
+            <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="mf">1.5</span><span class="o">;</span>
+            <span class="k">if</span><span class="o">(</span><span class="n">daysRented</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="o">)</span>
+                <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="o">(</span><span class="n">daysRented</span> <span class="o">-</span> <span class="mi">3</span><span class="o">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="o">;</span>
+            <span class="k">break</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="k">return</span> <span class="n">rentalAmount</span><span class="o">;</span>
+    <span class="o">}</span>
+</pre></table></code></div></div><p>따라서 <code class="language-plaintext highlighter-rouge">Movie</code> 클래스를 추상 메소드로 변경하고 <code class="language-plaintext highlighter-rouge">determineAmount()</code>와 <code class="language-plaintext highlighter-rouge">determineFrequentRentalPoint()</code>를 추상 메소드로 변경한다.</p><p>이때 Intellij의 Push Members Down 기능을 사용하면 간편하게 리펙토링 가능하다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">abstract</span> <span class="kd">class</span> <span class="nc">Movie</span> <span class="o">{</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">CHILDRENS</span> <span class="o">=</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">NEW_RELEASE</span> <span class="o">=</span> <span class="mi">1</span><span class="o">;</span>
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kd">final</span> <span class="kt">int</span> <span class="no">REGULAR</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+
+    <span class="kd">private</span> <span class="nc">String</span> <span class="n">title</span><span class="o">;</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">pricecode</span><span class="o">;</span>
+
+    <span class="kd">abstract</span> <span class="kt">double</span> <span class="nf">determineAmount</span><span class="o">(</span><span class="kt">int</span> <span class="n">daysRented</span><span class="o">);</span>
+    <span class="kd">abstract</span> <span class="kt">int</span> <span class="nf">determineFrequentRentalPoint</span><span class="o">(</span><span class="kt">int</span> <span class="n">daysRented</span><span class="o">);</span>
+    <span class="o">...</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>구현했던 코드들은 각각의 자식 클래스들로 이동해있는데, 여기서 <code class="language-plaintext highlighter-rouge">pricecode</code>를 사용하는 부분만 <code class="language-plaintext highlighter-rouge">getPricecode()</code>로 변경하면 문제없이 테스트를 성공한다.</p><p>하지만 각 클래스마다 불필요한 switch문이 중복되어 있다. 테스트 실행 시 실제로 동작하는 코드를 알아보기 위해 Intellij의 Run with Coverage 기능을 사용하면 다음과 같이 실행되는 라인에만 초록불이 들어온다.</p><p><img data-proofer-ignore data-src="assets/../../../assets/img/baek/5.png" width="500" /></p><p>붉은색으로 표시된 다른 클래스의 케이스들을 모두 지워주자.</p><p><code class="language-plaintext highlighter-rouge">ChildrensMovie</code> 클래스의 <code class="language-plaintext highlighter-rouge">determineAmount()</code>는 아래와 같이 간략화된다. 같은 방식으로 다른 클래스에도 적용하자.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="nd">@Override</span>
+<span class="kt">double</span> <span class="nf">determineAmount</span><span class="o">(</span><span class="kt">int</span> <span class="n">daysRented</span><span class="o">)</span> <span class="o">{</span>
+    <span class="kt">double</span> <span class="n">rentalAmount</span> <span class="o">=</span> <span class="mf">1.5</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">daysRented</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="o">)</span>
+        <span class="n">rentalAmount</span> <span class="o">+=</span> <span class="o">(</span><span class="n">daysRented</span> <span class="o">-</span> <span class="mi">3</span><span class="o">)</span> <span class="o">*</span> <span class="mf">1.5</span><span class="o">;</span>
+    <span class="k">return</span> <span class="n">rentalAmount</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">determineFrequentRentalPoint()</code>도 마찬가지로 <code class="language-plaintext highlighter-rouge">NEW_RELEASE</code>에만 적용되는 구문은 다른 클래스에서 삭제해준다.</p><p><code class="language-plaintext highlighter-rouge">NewReleaseMovie</code> 클래스에서는 아래와 같고, 다른 클래스에서는 그저 <code class="language-plaintext highlighter-rouge">return 1</code>만 수행한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="nd">@Override</span>
+<span class="kt">int</span> <span class="nf">determineFrequentRentalPoint</span><span class="o">(</span><span class="kt">int</span> <span class="n">daysRented</span><span class="o">)</span> <span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">daysRented</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="o">)</span>
+        <span class="k">return</span> <span class="mi">2</span><span class="o">;</span>
+    <span class="k">return</span> <span class="mi">1</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p><br /></p><p>이렇게 다형성을 사용한 리펙토링이 완료되었다. 진행한 과정을 정리해보면,</p><ul><li>먼저 Test부터 Polymorphic하게 수정<li>make it pass<li>중복제거<li>Push Members Down<li>run with coverage<li>remove unused code<li>remove type code</ul><p>이 과정을 통해 Runtime 의존성은 그대로 두고 Source code 의존성을 역전했다. 이제 신경 쓸 일은 언제/어떻게 인스턴스를 생성하는가이다.</p><p>대개 팩토리에서 이러한 작업을 수행하며 이것을 통해 <code class="language-plaintext highlighter-rouge">main</code>이라는 주요한 토픽을 가져온다.</p><p><strong>application/main partition</strong></p><p><img data-proofer-ignore data-src="assets/../../../assets/img/baek/6.png" width="400" /></p><ul><li>Application Partition : 대개의 애플리케이션 코드가 존재하는 곳<li>Main Partition : 하위 레벨 (factory, configuration data, main program…)<li>항상 모듈 다이어그램에서 App 파티션과 Main 파티션 사이에 선을 그을 수 있어야 한다.<li>Main에서 App으로 향하는 한방향 의존성<li>Main Partition은 App Partition의 plugin<li>이러한 기법을 <code class="language-plaintext highlighter-rouge">Dependency Injection</code>이라 하고, Spring을 사용하면 Main Partition 부분은 모두 스프링이 생성하고 관리한다.</ul><h3 id="4-temporal-coupling"><strong>4. Temporal Coupling</strong></h3><ul><li>함수들이 순서를 지키며 호출되어야 한다.<br /> 예) open, execute, close<li>Passing a Block<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre>  <span class="n">fileCommandTemplate</span><span class="o">.</span><span class="na">process</span><span class="o">(</span><span class="n">myFile</span><span class="o">,</span> <span class="k">new</span> <span class="nc">FileCommand</span><span class="o">(){</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="nc">File</span> <span class="n">f</span><span class="o">){</span>
+          <span class="c1">// file processing codes here</span>
+      <span class="o">}</span>
+  <span class="o">});</span>
+
+  <span class="kd">class</span> <span class="nc">FileCommandTemplate</span><span class="o">{</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span><span class="nc">File</span> <span class="n">file</span><span class="o">,</span> <span class="nc">FileCommand</span> <span class="n">command</span><span class="o">){</span>
+          <span class="n">file</span><span class="o">.</span><span class="na">open</span><span class="o">();</span>
+          <span class="n">command</span><span class="o">.</span><span class="na">process</span><span class="o">(</span><span class="n">file</span><span class="o">);</span>
+          <span class="n">file</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+</pre></table></code></div></div><p>위 코드처럼 <code class="language-plaintext highlighter-rouge">open()</code>, <code class="language-plaintext highlighter-rouge">process()</code>, <code class="language-plaintext highlighter-rouge">close()</code>를 같은 블록에 묶어서 안전성을 높이는 것이 좋음</p></ul><h3 id="5-cqs"><strong>5. CQS</strong></h3><p>CQS란 <code class="language-plaintext highlighter-rouge">Command-Query Separation</code>의 줄임말로, 상태를 변경하는 메소드(Command)는 값을 반환하지 않아야 하고, 값을 반환하는 메소드는 상태를 변경하면 않아야 한다는 원칙을 말한다.</p><p>Command</p><ul><li>시스템의 상태 변경 가능<li>side effect가 발생할 수 있음<li>아무것도 반환하지 않음</ul><p>Query</p><ul><li>side effect가 없다<li>계산값이나 시스템의 상태를 반환</ul><p>당신 코드의 독자들을 혼란스럽게 하지 말라.<br /> 값을 반환하는 메소드는 상태를 변경하면 안되고, 상태를 변경하는 메소드는 exception을 발생시킬 수 있지만 값을 반환해서는 안된다.</p><p>CQS는 side effect를 관리하는 좋은 방법이다.</p><h3 id="6-tell-dont-ask"><strong>6. Tell Don’t Ask</strong></h3><p>앞서 살펴본 CQS 원칙을 엄격하게 지키기 위해서는 Command와 Query를 함께 쓰는 것도 제한해야 한다.</p><p>아래 코드에서는 if문에서 Query를 사용하고 Command를 보낸다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre><span class="k">if</span> <span class="o">(</span><span class="n">user</span><span class="o">.</span><span class="na">isLoggedIn</span><span class="o">())</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">command</span><span class="o">);</span>
+<span class="k">else</span>
+    <span class="n">authenticator</span><span class="o">.</span><span class="na">promptLogin</span><span class="o">();</span>
+</pre></table></code></div></div><p>위 코드보다 아래처럼 예외처리를 사용해서 Command만 사용하는 것이 더 나아보인다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="k">try</span><span class="o">{</span>
+    <span class="n">user</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">command</span><span class="o">);</span>
+<span class="o">}</span>
+<span class="k">catch</span><span class="o">(</span><span class="nc">User</span><span class="o">.</span><span class="na">NotLoggedIn</span> <span class="n">e</span><span class="o">){</span>
+    <span class="n">annuciator</span><span class="o">.</span><span class="na">promptLogin</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>나아가 아래와 같이 user 객체가 모든 것을 처리하도록 하는 것이 독자 입장에서 가장 좋을 것이다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="n">user</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">command</span><span class="o">,</span> <span class="n">annuciator</span><span class="o">)</span>
+</pre></table></code></div></div><p>로그인되었는지 아닌지 알고 있는 것은 user 객체이다. 하지만 첫 번째 코드에서는 user의 로그인 상태 여부를 가져다가 user를 대신해서 결정하고 있다.</p><p>세 번째 코드처럼 user가 해당 행위를 수행하도록 하는 것이 맞다.</p><p><strong>Tell Don’t Ask</strong></p><ul><li>tell other object what to do<li>but not ask object what the state is.</ul><p>이 규칙을 준수하다보면 Query가 많이 필요 없어진다.<br /> Query는 곧 out of control되는 경향이 있기 때문에 Query를 많이 쓰지 않는 것이 좋다.</p><p>Long chain of function<br /> Tell, Don’t Ask를 위반한 대표적인 예</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="n">o</span><span class="o">.</span><span class="na">getX</span><span class="o">().</span><span class="na">getY</span><span class="o">().</span><span class="na">getZ</span><span class="o">().</span><span class="na">doSomething</span><span class="o">();</span>
+</pre></table></code></div></div><p>뭔가를 tell(doXXX)하기 전에 지속적으로 ask(getXXX) 함. 이 경우에는 테스트 코드 작성 시에도 매우 번거로움</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="n">o</span><span class="o">.</span><span class="na">doSomething</span><span class="o">();</span>
+</pre></table></code></div></div><p>o에게 무엇을 하라고 했는데 o는 어떻게 해야할지 모른다. 하지만 o는 어떤 다른 객체에게 tell하면 되는지는 알고있다. 최종적으로 처리되기 전까지 요청이 전파된다.</p><h3 id="7-law-of-demeter"><strong>7. Law of Demeter</strong></h3><p>하나의 메소드가 전체 시스템의 객체들 간의 네비게이션을 아는 것은 잘못된 설계다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="n">o</span><span class="o">.</span><span class="na">getX</span><span class="o">().</span><span class="na">getY</span><span class="o">().</span><span class="na">getZ</span><span class="o">().</span><span class="na">doSomething</span><span class="o">();</span>
+</pre></table></code></div></div><p>o는 X를 갖는다. X는 Y를 갖고, Y는 Z를 갖는다. Z는 doSomething()을 할 수 있다.<br /> 한 라인의 코드가 알아야 하기에는 너무 방대한 정보이고, 메소드가 시스템에 너무 많은 의존성을 갖는다.</p><p>따라서 Law of Demeter에서는 메소드가 시스템의 전체를 알게 하면 안되고 개별 메소드는 아주 제한된 지식만 가져야 한다.</p><p>객체는 요청된 기능 수행을 위해 이웃 객체에게 요청해야 하고, 요청을 수신하면 적절한 객체가 수신할 때까지 전파되어야 한다.</p><p>Law of Demeter는 아래와 같은 일련의 규칙을 통해 Tell, Don’t Ask를 형식화(formalize)한다.</p><ul><li>다음 객체들의 메소드만 호출할 수 있다.<ul><li>파라미터로 전달된 객체<li>로컬 변수로 생성한 객체<li>필드로 선언된 객체<li>전역 객체</ul><li>이전 메소드 호출의 결과로 얻는 객체의 메소드를 호출하면 안된다.</ul><h3 id="8-early-returns"><strong>8. early returns</strong></h3><p>어떤 코드를 보면 if문에서 많은 로직을 처리하고, else에서 return하는 경우가 있다.<br /> 이런 경우, 조건문을 부정으로 뒤집어서 return이 먼저 나오도록 하는 것이 좋다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="kd">private</span> <span class="kt">boolean</span> <span class="n">nameIsValxxxx</span><span class="o">{</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">name</span><span class="o">.</span><span class="na">equals</span><span class="o">(</span><span class="s">""</span><span class="o">))</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">if</span><span class="o">(!</span><span class="nc">WikiWoedWidget</span><span class="o">.</span><span class="na">xxx</span><span class="o">)</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>early return이나 guarded return은 허용된다.</p><p>또한 loop의 중간에서 리턴하는 것은 문제가 된다. break와 루프 중간에서의 return은 loop를 복잡하고 이해하기 힘들게 한다.</p><h3 id="9-error-handling"><strong>9. error handling</strong></h3><p>예를들어, stack을 구현하는 코드에서 에러 처리를 위해 <code class="language-plaintext highlighter-rouge">pop()</code>은 null을 반환하고, <code class="language-plaintext highlighter-rouge">push()</code>는 false를 반환할 수 있는데 이는 일관성이 없을 뿐더러 CQS를 어기게 된다.</p><p>따라서 이런 경우, exception을 발생시키는 것이 좋고 exception의 이름은 최대한 구체적이어야 한다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="nc">Stack</span> <span class="nf">mack</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">){</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">capacity</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllefalCapacity</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">capacity</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">ZeroCapacityStack</span><span class="o">();</span>
+
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">BoundedStack</span><span class="o">(</span><span class="n">capacity</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">IllegalCapacity</span> <span class="kd">extends</span> <span class="nc">RuntimeException</span><span class="o">{</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>예외에는 <code class="language-plaintext highlighter-rouge">checked exception</code>과 <code class="language-plaintext highlighter-rouge">unchecked exception</code>이 있는데<br /> <code class="language-plaintext highlighter-rouge">checked exception</code>은 <code class="language-plaintext highlighter-rouge">reverse dependency</code>를 유발한다. 하위 클래스에서 어떤 <code class="language-plaintext highlighter-rouge">checked exception</code>이 유발되면 상위 클래스를 모두 변경해야 하고 해당 클래스를 사용하는 모든 코드를 변경해야 한다. 따라서 <code class="language-plaintext highlighter-rouge">checked exception</code>은 정말 필요한 경우가 아니라면 사용을 지양하는 것이 좋다.</p><p>또한 exception의 이름을 정확하게 지어서 이름으로 의미가 전달되도록 해야한다. exception에 담을 메시지 중 가장 좋은 것은 메시지가 필요 없는 것이다.</p><h3 id="10-special-cases"><strong>10. Special Cases</strong></h3><p>stack 예제에서 만약 capacity가 0인 stack을 생성하려 한다면 이것도 오류인가? 아니면 zero size stack도 의미 있는 객체인가를 생각해봐야 한다.</p><p>로직에 대해 생각해봤을 때, zero size stack은 잘 정의된 행위를 가진다는 것을 알 수 있었다. <code class="language-plaintext highlighter-rouge">push()</code>를 호출하면 <code class="language-plaintext highlighter-rouge">Overflow</code>, <code class="language-plaintext highlighter-rouge">pop()</code>을 호출하면 <code class="language-plaintext highlighter-rouge">Underflow</code>가 발생하고, <code class="language-plaintext highlighter-rouge">getSize()</code>는 0을 반환하고 <code class="language-plaintext highlighter-rouge">isEmpty()</code>는 항상 <code class="language-plaintext highlighter-rouge">true</code>이다.</p><p>이런 기능 구현을 Stack 클래스의 모든 메소드에 size가 0인지 비교하는 로직을 추가해서 구현할 수 있다. 하지만 이 보다 좋은 방법은 빈 스택을 정의하는 <code class="language-plaintext highlighter-rouge">ZeroCapacityStack</code> 클래스를 생성하는 것이다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="nc">Stack</span> <span class="nf">make</span><span class="o">(</span><span class="kt">int</span> <span class="n">capacity</span><span class="o">){</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">capacity</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">IllegalCapacity</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">capacity</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nf">ZeroCapacityStack</span><span class="o">();</span>
+    
+    <span class="k">return</span> <span class="k">new</span> <span class="nf">BoundedStack</span><span class="o">(</span><span class="n">capacity</span><span class="o">);</span>
+<span class="o">}</span>
+
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Overflow</span> <span class="kd">extends</span> <span class="nc">RuntimeException</span><span class="o">{</span>
+<span class="o">}</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">IllegalCapacity</span> <span class="kd">extends</span> <span class="nc">RuntimeException</span><span class="o">{</span>
+<span class="o">}</span> 
+<span class="kd">public</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">Underflow</span> <span class="kd">extends</span> <span class="nc">RuntimeException</span><span class="o">{</span>
+<span class="o">}</span> 
+
+<span class="kd">private</span> <span class="kd">static</span> <span class="kd">class</span> <span class="nc">ZeroCapacityStack</span> <span class="kd">implements</span> <span class="nc">Stack</span><span class="o">{</span>
+    <span class="kd">public</span> <span class="nc">Boolean</span> <span class="nf">isEmpty</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">getSize</span><span class="o">(){</span>
+        <span class="k">return</span> <span class="mi">0</span><span class="o">;</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">push</span><span class="o">(</span><span class="kt">int</span> <span class="n">element</span><span class="o">){</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">Overflow</span><span class="o">();</span>
+    <span class="o">}</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">pop</span><span class="o">(){</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">Underflow</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><h3 id="11-null-is-not-an-error"><strong>11. Null is not an error</strong></h3><p>계속해서 stack 예제에 대해 얘기해보자.</p><p>만약 stack이 empty일 때, <code class="language-plaintext highlighter-rouge">top()</code>함수는 무엇을 반환해야할까? 그냥 단순히 null을 반환할 수 있다.</p><p>그런데, <code class="language-plaintext highlighter-rouge">top()</code>을 호출하는 그 누구도 리턴값으로 null을 기대하지는 않는다. 이런 상황에서 null을 반환하게 되면, <code class="language-plaintext highlighter-rouge">NullPointException</code>을 발생시킬 때까지 시스템의 여기저기에 문제가 퍼질 것이며, 이를 해결하기 위해 곳곳에 null check를 추가해야 한다.</p><p>따라서 아무도 null을 기대하지 않는 <code class="language-plaintext highlighter-rouge">top()</code>의 경우에는 exception을 발생시키는 것이 좋아보인다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">top</span><span class="o">(){</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">size</span> <span class="o">==</span> <span class="mi">0</span><span class="o">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">Empty</span><span class="o">();</span>
+    <span class="k">return</span> <span class="n">elements</span><span class="o">[</span><span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="o">];</span>
+<span class="o">}</span>
+</pre></table></code></div></div><h3 id="12-null-is-a-value"><strong>12. Null is a value</strong></h3><p>그럼 이번엔 <code class="language-plaintext highlighter-rouge">find()</code> 메소드에 대해 생각해보자. 만약 <code class="language-plaintext highlighter-rouge">find()</code>가 element를 찾지 못하면 어떻게 해야할까?</p><p>이때는 exception이 부적절할 수 있다. <code class="language-plaintext highlighter-rouge">find()</code>의 경우, 원하는 element를 찾지 못했을 때 리턴값으로 null을 기대하기 때문이다. exception은 기대하지 못한 때를 위한 것이다.</p><p>때문에 이런 경우에는 exception이나 어떤 특정값(예를들어 -1 같은)을 사용하는 것보다 null을 반환하는 것이 낫다. null은 nothing을 의미하는 값이다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="nc">Integer</span> <span class="nf">find</span><span class="o">(</span><span class="kt">int</span> <span class="n">element</span><span class="o">){</span>
+    <span class="k">for</span><span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="n">size</span><span class="o">-</span><span class="mi">1</span><span class="o">;</span> <span class="n">i</span><span class="o">&gt;=</span><span class="mi">0</span><span class="o">;</span> <span class="n">i</span><span class="o">--)</span>
+        <span class="k">if</span><span class="o">(</span><span class="n">elements</span><span class="o">[</span><span class="n">i</span><span class="o">]</span> <span class="o">==</span> <span class="n">element</span><span class="o">)</span>
+            <span class="k">return</span> <span class="n">size</span> <span class="o">-</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">i</span><span class="o">;</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="o">;</span>
+<span class="o">}</span>
+</pre></table></code></div></div><h3 id="13-try도-하나의-역할기능이다"><strong>13. try도 하나의 역할/기능이다.</strong></h3><p>메소드 내에 try문이 있다면 try문이 변수 선언을 제외하고는 첫 번째 문장이어야 한다. 또한 try 블럭 내에는 한 문장(메소드 호출)만 있어야 한다.</p><p>메소드는 오직 하나의 일만 해야한다. error handling도 하나의 일이기 때문에 finally가 메소드의 마지막 블록이어야 하고 이후에 어떤 라인도 없어야 한다.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/backend/'>Backend</a>, <a href='/categories/oop/'>OOP</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/java/" class="post-tag no-text-decoration" >java</a> <a href="/tags/oop/" class="post-tag no-text-decoration" >oop</a> <a href="/tags/programming/" class="post-tag no-text-decoration" >programming</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=클린 코더스 강의 정리 - 5장 Function Structure - yeoji21&url=https://yeoji21.github.io/posts/ch05/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=클린 코더스 강의 정리 - 5장 Function Structure - yeoji21&u=https://yeoji21.github.io/posts/ch05/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=클린 코더스 강의 정리 - 5장 Function Structure - yeoji21&url=https://yeoji21.github.io/posts/ch05/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/polymorphism-inheritance/">객체지향에서의 상속과 다형성</a><li><a href="/posts/graduation-project-review/">졸업 작품 프로젝트 회고</a><li><a href="/posts/reflection-1/">[JAVA] Java Refelction 마스터 강의 1장</a><li><a href="/posts/mst/">[알고리즘] MST - 크루스칼 vs 프림</a><li><a href="/posts/injection/">[Spring] 의존성 주입 시 생성자 주입을 사용해야 하는 이유 </a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/java/">java</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a> <a class="post-tag" href="/tags/java-study/">java study</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/">자바 스터디</a> <a class="post-tag" href="/tags/oop/">oop</a> <a class="post-tag" href="/tags/programming/">programming</a> <a class="post-tag" href="/tags/spring/">spring</a> <a class="post-tag" href="/tags/jpa/">jpa</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/guides/">guides</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/ch01/"><div class="card-body"> <span class="timeago small" >Nov 9, 2021<i class="unloaded">2021-11-09T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 1장, 2장 소개 및 OOP</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 1. 소개 및 OOP 마틴 파울러 “기계가 이해할 수 있는 코드는 누구나 작성할 수 있다. 그런데 사람이 이해할 수 있는 코드는 잘 학습된 소프트웨어 엔지니어만 작성할 수 있다.” 내가 구현하려...</p></div></div></a></div><div class="card"> <a href="/posts/ch03/"><div class="card-body"> <span class="timeago small" >Nov 10, 2021<i class="unloaded">2021-11-10T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 3장, 4장 Function</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 3. Function 1. 원칙 한 가지 일만 해야 한다. 메소드의 크기는 과장 보태서 4줄짜리여야 한다. 따라서 indentation, while, nested if 등...</p></div></div></a></div><div class="card"> <a href="/posts/ch06/"><div class="card-body"> <span class="timeago small" >Nov 13, 2021<i class="unloaded">2021-11-13T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 6장 Form</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 6. Form 1. Coding Standards 조직이 일정 수준의 크기가 되면 관료적인 문서화를 요구한다. 따라서 어떠한 Coding Standard가 필요한 것은 맞으나, 별도의 문서로 유지하...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/ch03/" class="btn btn-outline-primary" prompt="Older"><p>클린 코더스 강의 정리 - 3장, 4장 Function</p></a> <a href="/posts/ch06/" class="btn btn-outline-primary" prompt="Newer"><p>클린 코더스 강의 정리 - 6장 Form</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://twitter.com/username">yeoji21</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/java/">java</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a> <a class="post-tag" href="/tags/java-study/">java study</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/">자바 스터디</a> <a class="post-tag" href="/tags/oop/">oop</a> <a class="post-tag" href="/tags/programming/">programming</a> <a class="post-tag" href="/tags/spring/">spring</a> <a class="post-tag" href="/tags/jpa/">jpa</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/guides/">guides</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://yeoji21.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>

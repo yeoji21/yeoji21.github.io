@@ -1,0 +1,251 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="day-prompt" content="days ago"><meta name="hour-prompt" content="hours ago"><meta name="minute-prompt" content="minutes ago"><meta name="justnow-prompt" content="just now"><meta name="generator" content="Jekyll v4.2.2" /><meta property="og:title" content="클린 코더스 강의 정리 - 6장 Form" /><meta name="author" content="yeoji21" /><meta property="og:locale" content="en" /><meta name="description" content="들어가면서" /><meta property="og:description" content="들어가면서" /><link rel="canonical" href="https://yeoji21.github.io/posts/ch06/" /><meta property="og:url" content="https://yeoji21.github.io/posts/ch06/" /><meta property="og:site_name" content="yeoji21" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2021-11-13T00:00:00+09:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="클린 코더스 강의 정리 - 6장 Form" /><meta name="twitter:site" content="@twitter_username" /><meta name="twitter:creator" content="@yeoji21" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"yeoji21"},"dateModified":"2021-11-13T00:00:00+09:00","datePublished":"2021-11-13T00:00:00+09:00","description":"들어가면서","headline":"클린 코더스 강의 정리 - 6장 Form","mainEntityOfPage":{"@type":"WebPage","@id":"https://yeoji21.github.io/posts/ch06/"},"url":"https://yeoji21.github.io/posts/ch06/"}</script><title>클린 코더스 강의 정리 - 6장 Form | yeoji21</title><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/site.webmanifest"><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico"><meta name="apple-mobile-web-app-title" content="yeoji21"><meta name="application-name" content="yeoji21"><meta name="msapplication-TileColor" content="#da532c"><meta name="msapplication-config" content="/assets/img/favicons/browserconfig.xml"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="https://cdn.jsdelivr.net"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css"><link rel="stylesheet" href="/assets/css/style.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/magnific-popup@1.1.0/dist/magnific-popup.min.css"> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@500&display=swap" rel="stylesheet"><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column align-items-end" lang="en"><div class="profile-wrapper text-center"><div id="avatar"> <a href="/" alt="avatar" class="mx-auto"> <img src="/assets/img/profile/img1.JPG" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="site-title mt-3"> <a href="/">yeoji21</a></div><div class="site-subtitle font-italic">Don't look back in anger</div></div><ul class="w-100"><li class="nav-item"> <a href="/" class="nav-link"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item"> <a href="/categories/" class="nav-link"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item"> <a href="/tags/" class="nav-link"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item"> <a href="/archives/" class="nav-link"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a></ul><div class="sidebar-bottom mt-auto d-flex flex-wrap justify-content-center"> <a href="https://github.com/yeoji21" aria-label="github" class="order-3" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/twitter_username" aria-label="twitter" class="order-4" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['yeozone0508','gmail.com'].join('@')" aria-label="email" class="order-5" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" class="order-6" > <i class="fas fa-rss"></i> </a> <span class="icon-border order-2"></span> <span id="mode-toggle-wrapper" class="order-1"> <i class="mode-toggle fas fa-adjust"></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.hasMode) { if (this.isDarkMode) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.hasMode) { if (self.isDarkMode) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } self.updateMermaid(); }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } /* get the current mode on screen */ get modeStatus() { if (this.isDarkMode || (!this.hasMode && this.isSysDarkPrefer) ) { return ModeToggle.DARK_MODE; } else { return ModeToggle.LIGHT_MODE; } } updateMermaid() { if (typeof mermaid !== "undefined") { let expectedTheme = (this.modeStatus === ModeToggle.DARK_MODE? "dark" : "default"); let config = { theme: expectedTheme }; /* re-render the SVG › <https://github.com/mermaid-js/mermaid/issues/311#issuecomment-332557344> */ $(".mermaid").each(function() { let svgCode = $(this).prev().children().html(); $(this).removeAttr("data-processed"); $(this).html(svgCode); }); mermaid.initialize(config); mermaid.init(undefined, ".mermaid"); } } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } this.updateMermaid(); } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Home </a> </span> <span>클린 코더스 강의 정리 - 6장 Form</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" autocomplete="off" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>클린 코더스 강의 정리 - 6장 Form</h1><div class="post-meta text-muted d-flex flex-column"><div> <span class="semi-bold"> yeoji21 </span> on <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Sat, Nov 13, 2021, 12:00 AM +0900" >Nov 13, 2021<i class="unloaded">2021-11-13T00:00:00+09:00</i> </span></div><div> <span class="readtime" data-toggle="tooltip" data-placement="bottom" title="2393 words">13 min read</span></div></div><div class="post-content"><h2 id="들어가면서">들어가면서</h2><ul><li>해당 포스트는 <a href="https://www.youtube.com/watch?v=60lLSe1phks">백명석님의 클린 코더스 강의</a>를 정리한 내용입니다.<li>강의 자료는 <a href="https://github.com/msbaek/clean-coders-2013">깃 허브</a>에서 보실 수 있습니다.</ul><h2 id="클린-코더스-강의-6-form">클린 코더스 강의 6. Form</h2><h3 id="1-coding-standards"><strong>1. Coding Standards</strong></h3><p>조직이 일정 수준의 크기가 되면 관료적인 문서화를 요구한다.</p><p>따라서 어떠한 Coding Standard가 필요한 것은 맞으나, 별도의 문서로 유지하는 것은 고려해봐야할 사항이다. Coding Standard는 코드 내에서 명확하게 보여져야 하는 것이지, 별도의 문서로 작성한다는 것은 코드가 Coding Standard에 적합하지 않다는 것을 의미한다.</p><h3 id="2-comments-should-be-rare"><strong>2. Comments should be Rare</strong></h3><p>어떤 Coding Standard에서 comments 작성을 강요한다면, 개발자는 필요해서가 아니라 해야하기 때문에 comments를 작성한다. 이런 comments는 무의미한 무시의 대상이 된다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre><td class="rouge-code"><pre><span class="cm">/**
+* Sets a configuration property
+* @param key the property key
+* @param value the property value
+*/</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">setConfigProperty</span><span class="o">(</span><span class="kd">final</span> <span class="nc">String</span> <span class="n">key</span><span class="o">,</span> <span class="kd">final</span> <span class="nc">String</span> <span class="n">value</span><span class="o">){</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">key</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nf">NullPointerException</span><span class="o">();</span>
+    <span class="k">if</span><span class="o">(</span><span class="n">value</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">configuration</span><span class="o">.</span><span class="na">remove</span><span class="o">(</span><span class="n">key</span><span class="o">);</span>
+    <span class="k">else</span>
+        <span class="k">this</span><span class="o">.</span><span class="na">configuration</span><span class="o">.</span><span class="na">setProperty</span><span class="o">(</span><span class="n">key</span><span class="o">,</span> <span class="n">value</span><span class="o">);</span>        
+<span class="o">}</span>
+</pre></table></code></div></div><p>이 comments를 보면 메소드에서 알려주는 정보와 다를바 없는 것을 중복해서 나타내고 있다. 이런 comments가 과연 도움이 되겠는가?</p><p>comments should be rare</p><ul><li>comments는 정말 필요한 곳에만 사용해야 한다.<li>개발자의 의도를 나타내기 위해 반드시 필요할 때<li>comments를 읽는 모든 사람들이 감사함을 느껴야 한다.</ul><h3 id="3-comments-are-failures"><strong>3. Comments are Failures</strong></h3><p>작성자의 의도가 잘 나타나게 프로그램을 작성한다면 comments는 불필요해진다.</p><p>과연 코드로 의도를 나타낼 수 있을까? <code class="language-plaintext highlighter-rouge">Pascal</code>, <code class="language-plaintext highlighter-rouge">Fortran</code>, <code class="language-plaintext highlighter-rouge">C</code>같은 Assembly의 경우는 언어 자체가 표현력이 떨어지기 때문에 comments가 필수적이지만, <code class="language-plaintext highlighter-rouge">Ruby</code>, <code class="language-plaintext highlighter-rouge">Java</code>, <code class="language-plaintext highlighter-rouge">C#</code> 등은 표현력이 매우 뛰어나 comments가 필요 없다.</p><p>대부분의 comments는 당신의 코드가 충분히 표현력을 가지지 못한다는 것을 나타내는 실패의 상징이다.</p><h3 id="4-good-comments"><strong>4. Good Comments</strong></h3><ul><li>Legal Comments<li>Informative Comments<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DateFormatUrils</span><span class="o">{</span>
+      <span class="kd">public</span> <span class="kd">static</span> <span class="nc">String</span> <span class="nf">convertDateFormat</span><span class="o">(</span><span class="nc">String</span> <span class="n">dateIn</span><span class="o">){</span>
+          <span class="c1">// fotmat mached kk:mm:ss EEE, MMM dd, yyyy</span>
+          <span class="nc">Pattern</span> <span class="n">timePattern</span> <span class="o">=</span> <span class="nc">Pattern</span><span class="o">.</span><span class="na">compile</span><span class="o">(</span><span class="s">"\\d*:\\d*:\\d* \\w*. \\w* \\d*, \\d*"</span><span class="o">);</span>
+          <span class="o">...</span>
+      <span class="o">}</span>
+  <span class="o">}</span>
+</pre></table></code></div></div><li>Warning of Consequences<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>  <span class="c1">// don't run unless you have some time to kill</span>
+  <span class="nd">@Test</span>
+  <span class="kd">public</span> <span class="kt">void</span> <span class="nf">readReallyBigFile</span><span class="o">(){...}</span>
+</pre></table></code></div></div><li>TODO Comments<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>  <span class="c1">// TODO: implements patter matching logic</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nf">NoSuchMethodError</span><span class="o">(</span><span class="s">"DateFormatUtils#convertDateFormat is not implemented yet"</span><span class="o">);</span>
+</pre></table></code></div></div><li>Public API Documents</ul><h3 id="5-bad-comments">5. Bad Comments</h3><ul><li>Mumbling : 중얼거리는<li>Redundant Explanations : 중복되는 설명<li>Mandated Redundancy : 의무 중복성, IDE가 자동으로 만들어주는 comments를 의무적으로 사용하는 것<li>Journal Comments<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre>      <span class="cm">/**
+      *변경이력
+      * 2021.01.01 : 최초 생성
+      * 2021.01.02 : convertDateFormat 메소드 구현
+      * 2021.01.03 : convertDateFormat에 대한 테스트 구현
+      * ...
+      */</span>
+  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DateFormatUtils</span><span class="o">{...}</span>  
+</pre></table></code></div></div><li>Noways Comments<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>   <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DateFormatUtils</span><span class="o">{</span>
+      <span class="cm">/**
+      * defualt constructor
+      */</span> 
+      <span class="kd">public</span> <span class="nf">DateFormatUtils</span><span class="o">(){</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+</pre></table></code></div></div><li>Big Banner Comments<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre><td class="rouge-code"><pre>  <span class="kd">public</span> <span class="kd">class</span> <span class="nc">DateFormatUtils</span><span class="o">{</span>
+      <span class="cm">/*************************
+      * instance variables *
+      **************************/</span>
+      <span class="kd">private</span> <span class="kt">int</span> <span class="n">year</span><span class="o">;</span>
+      <span class="kd">private</span> <span class="n">month</span><span class="o">;</span>
+      <span class="kd">private</span> <span class="kt">int</span> <span class="n">day</span><span class="o">;</span>
+        
+      <span class="cm">/*************************
+      * default constructor *
+      **************************/</span>
+      <span class="kd">public</span> <span class="nf">DateFormatUtils</span><span class="o">(){</span>
+      <span class="o">}</span>
+   <span class="o">}</span>
+</pre></table></code></div></div><li>Closing Brace Comments<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+</pre><td class="rouge-code"><pre>  <span class="k">for</span><span class="o">(...){</span>
+      <span class="k">if</span><span class="o">(...){</span>
+          <span class="o">...</span>
+      <span class="o">}</span> <span class="c1">//end of if</span>
+  <span class="o">}</span> <span class="c1">// end of for</span>
+</pre></table></code></div></div><li>Attribution Comments<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>  <span class="c1">// add by yeoji</span>
+  <span class="kd">private</span> <span class="kd">class</span> <span class="nc">Chile</span><span class="o">{</span>
+  <span class="o">}</span>
+</pre></table></code></div></div><li>HTML in Comments<li>Non-Local Information<div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre>      <span class="cm">/*
+      * port on whitch server run
+      * default to 8000
+      */</span>
+      <span class="kd">public</span> <span class="kt">void</span> <span class="nf">setServerPort</span><span class="o">(</span><span class="kt">int</span> <span class="n">port</span><span class="o">){</span>
+          <span class="k">this</span><span class="o">.</span><span class="na">port</span> <span class="o">=</span> <span class="n">port</span><span class="o">;</span>
+      <span class="o">}</span> 
+</pre></table></code></div></div><ul><li>comments를 작성해야만 한다면 comments가 설명하는 코드와 밀접한 곳에 작성하라.</ul></ul><h3 id="6-vertical-formatting"><strong>6. Vertical Formatting</strong></h3><p>공란을 함부로 사용해서는 안된다.</p><p>공란을 사용해야 하는 코드의 위치는 아래와 같다.</p><ul><li>메소드 사이<li>private 변수와 public 변수들 사이<li>변수 선언과 메소드 실행의 나머지 부분 사이<li>if/while 블록과 다른 코드 사이</ul><p>아래는 이 원칙을 지킨 예시다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="nc">String</span> <span class="nf">toString</span><span class="o">()</span> <span class="o">{</span>
+    <span class="nc">StringBuffer</span> <span class="n">result</span> <span class="o">=</span> <span class="k">new</span> <span class="nc">StringBuffer</span><span class="o">();</span>
+
+    <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"["</span><span class="o">);</span>
+    <span class="k">for</span> <span class="o">(</span><span class="nc">Object</span> <span class="n">word</span> <span class="o">:</span> <span class="n">words</span><span class="o">){</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="n">word</span><span class="o">);</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">","</span><span class="o">);</span>
+    <span class="o">}</span>
+
+    <span class="kt">int</span> <span class="n">end</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="na">length</span><span class="o">()</span> <span class="o">-</span> <span class="mi">1</span><span class="o">;</span>
+    
+    <span class="k">if</span> <span class="o">(</span><span class="n">result</span><span class="o">.</span><span class="na">charAt</span><span class="o">(</span><span class="n">end</span><span class="o">)</span> <span class="o">=</span> <span class="s">","</span><span class="o">)</span>
+        <span class="n">result</span><span class="o">.</span><span class="na">deleteCharAt</span><span class="o">(</span><span class="n">end</span><span class="o">);</span>
+
+    <span class="n">result</span><span class="o">.</span><span class="na">append</span><span class="o">(</span><span class="s">"]"</span><span class="o">);</span>
+    <span class="k">return</span> <span class="n">result</span><span class="o">.</span><span class="na">toString</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>이러한 Vertical Formatting은 단순히 가독성을 위한 것이 아니다. 서로 관련된 것들은 vertical하게 근접해야 하고, 이 거리가 그들간의 관련성을 나타낸다.</p><h3 id="7-classes"><strong>7. Classes</strong></h3><p>클래스란, private 변수들과 public 메소드들의 집합이다. 이때 외부에서는 private 변수들은 보이지 않고 public 메소드들로만 접근하여 Tell, Don’t Ask를 지키기 쉽게 한다.</p><p>하지만, 객체의 상태를 외부에서 사용할 수 있도록 하는 getter/setter/property 등을 제공한다면 변수를 private로 사용하는 의미가 없어지기 때문에 무분별한 getter/setter의 사용은 Bad Design이다.</p><p>메소드가 <code class="language-plaintext highlighter-rouge">cohesive</code>(응집력있는)하다는 것은, 해당 메소드가 클래스 내의 많은 변수를 조작하는 것을 의미하는데,</p><p>getter/setter는 하나의 변수만 사용하기 때문에 cohesive하지 않다. 클래스가 getter/setter를 많이 가질 수록 덜 cohesive해진다.</p><p>하지만 getter/setter를 무조건 안 쓸수는 없기때문에 사용을 최소화하도록 하고, 메소드 명에 변수의 이름을 그대로 노출하지 말고, 추상화를 통해 제공하도록 하라.</p><p><strong>getter를 추상화하여 제공하는 예제</strong></p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">gallonsOfGas</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getGallonsOfGas</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">gallonsOfGas</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>위 코드에서는 <code class="language-plaintext highlighter-rouge">getGallonsOfGas()</code>라는 이름은 <code class="language-plaintext highlighter-rouge">Car</code> 클래스의 구현 내용을 적나라하게 드러낸다. 이 메소드의 사용자들은 <code class="language-plaintext highlighter-rouge">gallonsOfGas</code>라는 변수가 있다는 것을 쉽게 추론할 수 있다.</p><p>문제는 이뿐만이 아니다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DieselCar</span> <span class="kd">extends</span> <span class="nc">Car</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getGallonsOfGas</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">getGallonsOfGas</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p><code class="language-plaintext highlighter-rouge">Car</code> 클래스를 상속 받는 <code class="language-plaintext highlighter-rouge">DieselCar</code>는 가솔린을 사용하지 않는데도 불구하고 <code class="language-plaintext highlighter-rouge">getGallonsOfGas()</code>를 가진다.</p><p>이 문제를 해결하기 위해 <code class="language-plaintext highlighter-rouge">Car</code> 클래스의 getter를 추상화하여 변경하자.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">Car</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="kt">int</span> <span class="n">gallonsOfGas</span><span class="o">;</span>
+
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPercentFuelRemaining</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="n">gallonsOfGas</span><span class="o">;</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">DieselCar</span> <span class="kd">extends</span> <span class="nc">Car</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPercentFuelRemaining</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">getPercentFuelRemaining</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ElectricCar</span> <span class="kd">extends</span> <span class="nc">Car</span><span class="o">{</span>
+    <span class="nd">@Override</span>
+    <span class="kd">public</span> <span class="kt">int</span> <span class="nf">getPercentFuelRemaining</span><span class="o">()</span> <span class="o">{</span>
+        <span class="k">return</span> <span class="kd">super</span><span class="o">.</span><span class="na">getPercentFuelRemaining</span><span class="o">();</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>추상화를 통해 getter를 제공했기 때문에 하위 클래스의 메소드를 타입 캐스팅없이 다형성을 활용해서 호출할 수 있다.</p><p>이렇게 내부 변수를 hide하고 상세 구현을 덜 노출할 수록 polymorphic 클래스를 활용할 기회가 늘어난다. <code class="language-plaintext highlighter-rouge">Polymorphism</code>은 <code class="language-plaintext highlighter-rouge">independent deployability</code>와 <code class="language-plaintext highlighter-rouge">plugin structure</code>의 핵심이다.</p><div lang="java" class="language-java highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+</pre><td class="rouge-code"><pre><span class="kd">public</span> <span class="kd">class</span> <span class="nc">CarDriver</span> <span class="o">{</span>
+    <span class="kd">private</span> <span class="nc">Car</span> <span class="n">car</span><span class="o">;</span>
+    
+    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">printFuelRemaining</span><span class="o">()</span> <span class="o">{</span>
+        <span class="nc">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">car</span><span class="o">.</span><span class="na">getPercentFuelRemaining</span><span class="o">());</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></table></code></div></div><p>만약 이렇게 <code class="language-plaintext highlighter-rouge">Car</code>를 호출하는 <code class="language-plaintext highlighter-rouge">CarDriver</code> 클래스가 있다고 했을 때, <code class="language-plaintext highlighter-rouge">CarDriver</code>는 <code class="language-plaintext highlighter-rouge">Car</code>에만 의존하고 있기 때문에 하위 클래스의 세부 구현이 바뀌어도 전혀 영향을 받지 않는다.</p><p><code class="language-plaintext highlighter-rouge">Polymorphism</code>은 <code class="language-plaintext highlighter-rouge">CarDriver</code>(클라이언트 코드)를 <code class="language-plaintext highlighter-rouge">Car</code>(서버 코드)의 구현 변경으로부터 보호한다. <strong>IoC를 통해 High Level Policy(클라이언트, 비즈니스 로직)를 Low Level Detail로부터 보호하는 것.</strong> 이것이 객체지향의 핵심이다.</p><h3 id="8-data-structures"><strong>8. Data Structures</strong></h3><p><code class="language-plaintext highlighter-rouge">Data Structures</code>는 <code class="language-plaintext highlighter-rouge">Classes</code>와 반대되는 개념이다. C에서 <code class="language-plaintext highlighter-rouge">struct</code>를 사용해봤다면 알겠지만, Data Structure에는 public 변수들만 있고 메소드는 존재하지 않는다.</p><div class="table-wrapper"><table><thead><tr><th style="text-align: right">class<th style="text-align: right">data structure<tbody><tr><td style="text-align: right">private 변수 + 메소드<td style="text-align: right">public 변수 + getter/setter<tr><td style="text-align: right">cohesive groups of variables를 조작하는 메소드<td style="text-align: right">개별 변수들을 조작하는 getter/setter<tr><td style="text-align: right">구현을 hide, abstract<td style="text-align: right">구현을 노출<tr><td style="text-align: right">Tell이 가능<td style="text-align: right">Tell은 불가, Ask만 가능</table></div><p>class는 polymorphic을 사용해서 객체에게 generic한 일을 수행하라고 tell할 수 있다. 그러면 자동으로 타입에 맞는 적절한 행위가 발생한다.</p><p>data structure에서는 generic한 행위를 수행하라고 tell할 수 없기 때문에 type에 기반하여 메소드를 호출해야 한다. 따라서 switch문이나 if문을 많이 사용하게 될 것이다.</p><p>만약 코드에서 switch문을 사용하고 있다면 이 속에 data structure가 숨어있지 않은지 살펴보길 바란다.</p><h3 id="9-boundaries"><strong>9. Boundaries</strong></h3><p><img data-proofer-ignore data-src="assets/../../../assets/img/baek/6.png" width="400" /></p><p>저번 강의에서 본 적이 있는 그림이다.<br /> 여기서 Application Partition이란, 비즈니스 로직이나 인터페이스처럼 변경이 가능한 것들에 대한 호출이고 이에 대한 구현이 Main Partition이다.</p><p>각 Boundary에서 한쪽은 Concrete(Main)하고, 다른 한쪽은 Abstract(App)하다. 여기서 항상 Concrete에서 Abstract로 의존성이 흘러야 한다.</p><h3 id="10-the-impedance-mismatch"><strong>10. The Impedance Mismatch</strong></h3><p>Impedance Mismatch란, OOP에서 RDB를 사용할 때 발생하는 일련의 개념적/기술적 어려움을 말한다. 특히 객체나 클래스의 정의가 데이터베이스 테이블이나 관계 스키마에 직접 매핑될 때 발생한다.</p><p>DB table은 data를 노출하고 메소드를 가지지 않기 때문에 data structure이다. 이는 OOP의 클래스와 반대될 뿐더러 DB table은 너무 concrete해서 polymorphic할 수 없다.</p></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/backend/'>Backend</a>, <a href='/categories/oop/'>OOP</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/java/" class="post-tag no-text-decoration" >java</a> <a href="/tags/oop/" class="post-tag no-text-decoration" >oop</a> <a href="/tags/programming/" class="post-tag no-text-decoration" >programming</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/"> CC BY 4.0 </a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=클린 코더스 강의 정리 - 6장 Form - yeoji21&url=https://yeoji21.github.io/posts/ch06/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=클린 코더스 강의 정리 - 6장 Form - yeoji21&u=https://yeoji21.github.io/posts/ch06/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=클린 코더스 강의 정리 - 6장 Form - yeoji21&url=https://yeoji21.github.io/posts/ch06/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink('', 'Link copied successfully!')" data-toggle="tooltip" data-placement="top" title="Copy link"> </i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/polymorphism-inheritance/">객체지향에서의 상속과 다형성</a><li><a href="/posts/graduation-project-review/">졸업 작품 프로젝트 회고</a><li><a href="/posts/reflection-1/">[JAVA] Java Refelction 마스터 강의 1장</a><li><a href="/posts/mst/">[알고리즘] MST - 크루스칼 vs 프림</a><li><a href="/posts/injection/">[Spring] 의존성 주입 시 생성자 주입을 사용해야 하는 이유 </a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/java/">java</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a> <a class="post-tag" href="/tags/java-study/">java study</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/">자바 스터디</a> <a class="post-tag" href="/tags/oop/">oop</a> <a class="post-tag" href="/tags/programming/">programming</a> <a class="post-tag" href="/tags/spring/">spring</a> <a class="post-tag" href="/tags/jpa/">jpa</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/guides/">guides</a></div></div></div><script src="https://cdn.jsdelivr.net/gh/afeld/bootstrap-toc@1.0.1/dist/bootstrap-toc.min.js"></script><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/ch01/"><div class="card-body"> <span class="timeago small" >Nov 9, 2021<i class="unloaded">2021-11-09T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 1장, 2장 소개 및 OOP</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 1. 소개 및 OOP 마틴 파울러 “기계가 이해할 수 있는 코드는 누구나 작성할 수 있다. 그런데 사람이 이해할 수 있는 코드는 잘 학습된 소프트웨어 엔지니어만 작성할 수 있다.” 내가 구현하려...</p></div></div></a></div><div class="card"> <a href="/posts/ch03/"><div class="card-body"> <span class="timeago small" >Nov 10, 2021<i class="unloaded">2021-11-10T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 3장, 4장 Function</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 3. Function 1. 원칙 한 가지 일만 해야 한다. 메소드의 크기는 과장 보태서 4줄짜리여야 한다. 따라서 indentation, while, nested if 등...</p></div></div></a></div><div class="card"> <a href="/posts/ch05/"><div class="card-body"> <span class="timeago small" >Nov 11, 2021<i class="unloaded">2021-11-11T00:00:00+09:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>클린 코더스 강의 정리 - 5장 Function Structure</h3><div class="text-muted small"><p> 들어가면서 해당 포스트는 백명석님의 클린 코더스 강의를 정리한 내용입니다. 강의 자료는 깃 허브에서 보실 수 있습니다. 클린 코더스 강의 5. Function Structure 1. Arguments 인자가 많아지면 복잡도가 증가한다. 3개의 인자가 최대 그 이상 넘어가면 외우기 어렵다. 따라서 Intellij의 Intro...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/ch05/" class="btn btn-outline-primary" prompt="Older"><p>클린 코더스 강의 정리 - 5장 Function Structure</p></a> <a href="/posts/ch07/" class="btn btn-outline-primary" prompt="Newer"><p>클린 코더스 강의 정리 - 7장, 8장, 9장 TDD</p></a></div></div></div></div><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2022 <a href="https://twitter.com/username">yeoji21</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">Some rights reserved.</span></p></div><div class="footer-right"><p class="mb-0"> Powered by <a href="https://jekyllrb.com" target="_blank" rel="noopener">Jekyll</a> with <a href="https://github.com/cotes2020/jekyll-theme-chirpy" target="_blank" rel="noopener">Chirpy</a> theme.</p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-sm-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/java/">java</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94/">자바</a> <a class="post-tag" href="/tags/java-study/">java study</a> <a class="post-tag" href="/tags/%EC%9E%90%EB%B0%94-%EC%8A%A4%ED%84%B0%EB%94%94/">자바 스터디</a> <a class="post-tag" href="/tags/oop/">oop</a> <a class="post-tag" href="/tags/programming/">programming</a> <a class="post-tag" href="/tags/spring/">spring</a> <a class="post-tag" href="/tags/jpa/">jpa</a> <a class="post-tag" href="/tags/algorithm/">algorithm</a> <a class="post-tag" href="/tags/guides/">guides</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://yeoji21.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"> {categories} {tags}</div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>', templateMiddleware: function(prop, value, template) { if (prop === 'categories') { if (value === '') { return `${value}`; } else { return `<div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>${value}</div>`; } } if (prop === 'tags') { if (value === '') { return `${value}`; } else { return `<div><i class="fa fa-tag fa-fw"></i>${value}</div>`; } } } }); </script> <script src="https://cdn.jsdelivr.net/combine/npm/lozad/dist/lozad.min.js,npm/magnific-popup@1/dist/jquery.magnific-popup.min.js"></script> <script defer src="/assets/js/dist/post.min.js"></script> <script src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.16.1,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script defer src="/app.js"></script> <script defer src="https://www.googletagmanager.com/gtag/js?id="></script> <script> document.addEventListener("DOMContentLoaded", function(event) { window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); }); </script>
